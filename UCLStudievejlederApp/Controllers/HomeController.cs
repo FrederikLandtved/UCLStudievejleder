@@ -13,6 +13,8 @@ namespace UCLStudievejlederApp.Controllers
 
         public IActionResult Index()
         {
+
+
             return View();
         }
 
