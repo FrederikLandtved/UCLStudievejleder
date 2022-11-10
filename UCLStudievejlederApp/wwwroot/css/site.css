@@ -8,24 +8,26 @@ body {
 }
 
 .nav-header {
-    height: 110px;
+    padding: 35px 80px;
     width: 100%;
     display: flex;
     justify-content: space-between;
+    box-sizing: border-box;
+    align-items: center;
 }
 
 .logo img {
     width: 250px;
-    margin: 20px 0 0 20px;
 }
 
 .right-box {
     height: 100%;
-    margin: 0 20px 0 0;
-    width: 400px;
+    margin: 0 60px 0 0;
+    width: 200px;
 }
 
 .right-box img {
     width: 40px;
-    margin: 32px 0 0 60px;
+    float: right;
+    margin-left: 50px;
 }
