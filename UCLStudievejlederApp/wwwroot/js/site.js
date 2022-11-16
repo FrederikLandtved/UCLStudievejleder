@@ -5,7 +5,7 @@
 
 // OVERLAY
 function openNav() {
-    //document.getElementById("myNav").style.display = "block";
+    document.getElementById("myNav").style.display = "block";
     document.getElementById("myNav").style.height = "60%";
     document.getElementById("bg-blur").style.filter = "blur(8px)";
     
