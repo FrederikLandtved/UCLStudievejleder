@@ -12,5 +12,10 @@ namespace UCLStudievejlederApp.Controllers
         {
             return View();
         }
+
+        public IActionResult EditFormular()
+        {
+            return View();
+        }
     }
 }

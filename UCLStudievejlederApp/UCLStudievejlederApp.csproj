@@ -15,4 +15,12 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.10" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Views\User\" />
+    <None Remove="Views\Notification\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\User\" />
+    <Folder Include="Views\Notification\" />
+  </ItemGroup>
 </Project>
