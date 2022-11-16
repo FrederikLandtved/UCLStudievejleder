@@ -2,13 +2,9 @@
 
 namespace UCLStudievejlederApp.Controllers
 {
-    public class FormularController : Controller
+    public class StatisticsController : Controller
     {
         public IActionResult Index()
-        {
-            return View();
-        }
-        public IActionResult FormularList()
         {
             return View();
         }
