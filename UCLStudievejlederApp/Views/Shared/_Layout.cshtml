@@ -11,6 +11,19 @@
 <body>
 @*    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">UCLStudievejlederApp</a>
 *@
+
+    <div id="myNav" class="overlay">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times</a>
+        <div class="overlay-content">
+            <a asp-controller="Statistics" asp-action="Index">Opret bruger</a>
+            <a asp-controller="Statistics" asp-action="Index">Rediger bruger</a>
+            <a asp-controller="Statistics" asp-action="Index">Rediger formularindhold</a>
+            <a asp-controller="Statistics" asp-action="Index">Notifikationer</a>
+        </div>
+    </div><!-- OVERLAY -->
+    
+    <div id="bg-blur">
+
     <header class="nav-header">
         <div class="logo"><img src="~/assets/images/logo-horisontal-mg.svg" alt="UCL Logo"/> </div>
         <div class="right-box">
@@ -32,16 +45,6 @@
         <img class="sidebar-icon" src="~/assets/icons/settings.png" onclick="openNav()";  />
     </div><!-- SIDE BAR -->
 
-    <div id="myNav" class="overlay">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times</a>
-        <div class="overlay-content">
-            <a asp-controller="Statistics" asp-action="Index">Opret bruger</a>
-            <a asp-controller="Statistics" asp-action="Index">Rediger bruger</a>
-            <a asp-controller="Statistics" asp-action="Index">Rediger formularindhold</a>
-            <a asp-controller="Statistics" asp-action="Index">Notifikationer</a>
-        </div>
-    </div>
-
     <footer class="footer">
         <div class="left-box">
             &copy; @DateTime.Now.Year - University College Lillebælt
@@ -52,6 +55,7 @@
             <img src="~/assets/images/happyman.png" />
         </div>
     </footer>
+    </div><!-- BG BLUR -->
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

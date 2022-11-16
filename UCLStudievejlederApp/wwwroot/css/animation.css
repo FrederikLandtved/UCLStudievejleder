@@ -2,14 +2,15 @@
     height: 60%;
     width: 40%;
     position: fixed;
-    z-index: 1;
+    z-index: 2;
     top: 20%;
     left: 30%;
     background-color: rgba(255,255,255, 0.5);
     background-color: white;
     overflow-y: hidden;
     transition: 0.5s;
-    border: 3px solid black;
+    /*border: 3px solid black;*/
+    display: none;
 }
 
 .overlay-content {

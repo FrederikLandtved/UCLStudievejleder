@@ -96,3 +96,9 @@ body {
     box-sizing: border-box;
     margin-bottom: 60px;
 }
+
+#bg-blur {
+    filter: blur(0);
+    /*position: absolute;
+    z-index: 1;*/
+}
