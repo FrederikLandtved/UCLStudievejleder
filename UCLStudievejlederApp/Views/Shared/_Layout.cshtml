@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - UCLStudievejlederApp</title>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/animation.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/UCLStudievejlederApp.styles.css" asp-append-version="true" />
 </head>
 <body>
@@ -28,8 +29,18 @@
         <a asp-controller="Formular" asp-action="Index"><img class="sidebar-icon border" src="~/assets/icons/pencil.png" /></a>
         <a asp-controller="Statistics" asp-action="Index"><img class="sidebar-icon border" src="~/assets/icons/statistics.png" /></a>
         <a asp-controller="Formular" asp-action="FormularList"><img class="sidebar-icon border" src="~/assets/icons/list.png" /></a>
-        <a asp-controller="Home" asp-action="Privacy"><img class="sidebar-icon" src="~/assets/icons/settings.png" /></a>
+        <img class="sidebar-icon" src="~/assets/icons/settings.png" onclick="openNav()";  />
     </div><!-- SIDE BAR -->
+
+    <div id="myNav" class="overlay">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times</a>
+        <div class="overlay-content">
+            <a asp-controller="Statistics" asp-action="Index">Opret bruger</a>
+            <a asp-controller="Statistics" asp-action="Index">Rediger bruger</a>
+            <a asp-controller="Statistics" asp-action="Index">Rediger formularindhold</a>
+            <a asp-controller="Statistics" asp-action="Index">Notifikationer</a>
+        </div>
+    </div>
 
     <footer class="footer">
         <div class="left-box">
