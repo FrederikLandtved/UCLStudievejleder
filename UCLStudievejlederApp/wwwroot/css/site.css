@@ -1,6 +1,7 @@
 * {
     margin: 0;
     padding: 0;
+    font-family: 'Proxima Nova'
 }
 
 body {
@@ -8,7 +9,7 @@ body {
 }
 
 .nav-header {
-    padding: 35px 80px;
+    padding: 35px 110px;
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -22,8 +23,8 @@ body {
 
 .right-box {
     height: 100%;
-    margin: 0 60px 0 0;
     width: 200px;
+    display: flex;
 }
 
 .right-box img {
@@ -52,4 +53,42 @@ body {
 
 .border {
     border-bottom: 2px solid black;
+}
+
+.footer {
+    background-color: #00454E;
+    color: white;
+    padding: 15px 120px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.footer-right-box {
+    display: flex;
+    align-items: center;
+}
+
+.footer-right-box img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    border-radius: 100%;
+    margin-left: 20px;
+}
+
+.main-container {
+    height: 100vh;
+    background-color: white;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.master {
+    width: 100%;
+    height: 100vh;
+    padding: 35px 110px;
+    box-sizing: border-box;
+    margin-bottom: 60px;
 }

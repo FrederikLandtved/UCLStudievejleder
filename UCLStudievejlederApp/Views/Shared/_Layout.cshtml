@@ -11,26 +11,33 @@
 @*    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">UCLStudievejlederApp</a>
 *@
     <header class="nav-header">
-        <div class="logo"><img src="~/assets/images/logo-horisontal-mg.svg" /> </div>
+        <div class="logo"><img src="~/assets/images/logo-horisontal-mg.svg" alt="UCL Logo"/> </div>
         <div class="right-box">
-            <img src="~/assets/icons/right.png" />
-            <img src="~/assets/icons/bell.png" />
+            <a asp-controller="Formular" asp-action="Index"><img src="~/assets/icons/bell.png" alt="Notifications" /></a>
+            <a asp-controller="Formular" asp-action="Index"><img src="~/assets/icons/right.png" alt="Log out" /></a>
         </div>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+    <div class="master">
+        <div class="main-container">
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+        </div>
     </div>
     <div class="sidebar">
-        <a asp-controller="Home" asp-action="Index"><img class="sidebar-icon border" src="~/assets/icons/pencil.png" /></a>
+        <a asp-controller="Formular" asp-action="Index"><img class="sidebar-icon border" src="~/assets/icons/pencil.png" /></a>
         <a asp-controller="Home" asp-action="Privacy"><img class="sidebar-icon border" src="~/assets/icons/statistics.png" /></a>
         <a asp-controller="Home" asp-action="Privacy"><img class="sidebar-icon border" src="~/assets/icons/list.png" /></a>
         <a asp-controller="Home" asp-action="Privacy"><img class="sidebar-icon" src="~/assets/icons/settings.png" /></a>
     </div>
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2022 - UCLStudievejlederApp - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <footer class="footer">
+        <div class="left-box">
+            &copy; @DateTime.Now.Year - University College Lillebælt
+
+        </div>
+        <div class="footer-right-box">
+            <p>Du er logget ind som admin</p>
+            <img src="~/assets/images/happyman.png" />
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
