@@ -108,3 +108,21 @@ body {
     background: 0;
     cursor: pointer;
 }
+
+.ucl-primary-button {
+    margin-top: 30px;
+    margin-bottom: 20px;
+    width: 160px;
+    height: 45px;
+    font-size: 16px;
+    background-color: #00454E;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    transition: 0.2s;
+}
+
+.ucl-primary-button:hover {
+    cursor: pointer;
+    background-color: #00232A;
+}

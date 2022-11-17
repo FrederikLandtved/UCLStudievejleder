@@ -1,0 +1,69 @@
+﻿article {
+    position: relative;
+    width: 140px;
+    height: 45px;
+    margin-right: 10px;
+    float: left;
+    background-color: #eaeaea;
+    border-radius: 6px;
+    box-sizing: border-box;
+    transition: 0.2s ease;
+}
+
+    article div {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        line-height: 25px;
+        transition: .3s ease;
+    }
+
+    article input {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 140px;
+        height: 45px;
+        opacity: 0;
+        cursor: pointer;
+    }
+
+input[type=checkbox]:checked ~ div {
+    background-color: #00454E;
+    color: white;
+    border-radius: 6px;
+    font-weight: bolder;
+    border: 0;
+}
+
+.form-item {
+    display: grid;
+    margin-top: 20px;
+}
+
+.form-item label, h3 {
+    font-size: 1.17em;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-item input[type=email], input[type=password], input[type=text] {
+    height: 40px;
+    padding: 0 8px;
+    -webkit-appearance: none;
+    outline: none;
+    border: 1px solid #afafaf;
+    font-size: 16px;
+    width: 400px;
+}
+
+.form-item-double {
+    display: flex;
+}
+
+.form-item-double .form-item input {
+    width: 180px;
+    margin-right: 20px;
+}

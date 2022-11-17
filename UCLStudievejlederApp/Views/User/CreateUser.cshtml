@@ -6,29 +6,62 @@
 
 }
 
-<h1>Opret ny bruger</h1>
+<h1>Opret en ny bruger</h1>
 <div class="row">
     <div class="col-md-4">
         <form id="registerForm" method="post">
-            <h2>Create a new account.</h2>
-            <hr />
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-floating">
-                <input asp-for="Email" class="form-control" autocomplete="username" aria-required="true" />
+            <div class="form-item">
                 <label asp-for="Email"></label>
+                <input asp-for="Email" autocomplete="username" aria-required="true" />
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
-            <div class="form-floating">
-                <input asp-for="Password" class="form-control" autocomplete="new-password" aria-required="true" />
+            <div class="form-item-double">
+                <div class="form-item">
+                    <label>Fornavn</label>
+                    <input type="text" />
+                </div>
+                <div class="form-item">
+                    <label>Efternavn</label>
+                    <input type="text" />
+                </div>
+            </div>
+            <div class="form-item">
                 <label asp-for="Password"></label>
+                <input asp-for="Password" autocomplete="new-password" aria-required="true" />
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
-            <div class="form-floating">
-                <input asp-for="ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" />
+            <div class="form-item">
                 <label asp-for="ConfirmPassword"></label>
+                <input asp-for="ConfirmPassword" autocomplete="new-password" aria-required="true" />
                 <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
             </div>
-            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
+            <div class="form-item">
+                <h3>Institution</h3>
+                <div class="institutions">
+                    <article>
+                        <input type="checkbox" id="feature1" />
+                        <div>Fredericia</div>
+                    </article>
+                    <article>
+                        <input type="checkbox" id="feature2" />
+                        <div>Jelling</div>
+                    </article>
+                    <article>
+                        <input type="checkbox" id="feature3" />
+                        <div>Odense</div>
+                    </article>
+                    <article>
+                        <input type="checkbox" id="feature4" checked />
+                        <div>Svendborg</div>
+                    </article>
+                    <article>
+                        <input type="checkbox" id="feature5" />
+                        <div>Vejle</div>
+                    </article>
+                </div>
+            </div>
+            <button type="submit" class="ucl-primary-button">Opret bruger</button>
         </form>
     </div>
 </div>

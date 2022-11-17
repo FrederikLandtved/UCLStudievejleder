@@ -17,9 +17,8 @@ namespace UCLStudievejlederApp.Models.User
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Display(Name = "Bekræft password")]
+        [Compare("Password", ErrorMessage = "Passwords matcher ikke.")]
         public string ConfirmPassword { get; set; }
-
     }
 }
