@@ -38,13 +38,13 @@ body {
 
 .form-floating {
     display: grid;
+    margin-bottom: 20px;
 }
 
 .form-floating input {
     width: 500px;
     height: 40px;
     font-size: 20px;
-    margin-bottom: 20px;
     padding: 0 10px;
 }
 
