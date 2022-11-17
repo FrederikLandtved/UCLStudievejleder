@@ -16,12 +16,8 @@ body {
     }
 
 .login-box {
-
-
 display:block;
 float:right;
-
-
 }
 
 .login-box h1 {
@@ -30,6 +26,23 @@ margin-top:50px;
 margin-bottom:50px;
 }
 
+.login-box p {
+margin-bottom:30px;
+}
+
 .login-box div {
     width:70%;
+}
+.form-floating input{
+width:500px;
+height:40px;
+font-size:30px;
+}
+
+#login-submit {
+margin-top:30px;
+margin-bottom:20px;
+width:150px;
+height:35px;
+font-size:25px;
 }
