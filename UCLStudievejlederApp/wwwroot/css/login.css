@@ -1,43 +1,51 @@
 ﻿* {
-    margin:0;
-    padding:0;
-    font-family:"proxima nova",sans-serif;
+    margin: 0;
+    padding: 0;
+    font-family: "proxima nova",sans-serif;
 }
+
 body {
     background-color: #CAE4E3;
 }
+
 .img-box {
-    display:block;
-    float:left;
-    width:35%;
+    display: block;
+    float: left;
+    width: 35%;
+    height: 100vh;
+    background-image: url(/assets/images/protobillede.png);
+    background-size: cover;
 }
-.img-box img {
- width:100%;
+
+    .img-box img {
+        width: 100%;
     }
 
 .login-box {
-display:block;
-float:right;
+    margin: 70px auto;
+    width: 500px;
 }
 
-.login-box h1 {
-font-size:70px;
-margin-top:50px;
-margin-bottom:50px;
+    .login-box h1 {
+        font-size: 60px;
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+
+    .login-box p {
+        margin-bottom: 30px;
+    }
+
+.form-floating {
+    display: grid;
 }
 
-.login-box p {
-margin-bottom:30px;
-}
-
-.login-box div {
-    width:70%;
-}
-.form-floating input{
-width:500px;
-height:40px;
-font-size:20px;
-margin-bottom:20px;
+.form-floating input {
+    width: 500px;
+    height: 40px;
+    font-size: 20px;
+    margin-bottom: 20px;
+    padding: 0 10px;
 }
 
 #login-submit {
@@ -47,16 +55,21 @@ margin-bottom:20px;
     height: 35px;
     font-size: 20px;
     background-color: #00454E;
-    border:none;
-    border-radius:5px;
-    color:white;
+    border: none;
+    border-radius: 5px;
+    color: white;
 }
 
-#login-submit:hover {
-    cursor: pointer;
-    background-color: #00232A;
+    #login-submit:hover {
+        cursor: pointer;
+        background-color: #00232A;
     }
 
-.h1 {
+h1 {
     font-style: italic;
+    font-size: 10px;
+}
+
+.login-wrapper {
+    display: flex;
 }
