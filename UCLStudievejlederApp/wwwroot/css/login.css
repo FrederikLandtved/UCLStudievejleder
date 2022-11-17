@@ -56,3 +56,7 @@ margin-bottom:20px;
     cursor: pointer;
     background-color: #00232A;
     }
+
+.h1 {
+    font-style: italic;
+}
