@@ -102,3 +102,9 @@ body {
     filter: blur(0);
     z-index: 1;
 }
+
+.right-box button {
+    border: 0;
+    background: 0;
+    cursor: pointer;
+}

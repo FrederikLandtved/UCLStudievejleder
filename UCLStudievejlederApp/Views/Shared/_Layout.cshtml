@@ -30,7 +30,7 @@
         <a asp-controller="Formular" asp-action="Index"><img class="sidebar-icon border" src="~/assets/icons/pencil.png" /></a>
         <a asp-controller="Statistics" asp-action="Index"><img class="sidebar-icon border" src="~/assets/icons/statistics.png" /></a>
         <a asp-controller="Formular" asp-action="FormularList"><img class="sidebar-icon border" src="~/assets/icons/list.png" /></a>
-        <img class="sidebar-icon" src="~/assets/icons/settings.png" onclick="openNav()" ; />
+        <img class="sidebar-icon" src="~/assets/icons/settings.png" onclick="openNav()" />
     </div><!-- SIDE BAR -->
 
     <div id="bg-blur">
@@ -39,7 +39,9 @@
         <div class="logo"><img src="~/assets/images/logo-horisontal-mg.svg" alt="UCL Logo"/> </div>
         <div class="right-box">
             <a asp-controller="Formular" asp-action="Index"><img src="~/assets/icons/bell.png" alt="Notifications" /></a>
-            <a asp-controller="Formular" asp-action="Index"><img src="~/assets/icons/right.png" alt="Log out" /></a>
+            <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Formular", new { area = "" })">
+                    <button type="submit" title="Log ud"><img src="~/assets/icons/right.png" alt="Log out" /></button>
+            </form>
         </div>
     </header>
     <div class="master">
