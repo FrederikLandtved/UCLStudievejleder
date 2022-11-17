@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace UCLStudievejlederApp.Controllers
 {
+    [Authorize]
     public class FormularController : Controller
     {
         public IActionResult Index()
