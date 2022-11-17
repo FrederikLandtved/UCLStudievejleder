@@ -1,0 +1,35 @@
+﻿* {
+    margin:0;
+    padding:0;
+    font-family:"proxima nova",sans-serif;
+}
+body {
+    background-color: #CAE4E3;
+}
+.img-box {
+    display:block;
+    float:left;
+    width:35%;
+}
+.img-box img {
+ width:100%;
+    }
+
+.login-box {
+
+
+display:block;
+float:right;
+
+
+}
+
+.login-box h1 {
+font-size:70px;
+margin-top:50px;
+margin-bottom:50px;
+}
+
+.login-box div {
+    width:70%;
+}
