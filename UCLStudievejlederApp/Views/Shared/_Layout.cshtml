@@ -39,7 +39,7 @@
     <header class="nav-header">
         <div class="logo"><img src="~/assets/images/logo-horisontal-mg.svg" alt="UCL Logo"/> </div>
         <div class="right-box">
-            <a asp-controller="Formular" asp-action="Index"><img src="~/assets/icons/bell.png" alt="Notifications" /></a>
+            <a asp-controller="Formular" asp-action="Index"><img src="~/assets/icons/bell.png" alt="Notifications" title="Notifikationer"/></a>
             <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Formular", new { area = "" })">
                     <button type="submit" title="Log ud"><img src="~/assets/icons/right.png" alt="Log out" /></button>
             </form>
