@@ -1,4 +1,5 @@
-﻿@using UCLStudievejlederApp.Areas.Identity.Pages.Account
+﻿@using DatabaseAccess.Institution
+@using UCLStudievejlederApp.Areas.Identity.Pages.Account
 @using UCLStudievejlederApp.Models.User
 
 @model RegisterUserModel
@@ -18,12 +19,14 @@
             </div>
             <div class="form-item-double">
                 <div class="form-item">
-                    <label>Fornavn</label>
-                    <input type="text" />
+                    <label asp-for="FirstName"></label>
+                    <input asp-for="FirstName" autocomplete="firstname" aria-required="true" />
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
                 </div>
                 <div class="form-item">
-                    <label>Efternavn</label>
-                    <input type="text" />
+                    <label asp-for="LastName"></label>
+                    <input asp-for="LastName" autocomplete="lastname" aria-required="true" />
+                    <span asp-validation-for="LastName" class="text-danger"></span>
                 </div>
             </div>
             <div class="form-item">
@@ -39,26 +42,17 @@
             <div class="form-item">
                 <h3>Institution</h3>
                 <div class="institutions">
-                    <article>
-                        <input type="checkbox" id="feature1" />
-                        <div>Fredericia</div>
-                    </article>
-                    <article>
-                        <input type="checkbox" id="feature2" />
-                        <div>Jelling</div>
-                    </article>
-                    <article>
-                        <input type="checkbox" id="feature3" />
-                        <div>Odense</div>
-                    </article>
-                    <article>
-                        <input type="checkbox" id="feature4" checked />
-                        <div>Svendborg</div>
-                    </article>
-                    <article>
-                        <input type="checkbox" id="feature5" />
-                        <div>Vejle</div>
-                    </article>
+                    @foreach(Institution institution in Model.AllInstitutions) 
+                    {
+                        int indexOf = Model.AllInstitutions.IndexOf(institution);
+
+                        <article>
+                            @Html.CheckBoxFor(x => Model.AllInstitutions[indexOf].IsSelected)
+                            <div>@institution.Name</div>
+                            @Html.HiddenFor(x => Model.AllInstitutions[indexOf].Name)
+                            @Html.HiddenFor(x => Model.AllInstitutions[indexOf].InstitutionId)
+                        </article>
+                    }
                 </div>
             </div>
             <button type="submit" class="ucl-primary-button">Opret bruger</button>

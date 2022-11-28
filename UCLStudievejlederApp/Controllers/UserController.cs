@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DatabaseAccess.Institution;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using UCLStudievejlederApp.Data;
 using UCLStudievejlederApp.Models.User;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -12,10 +14,10 @@ namespace UCLStudievejlederApp.Controllers
 {
     public class UserController : Controller
     {
-        private SignInManager<IdentityUser> _signManager;
-        private UserManager<IdentityUser> _userManager;
+        private SignInManager<ApplicationUser> _signManager;
+        private UserManager<ApplicationUser> _userManager;
 
-        public UserController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signManager)
+        public UserController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signManager)
         {
             _userManager = userManager;
             _signManager = signManager;
@@ -24,13 +26,22 @@ namespace UCLStudievejlederApp.Controllers
         [HttpPost]
         public async Task<IActionResult> Register(RegisterUserModel model)
         {
+            ModelState.Remove("AllInstitutions");
+
             if (ModelState.IsValid)
             {
-                var user = new IdentityUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName };
                 var result = await _userManager.CreateAsync(user, model.Password);
 
                 if (result.Succeeded)
                 {
+                    InstitutionDb db = new InstitutionDb();
+                    foreach(Institution userInstitution in model.AllInstitutions)
+                    {
+                        if (userInstitution.IsSelected == true)
+                            db.LinkUserToInstitution(user.UserId, userInstitution.InstitutionId);
+                    }
+
                     return RedirectToAction("Index", "Home");
                 }
 
@@ -42,14 +53,19 @@ namespace UCLStudievejlederApp.Controllers
                     }
                 }
             }
-            return View();
+
+            return RedirectToAction("CreateUser");
         }
+
 
         public IActionResult CreateUser()
         {
-            RegisterUserModel model = new RegisterUserModel();
+            RegisterUserModel registerUserModel = new RegisterUserModel();
 
-            return View(model);
+            InstitutionDb db = new InstitutionDb();
+            registerUserModel.AllInstitutions = db.GetAllInstitutions();
+            
+            return View(registerUserModel);
         }
 
         public IActionResult EditUser()

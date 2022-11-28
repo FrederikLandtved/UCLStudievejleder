@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using DatabaseAccess.Institution;
+using System.ComponentModel.DataAnnotations;
 using System.Xml.Linq;
 
 namespace UCLStudievejlederApp.Models.User
@@ -11,6 +12,14 @@ namespace UCLStudievejlederApp.Models.User
         public string Email { get; set; }
 
         [Required]
+        [Display(Name = "Fornavn")]
+        public string FirstName { get; set; }
+
+        [Required]
+        [Display(Name = "Efternavn")]
+        public string LastName { get; set; }
+
+        [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
@@ -20,5 +29,7 @@ namespace UCLStudievejlederApp.Models.User
         [Display(Name = "Bekræft password")]
         [Compare("Password", ErrorMessage = "Passwords matcher ikke.")]
         public string ConfirmPassword { get; set; }
+
+        public List<Institution>? AllInstitutions { get; set; } = new List<Institution>();
     }
 }
