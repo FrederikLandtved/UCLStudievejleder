@@ -1,6 +1,7 @@
 ﻿.form-wrapper {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .form-title {
@@ -12,7 +13,9 @@
     text-align: left;
     padding-left: 20px;
     border: 0;
-    position: relative;
+    /*position: relative;*/
+    float: left;
+    margin-top: 10px;
 }
 
 .form-title:hover {
@@ -20,14 +23,13 @@
 }
 
 .form-drop-style {
-    width: 70.6%;
+    /*width: 70.6%;*/
+    width: 84.9%;
     height: 80px;
-    /*background-color: black;*/
     display: none;
     z-index: 1;
     overflow: auto;
-    position: absolute;
-    margin-top: 50px;
+    /*position: absolute;*/
     border-left: 1px solid black;
     border-right: 1px solid black;
     border-bottom: 1px solid black;
@@ -35,4 +37,23 @@
 
 .show {
     display: block;
+}
+
+.checkbox-form {
+/*    border: 0;
+    border-radius: 0;*/
+    width: 20px;
+    height: 20px;
+    float: left;
+    margin-top: 30px;
+    margin-left: 50px;
+}
+
+.label-form {
+    font-size: 25px;
+    float: left;
+    color: #00454E;
+    font-weight: bold;
+    margin-top: 25px;
+    margin-left: 10px;
 }
