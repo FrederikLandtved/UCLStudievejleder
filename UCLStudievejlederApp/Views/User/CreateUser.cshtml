@@ -8,80 +8,103 @@
 }
 
 <h1>Opret en ny bruger</h1>
-<div class="row">
-    <div class="col-md-4">
-        <form id="registerForm" asp-controller="User" asp-action="Register" method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<div class="register-user-container">
+    <form id="registerForm" asp-controller="User" asp-action="Register" method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-item">
+            <label asp-for="Email"></label>
+            <input asp-for="Email" autocomplete="username" aria-required="true" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="form-item-double">
             <div class="form-item">
-                <label asp-for="Email"></label>
-                <input asp-for="Email" autocomplete="username" aria-required="true" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-            <div class="form-item-double">
-                <div class="form-item">
-                    <label asp-for="FirstName"></label>
-                    <input asp-for="FirstName" autocomplete="firstname" aria-required="true" />
-                    <span asp-validation-for="FirstName" class="text-danger"></span>
-                </div>
-                <div class="form-item">
-                    <label asp-for="LastName"></label>
-                    <input asp-for="LastName" autocomplete="lastname" aria-required="true" />
-                    <span asp-validation-for="LastName" class="text-danger"></span>
-                </div>
+                <label asp-for="FirstName"></label>
+                <input asp-for="FirstName" autocomplete="firstname" aria-required="true" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
             </div>
             <div class="form-item">
-                <label asp-for="Password"></label>
-                <input asp-for="Password" autocomplete="new-password" aria-required="true" />
-                <span asp-validation-for="Password" class="text-danger"></span>
+                <label asp-for="LastName"></label>
+                <input asp-for="LastName" autocomplete="lastname" aria-required="true" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
             </div>
-            <div class="form-item">
-                <label asp-for="ConfirmPassword"></label>
-                <input asp-for="ConfirmPassword" autocomplete="new-password" aria-required="true" />
-                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
-            </div>
-            <div class="form-item">
-                <h3>Institution</h3>
-                <div class="institutions">
-                    @foreach(Institution institution in Model.AllInstitutions) 
-                    {
-                        int indexOf = Model.AllInstitutions.IndexOf(institution);
+        </div>
+        <div class="form-item">
+            <label asp-for="Password"></label>
+            <input asp-for="Password" autocomplete="new-password" aria-required="true" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+        <div class="form-item">
+            <label asp-for="ConfirmPassword"></label>
+            <input asp-for="ConfirmPassword" autocomplete="new-password" aria-required="true" />
+            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+        </div>
+        <div class="form-item">
+            <h3>Institution</h3>
+            <div class="institutions">
+                @foreach (Institution institution in Model.AllInstitutions)
+                {
+                    int indexOf = Model.AllInstitutions.IndexOf(institution);
 
-                        <article>
-                            @Html.CheckBoxFor(x => Model.AllInstitutions[indexOf].IsSelected)
-                            <div>@institution.Name</div>
-                            @Html.HiddenFor(x => Model.AllInstitutions[indexOf].Name)
-                            @Html.HiddenFor(x => Model.AllInstitutions[indexOf].InstitutionId)
-                        </article>
-                    }
-                </div>
+                    <article>
+                        @Html.CheckBoxFor(x => Model.AllInstitutions[indexOf].IsSelected)
+                        <div>@institution.Name</div>
+                        @Html.HiddenFor(x => Model.AllInstitutions[indexOf].Name)
+                        @Html.HiddenFor(x => Model.AllInstitutions[indexOf].InstitutionId)
+                    </article>
+                }
             </div>
+        </div>
 
-            <div class="form-item">
-                <h3>Studieretninger</h3>
-                <input type="text" />
-                <div class="institutions">
-                    <article>
-                        <input type="checkbox" id="feature1" />
-                        <div>Administrationsbachelor</div>
-                    </article>
-                    <article>
-                        <input type="checkbox" id="feature2" />
-                        <div>Automationsteknolog</div>
-                    </article>
-                    <article>
-                        <input type="checkbox" id="feature3" />
-                        <div>Autoteknolog</div>
-                    </article>
-                    <article>
-                        <input type="checkbox" id="feature4" />
-                        <div>Bygningskonstruktør</div>
-                    </article>
-                </div>
+        <div class="form-item">
+            <h3>Studieretninger</h3>
+            <input type="text" id="field-of-study-search" placeholder="Søg efter studieretning..." onkeyup="search()" />
+            <div class="institutions field-of-study">
+                <article>
+                    <input type="checkbox" id="feature1" />
+                    <div class="field-name">Administrationsbachelor</div>
+                </article>
+                <article>
+                    <input type="checkbox" id="feature2" />
+                    <div class="field-name">Automationsteknolog</div>
+                </article>
+                <article>
+                    <input type="checkbox" id="feature3" />
+                    <div class="field-name">Autoteknolog</div>
+                </article>
+                <article>
+                    <input type="checkbox" id="feature4" />
+                    <div class="field-name">Bygningskonstruktør</div>
+                </article>
+                <article>
+                    <input type="checkbox" id="feature4" />
+                    <div class="field-name">Bioanalytiker</div>
+                </article>
+                <article>
+                    <input type="checkbox" id="feature4" />
+                    <div class="field-name">Byggekoordinator</div>
+                </article>
+                <article>
+                    <input type="checkbox" id="feature4" />
+                    <div class="field-name">Datamatiker</div>
+                </article>
+                <article>
+                    <input type="checkbox" id="feature4" />
+                    <div class="field-name">Digital konceptudvikling</div>
+                </article>
+                <article>
+                    <input type="checkbox" id="feature4" />
+                    <div class="field-name">Energiteknolog</div>
+                </article>
+                <article>
+                    <input type="checkbox" id="feature4" />
+                    <div class="field-name">Multimediedesign</div>
+                </article>
             </div>
-            <button type="submit" class="ucl-primary-button">Opret bruger</button>
-        </form>
-    </div>
+        </div>
+        <button type="submit" class="ucl-primary-button">Opret bruger</button>
+    </form>
 </div>
+<script src="~/js/selection.js"></script>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
