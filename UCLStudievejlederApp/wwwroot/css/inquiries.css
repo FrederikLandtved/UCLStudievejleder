@@ -1,0 +1,38 @@
+﻿.form-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.form-title {
+    width: 85%;
+    height: 50px;
+    background-color: #00454E;
+    color: white;
+    font-size: 28px;
+    text-align: left;
+    padding-left: 20px;
+    border: 0;
+    position: relative;
+}
+
+.form-title:hover {
+    cursor: pointer;
+}
+
+.form-drop-style {
+    width: 70.6%;
+    height: 80px;
+    /*background-color: black;*/
+    display: none;
+    z-index: 1;
+    overflow: auto;
+    position: absolute;
+    margin-top: 50px;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+.show {
+    display: block;
+}
