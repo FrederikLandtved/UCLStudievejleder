@@ -40,7 +40,7 @@ input[type=checkbox]:checked ~ div {
 
 .form-item {
     display: grid;
-    margin-top: 20px;
+    margin-top: 30px;
 }
 
 .form-item label, h3 {
@@ -50,7 +50,7 @@ input[type=checkbox]:checked ~ div {
 }
 
 .form-item input[type=email], input[type=password], input[type=text] {
-    height: 40px;
+    height: 36px;
     padding: 0 8px;
     -webkit-appearance: none;
     outline: none;
@@ -71,4 +71,8 @@ input[type=checkbox]:checked ~ div {
 
 .form-item input[type=email]:focus, input[type=password]:focus, input[type=text]:focus {
     border: 1px solid #00454E;
+}
+
+.institutions input {
+
 }
