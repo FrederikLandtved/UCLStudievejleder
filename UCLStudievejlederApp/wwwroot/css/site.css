@@ -6,6 +6,7 @@
 
 body {
     background-color: #CAE4E3;
+    background-image: url("../images/background.png");
 }
 
 .nav-header {
