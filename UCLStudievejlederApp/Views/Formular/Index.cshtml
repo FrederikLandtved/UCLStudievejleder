@@ -9,22 +9,17 @@
 </head>
 
 <h1>Registrér henvendelse</h1>
-<a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
-<a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Register</a>
-<form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Formular", new { area = "" })">
-    <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
-</form>
 
 <div class="form-wrapper">
-    <button onclick="dropDown()" class="form-title">Angiv Måned</button>
+    <button class="form-title">Angiv Måned</button>
     
-        <div id="form-drop" class="form-drop-style">
+        <div class="form-drop-style">
             <form></form>
         </div><!--DROP DOWN -->
 
-    <button onclick="dropDown2()" class="form-title">Type Henvedelse</button>
+    <button class="form-title">Type Henvedelse</button>
 
-    <div id="form-drop2" class="form-drop-style">
+    <div class="form-drop-style">
         <form>
             <input type="checkbox" id="personal" class="checkbox-form" name="personal" value="Personlig">
             <label for="personal" class="label-form">Personlig</label>
@@ -37,9 +32,9 @@
         </form>
     </div><!--DROP DOWN -->
 
-        <button onclick="dropDown3()" class="form-title">Samtaletid</button>
+    <button class="form-title">Samtaletid</button>
 
-    <div id="form-drop3" class="form-drop-style">
+    <div class="form-drop-style">
         <form>
             <input type="checkbox" id="personal" class="checkbox-form" name="personal" value="Personlig">
             <label for="personal" class="label-form">1-15 min.</label>

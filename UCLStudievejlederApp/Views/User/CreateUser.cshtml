@@ -9,7 +9,7 @@
 
 <h1>Opret en ny bruger</h1>
 <div class="register-user-container">
-    <form id="registerForm" asp-controller="User" asp-action="Register" method="post">
+    <form id="registerForm" asp-controller="User" asp-action="Register" method="post" autocomplete="off">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="form-item">
             <label asp-for="Email"></label>
