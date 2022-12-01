@@ -1,6 +1,7 @@
 ﻿@using DatabaseAccess.FieldOfStudy
 @using DatabaseAccess.Institution
 @using UCLStudievejlederApp.Areas.Identity.Pages.Account
+@using UCLStudievejlederApp.Models.Generic
 @using UCLStudievejlederApp.Models.User
 
 @model RegisterUserModel
@@ -47,7 +48,7 @@
         <div class="form-item">
             <h3>Institution</h3>
             <div class="institutions">
-                @foreach (Institution institution in Model.AllInstitutions)
+                @foreach (UCLSelectModel institution in Model.AllInstitutions)
                 {
                     int indexOf = Model.AllInstitutions.IndexOf(institution);
 
@@ -55,7 +56,7 @@
                         @Html.CheckBoxFor(x => Model.AllInstitutions[indexOf].IsSelected)
                         <div>@institution.Name</div>
                         @Html.HiddenFor(x => Model.AllInstitutions[indexOf].Name)
-                        @Html.HiddenFor(x => Model.AllInstitutions[indexOf].InstitutionId)
+                        @Html.HiddenFor(x => Model.AllInstitutions[indexOf].Id)
                     </article>
                 }
             </div>
@@ -66,7 +67,7 @@
             <h3>Studieretninger</h3>
             <input type="text" id="field-of-study-search" placeholder="Søg efter studieretning..." onkeyup="search()" />
             <div class="institutions field-of-study">
-                @foreach (FieldOfStudy fieldsOfStudy in Model.AllFieldsOfStudy)
+                @foreach (UCLSelectModel fieldsOfStudy in Model.AllFieldsOfStudy)
                 {
                     int indexOf = Model.AllFieldsOfStudy.IndexOf(fieldsOfStudy);
 
@@ -74,10 +75,11 @@
                         @Html.CheckBoxFor(x => Model.AllFieldsOfStudy[indexOf].IsSelected)
                         <div class="field-name">@fieldsOfStudy.Name</div>
                         @Html.HiddenFor(x => Model.AllFieldsOfStudy[indexOf].Name)
-                        @Html.HiddenFor(x => Model.AllFieldsOfStudy[indexOf].FieldOfStudyId)
+                        @Html.HiddenFor(x => Model.AllFieldsOfStudy[indexOf].Id)
                     </article>
                 }
             </div>
+            <span asp-validation-for="AllFieldsOfStudy" class="ucl-validation-danger"></span>
         </div>
         <button type="submit" class="ucl-primary-button">Opret bruger</button>
     </form>
