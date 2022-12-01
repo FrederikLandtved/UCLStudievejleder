@@ -22,6 +22,12 @@
     cursor: pointer;
 }
 
+/*.form-title img {
+    height: 20px;
+    width: 20px;
+    background-color: black;
+}*/
+
 .form-drop-style {
     /*width: 70.6%;*/
     width: 84.9%;
@@ -56,4 +62,26 @@
     font-weight: bold;
     margin-top: 25px;
     margin-left: 10px;
+}
+
+.form-submit {
+    margin-top: 100px;
+    float: right;
+    margin-right: 120px;
+}
+
+.form-submit button {
+    width: 300px;
+    border: 0;
+    border-radius: 10px;
+    background-color: #00454E;
+    color: white;
+    height: 50px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.form-submit button:hover {
+    cursor: pointer;
+    background-color: #00232A;
 }
