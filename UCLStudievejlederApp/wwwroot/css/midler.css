@@ -1,0 +1,29 @@
+﻿.top-box {
+width:100%;
+position:absolute;
+left:0;
+display:flex;
+justify-content:space-between;
+}
+.yellow-box {
+    width: 400px;
+    height: 50px;
+    background-color: #FAE76E;
+    float:left;
+   
+}
+.yellow-box p {
+float:right;
+font-size:20px;
+padding:3%;
+}
+.view-results {
+    float: right;
+    font-size:20px;
+    width: 400px;
+    height: 50px;
+    
+}
+    .view-results p {
+        padding: 3%;
+    }
