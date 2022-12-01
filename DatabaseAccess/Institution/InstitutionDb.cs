@@ -75,10 +75,15 @@ namespace DatabaseAccess.Institution
         }
     }
 
-    public class Institution
+    public class Institution : UCLListItem
     {
         public int InstitutionId { get; set; }
         public string Name { get; set; }
+    }
+
+
+    public class UCLListItem
+    {
         public bool IsSelected { get; set; }
     }
 }

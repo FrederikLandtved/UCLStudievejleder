@@ -23,11 +23,20 @@ namespace UCLStudievejlederApp.Controllers
             _signManager = signManager;
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Register(RegisterUserModel model)
+        [HttpGet]
+        public IActionResult CreateUser()
         {
-            ModelState.Remove("AllInstitutions");
+            RegisterUserModel registerUserModel = new RegisterUserModel();
 
+            InstitutionDb db = new InstitutionDb();
+            registerUserModel.AllInstitutions = db.GetAllInstitutions();
+
+            return View(registerUserModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateUser(RegisterUserModel model)
+        {
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName };
@@ -42,7 +51,9 @@ namespace UCLStudievejlederApp.Controllers
                             db.LinkUserToInstitution(user.UserId, userInstitution.InstitutionId);
                     }
 
-                    return RedirectToAction("Index", "Home");
+                    model.SuccessMessage = $"Brugeren {model.FirstName} {model.LastName} blev oprettet.";
+
+                    return View(model);
                 }
 
                 else
@@ -54,18 +65,7 @@ namespace UCLStudievejlederApp.Controllers
                 }
             }
 
-            return RedirectToAction("CreateUser");
-        }
-
-
-        public IActionResult CreateUser()
-        {
-            RegisterUserModel registerUserModel = new RegisterUserModel();
-
-            InstitutionDb db = new InstitutionDb();
-            registerUserModel.AllInstitutions = db.GetAllInstitutions();
-            
-            return View(registerUserModel);
+            return View(model);
         }
 
         public IActionResult EditUser()

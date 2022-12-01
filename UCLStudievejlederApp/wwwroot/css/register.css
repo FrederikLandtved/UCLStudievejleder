@@ -80,3 +80,15 @@ input[type=checkbox]:checked ~ div {
 .register-user-container {
     max-width: 800px;
 }
+
+.success-message {
+    background: #d5ead5;
+    width: fit-content;
+    padding: 10px 22px;
+    border-left: 3px solid #1c8c1c;
+    margin: 10px 0;
+}
+
+.ucl-validation-danger {
+    color: #b00c0c
+}
