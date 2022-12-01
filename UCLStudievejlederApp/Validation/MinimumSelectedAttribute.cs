@@ -1,6 +1,7 @@
 ﻿using DatabaseAccess.Institution;
 using System.Collections;
 using System.ComponentModel.DataAnnotations;
+using UCLStudievejlederApp.Models.Generic;
 
 namespace UCLStudievejlederApp.Validation
 {
@@ -15,7 +16,7 @@ namespace UCLStudievejlederApp.Validation
 
         public override bool IsValid(object? value)
         {
-            List<Institution> selectedList = (List<Institution>)value;
+            List<UCLSelectModel> selectedList = (List<UCLSelectModel>)value;
             int selectedItems = selectedList.Where(x => x.IsSelected).Count();
 
             if (selectedList != null && (selectedItems >= MinimumSelectedOptions))

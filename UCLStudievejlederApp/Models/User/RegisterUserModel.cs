@@ -2,6 +2,7 @@
 using DatabaseAccess.Institution;
 using System.ComponentModel.DataAnnotations;
 using System.Xml.Linq;
+using UCLStudievejlederApp.Models.Generic;
 using UCLStudievejlederApp.Validation;
 
 namespace UCLStudievejlederApp.Models.User
@@ -34,9 +35,10 @@ namespace UCLStudievejlederApp.Models.User
         public string ConfirmPassword { get; set; }
 
         [MinimumSelected(1, ErrorMessage = "Vælg venligst mindst 1 institution")]
-        public List<Institution>? AllInstitutions { get; set; } = new List<Institution>();
+        public List<UCLSelectModel>? AllInstitutions { get; set; } = new List<UCLSelectModel>();
 
-        public List<FieldOfStudy>? AllFieldsOfStudy { get; set; } = new List<FieldOfStudy>();
+        [MinimumSelected(1, ErrorMessage = "Vælg venligst mindst 1 studieretning")]
+        public List<UCLSelectModel>? AllFieldsOfStudy { get; set; } = new List<UCLSelectModel>();
 
         public string? SuccessMessage { get; set; }
     }

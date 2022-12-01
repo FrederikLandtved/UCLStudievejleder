@@ -7,6 +7,7 @@ using DatabaseAccess.Institution;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using UCLStudievejlederApp.Data;
+using UCLStudievejlederApp.Models.Generic;
 using UCLStudievejlederApp.Models.User;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -32,8 +33,12 @@ namespace UCLStudievejlederApp.Controllers
             InstitutionDb institutionDb = new InstitutionDb();
             FieldOfStudyDb fieldOfStudyDb = new FieldOfStudyDb();
 
-            registerUserModel.AllInstitutions = institutionDb.GetAllInstitutions();
-            registerUserModel.AllFieldsOfStudy = fieldOfStudyDb.GetAllFieldsOfStudy();
+            foreach(Institution institution in institutionDb.GetAllInstitutions())
+                registerUserModel.AllInstitutions.Add(new UCLSelectModel { Id = institution.InstitutionId, Name = institution.Name });
+            
+            foreach (FieldOfStudy fieldOfStudy in fieldOfStudyDb.GetAllFieldsOfStudy())
+                registerUserModel.AllFieldsOfStudy.Add(new UCLSelectModel { Id = fieldOfStudy.FieldOfStudyId, Name = fieldOfStudy.Name });
+           
 
             return View(registerUserModel);
         }
@@ -51,16 +56,16 @@ namespace UCLStudievejlederApp.Controllers
                     InstitutionDb institutionDb = new InstitutionDb();
                     FieldOfStudyDb fieldOfStudyDb = new FieldOfStudyDb();
 
-                    foreach (Institution userInstitution in model.AllInstitutions)
+                    foreach (UCLSelectModel userInstitution in model.AllInstitutions)
                     {
                         if (userInstitution.IsSelected == true)
-                            institutionDb.LinkUserToInstitution(user.UserId, userInstitution.InstitutionId);
+                            institutionDb.LinkUserToInstitution(user.UserId, userInstitution.Id);
                     }
 
-                    foreach (FieldOfStudy userFieldOfStudy in model.AllFieldsOfStudy)
+                    foreach (UCLSelectModel userFieldOfStudy in model.AllFieldsOfStudy)
                     {
                         if (userFieldOfStudy.IsSelected == true)
-                            fieldOfStudyDb.LinkUserToFieldOfStudy(user.UserId, userFieldOfStudy.FieldOfStudyId);
+                            fieldOfStudyDb.LinkUserToFieldOfStudy(user.UserId, userFieldOfStudy.Id);
                     }
 
                     model.SuccessMessage = $"Brugeren {model.FirstName} {model.LastName} blev oprettet.";
