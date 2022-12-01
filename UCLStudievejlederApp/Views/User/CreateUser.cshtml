@@ -1,4 +1,5 @@
-﻿@using DatabaseAccess.Institution
+﻿@using DatabaseAccess.FieldOfStudy
+@using DatabaseAccess.Institution
 @using UCLStudievejlederApp.Areas.Identity.Pages.Account
 @using UCLStudievejlederApp.Models.User
 
@@ -65,46 +66,17 @@
             <h3>Studieretninger</h3>
             <input type="text" id="field-of-study-search" placeholder="Søg efter studieretning..." onkeyup="search()" />
             <div class="institutions field-of-study">
-                <article>
-                    <input type="checkbox" id="feature1" />
-                    <div class="field-name">Administrationsbachelor</div>
-                </article>
-                <article>
-                    <input type="checkbox" id="feature2" />
-                    <div class="field-name">Automationsteknolog</div>
-                </article>
-                <article>
-                    <input type="checkbox" id="feature3" />
-                    <div class="field-name">Autoteknolog</div>
-                </article>
-                <article>
-                    <input type="checkbox" id="feature4" />
-                    <div class="field-name">Bygningskonstruktør</div>
-                </article>
-                <article>
-                    <input type="checkbox" id="feature4" />
-                    <div class="field-name">Bioanalytiker</div>
-                </article>
-                <article>
-                    <input type="checkbox" id="feature4" />
-                    <div class="field-name">Byggekoordinator</div>
-                </article>
-                <article>
-                    <input type="checkbox" id="feature4" />
-                    <div class="field-name">Datamatiker</div>
-                </article>
-                <article>
-                    <input type="checkbox" id="feature4" />
-                    <div class="field-name">Digital konceptudvikling</div>
-                </article>
-                <article>
-                    <input type="checkbox" id="feature4" />
-                    <div class="field-name">Energiteknolog</div>
-                </article>
-                <article>
-                    <input type="checkbox" id="feature4" />
-                    <div class="field-name">Multimediedesign</div>
-                </article>
+                @foreach (FieldOfStudy fieldsOfStudy in Model.AllFieldsOfStudy)
+                {
+                    int indexOf = Model.AllFieldsOfStudy.IndexOf(fieldsOfStudy);
+
+                    <article>
+                        @Html.CheckBoxFor(x => Model.AllFieldsOfStudy[indexOf].IsSelected)
+                        <div class="field-name">@fieldsOfStudy.Name</div>
+                        @Html.HiddenFor(x => Model.AllFieldsOfStudy[indexOf].Name)
+                        @Html.HiddenFor(x => Model.AllFieldsOfStudy[indexOf].FieldOfStudyId)
+                    </article>
+                }
             </div>
         </div>
         <button type="submit" class="ucl-primary-button">Opret bruger</button>

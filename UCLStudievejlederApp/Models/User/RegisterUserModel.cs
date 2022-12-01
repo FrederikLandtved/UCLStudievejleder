@@ -1,4 +1,5 @@
-﻿using DatabaseAccess.Institution;
+﻿using DatabaseAccess.FieldOfStudy;
+using DatabaseAccess.Institution;
 using System.ComponentModel.DataAnnotations;
 using System.Xml.Linq;
 using UCLStudievejlederApp.Validation;
@@ -33,6 +34,8 @@ namespace UCLStudievejlederApp.Models.User
 
         [MinimumSelected(1, ErrorMessage = "Vælg venligst mindst 1 institution")]
         public List<Institution>? AllInstitutions { get; set; } = new List<Institution>();
+
+        public List<FieldOfStudy>? AllFieldsOfStudy { get; set; } = new List<FieldOfStudy>();
 
         public string? SuccessMessage { get; set; }
     }

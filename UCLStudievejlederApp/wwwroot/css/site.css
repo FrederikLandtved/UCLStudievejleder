@@ -90,7 +90,7 @@ body {
 }
 
 .main-container {
-    height: 100vh;
+    min-height: 100vh;
     background-color: white;
     margin: 0 auto;
     padding: 50px;
@@ -98,7 +98,7 @@ body {
 
 .master {
     width: 100%;
-    height: 100vh;
+/*    height: 100vh;*/
     padding: 35px 110px;
     box-sizing: border-box;
     margin-bottom: 60px;

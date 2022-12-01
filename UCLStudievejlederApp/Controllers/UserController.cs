@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DatabaseAccess.FieldOfStudy;
 using DatabaseAccess.Institution;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -28,8 +29,11 @@ namespace UCLStudievejlederApp.Controllers
         {
             RegisterUserModel registerUserModel = new RegisterUserModel();
 
-            InstitutionDb db = new InstitutionDb();
-            registerUserModel.AllInstitutions = db.GetAllInstitutions();
+            InstitutionDb institutionDb = new InstitutionDb();
+            FieldOfStudyDb fieldOfStudyDb = new FieldOfStudyDb();
+
+            registerUserModel.AllInstitutions = institutionDb.GetAllInstitutions();
+            registerUserModel.AllFieldsOfStudy = fieldOfStudyDb.GetAllFieldsOfStudy();
 
             return View(registerUserModel);
         }
@@ -44,11 +48,19 @@ namespace UCLStudievejlederApp.Controllers
 
                 if (result.Succeeded)
                 {
-                    InstitutionDb db = new InstitutionDb();
-                    foreach(Institution userInstitution in model.AllInstitutions)
+                    InstitutionDb institutionDb = new InstitutionDb();
+                    FieldOfStudyDb fieldOfStudyDb = new FieldOfStudyDb();
+
+                    foreach (Institution userInstitution in model.AllInstitutions)
                     {
                         if (userInstitution.IsSelected == true)
-                            db.LinkUserToInstitution(user.UserId, userInstitution.InstitutionId);
+                            institutionDb.LinkUserToInstitution(user.UserId, userInstitution.InstitutionId);
+                    }
+
+                    foreach (FieldOfStudy userFieldOfStudy in model.AllFieldsOfStudy)
+                    {
+                        if (userFieldOfStudy.IsSelected == true)
+                            fieldOfStudyDb.LinkUserToFieldOfStudy(user.UserId, userFieldOfStudy.FieldOfStudyId);
                     }
 
                     model.SuccessMessage = $"Brugeren {model.FirstName} {model.LastName} blev oprettet.";
