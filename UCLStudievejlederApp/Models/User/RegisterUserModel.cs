@@ -27,6 +27,7 @@ namespace UCLStudievejlederApp.Models.User
         [Display(Name = "Password")]
         public string Password { get; set; }
 
+        [Required(ErrorMessage = "Gentag venligst Password.")]
         [DataType(DataType.Password)]
         [Display(Name = "Bekræft password")]
         [Compare("Password", ErrorMessage = "Passwords matcher ikke.")]
