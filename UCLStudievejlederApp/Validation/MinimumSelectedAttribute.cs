@@ -17,14 +17,7 @@ namespace UCLStudievejlederApp.Validation
         public override bool IsValid(object? value)
         {
             List<UCLSelectModel> selectedList = (List<UCLSelectModel>)value;
-            int selectedItems = selectedList.Where(x => x.IsSelected).Count();
-
-            if (selectedList != null && (selectedItems >= MinimumSelectedOptions))
-            {
-                return true;
-            }
-
-            return false;
+            return selectedList.Any(x => x.IsSelected);
         }
     }
 }

@@ -92,3 +92,7 @@ input[type=checkbox]:checked ~ div {
 .ucl-validation-danger {
     color: #b00c0c
 }
+
+.multiple-selector-name {
+    font-size: 20px;
+}

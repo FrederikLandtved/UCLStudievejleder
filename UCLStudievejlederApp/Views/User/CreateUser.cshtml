@@ -54,7 +54,7 @@
 
                     <article>
                         @Html.CheckBoxFor(x => Model.AllInstitutions[indexOf].IsSelected)
-                        <div>@institution.Name</div>
+                        <div class="multiple-selector-name">@institution.Name</div>
                         @Html.HiddenFor(x => Model.AllInstitutions[indexOf].Name)
                         @Html.HiddenFor(x => Model.AllInstitutions[indexOf].Id)
                     </article>
@@ -73,7 +73,7 @@
 
                     <article>
                         @Html.CheckBoxFor(x => Model.AllFieldsOfStudy[indexOf].IsSelected)
-                        <div class="field-name">@fieldsOfStudy.Name</div>
+                        <div class="multiple-selector-name field-name">@fieldsOfStudy.Name</div>
                         @Html.HiddenFor(x => Model.AllFieldsOfStudy[indexOf].Name)
                         @Html.HiddenFor(x => Model.AllFieldsOfStudy[indexOf].Id)
                     </article>

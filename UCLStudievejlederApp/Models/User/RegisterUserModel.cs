@@ -14,10 +14,12 @@ namespace UCLStudievejlederApp.Models.User
         [Display(Name = "Email")]
         public string Email { get; set; }
 
+        [StringLength(50, ErrorMessage = "Fornavn må maks indeholde 50 karakterer")]
         [Required(ErrorMessage = "Fornavn er påkrævet.")]
         [Display(Name = "Fornavn")]
         public string FirstName { get; set; }
 
+        [StringLength(50, ErrorMessage = "Efternavn må maks indeholde 50 karakterer")]
         [Required(ErrorMessage = "Efternavn er påkrævet.")]
         [Display(Name = "Efternavn")]
         public string LastName { get; set; }
