@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using UCLStudievejlederApp.Data;
 using UCLStudievejlederApp.Models.Generic;
 using UCLStudievejlederApp.Models.User;
+using static DatabaseAccess.FieldOfStudy.FieldOfStudyDb;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
