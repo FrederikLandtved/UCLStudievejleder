@@ -10,28 +10,28 @@
 <h1>Registrér henvendelse</h1>
 
 <div class="form-wrapper">
-        <button class="form-title"><img src="" alt="" />Angiv måned</button>
+    <button class="form-title"><img src="" alt="" />Angiv måned</button>
     
-        <div class="form-drop-style show">
-            <form></form>
-            @foreach (UCLSelectModel question in Model.Questions[0].Options)
-            {
-                <h3>@question.Name</h3>
-            }
-        </div><!--DROP DOWN -->
+    <div class="form-drop-style show">
+        <form></form>
+        @foreach (UCLSelectModel question in Model.Questions[0].Options)
+        {
+            <h3>@question.Name</h3>
+        }
+    </div><!--DROP DOWN -->
 
     <button class="form-title">Type af henvendelse</button>
 
     <div class="form-drop-style">
         <form>
-            <input onclick="goToNext(2)" type="radio" id="personal" class="checkbox-form" name="personal" value="Personlig">
-            <label for="personal" class="label-form">Personlig</label>
+            <input onclick="goToNext(2)" type="radio" id="type1" class="checkbox-form" name="personal" value="Personlig">
+            <label for="type1" class="label-form">Personlig</label>
 
-            <input onclick="goToNext(2)" type="radio" id="phone" class="checkbox-form" name="personal" value="Personlig">
-            <label for="phone" class="label-form">Telefon</label>
+            <input onclick="goToNext(2)" type="radio" id="type2" class="checkbox-form" name="personal" value="Telefon">
+            <label for="type2" class="label-form">Telefon</label>
 
-            <input onclick="goToNext(2)" type="radio" id="virtual" class="checkbox-form" name="personal" value="Virtuel">
-            <label for="virtual" class="label-form">Virtuel</label>
+            <input onclick="goToNext(2)" type="radio" id="type3" class="checkbox-form" name="personal" value="Virtuel">
+            <label for="type3" class="label-form">Virtuel</label>
         </form>
     </div><!--DROP DOWN -->
 
@@ -39,20 +39,20 @@
 
     <div class="form-drop-style">
         <form>
-            <input onclick="goToNext(3)" type="radio" id="personal" class="checkbox-form" name="personal" value="Personlig">
-            <label for="personal" class="label-form">1-15 min.</label>
+            <input onclick="goToNext(3)" type="radio" id="conversation-time1" class="checkbox-form" name="conversation-time" value="1-15m">
+            <label for="conversation-time1" class="label-form">1-15 min.</label>
 
-            <input onclick="goToNext(3)" type="radio" id="phone" class="checkbox-form" name="personal" value="Personlig">
-            <label for="phone" class="label-form">16-30 min.</label>
+            <input onclick="goToNext(3)" type="radio" id="conversation-time2" class="checkbox-form" name="conversation-time" value="16-30m">
+            <label for="conversation-time2" class="label-form">16-30 min.</label>
 
-            <input onclick="goToNext(3)" type="radio" id="virtual" class="checkbox-form" name="virtual" value="Virtuel">
-            <label for="virtual" class="label-form">31-45 min.</label>
+            <input onclick="goToNext(3)" type="radio" id="conversation-time3" class="checkbox-form" name="conversation-time" value="31-45m">
+            <label for="conversation-time3" class="label-form">31-45 min.</label>
 
-            <input onclick="goToNext(3)" type="radio" id="virtual" class="checkbox-form" name="virtual" value="Virtuel">
-            <label for="virtual" class="label-form">46-60 min.</label>
+            <input onclick="goToNext(3)" type="radio" id="conversation-time4" class="checkbox-form" name="conversation-time" value="46-60m">
+            <label for="conversation-time4" class="label-form">46-60 min.</label>
 
-            <input onclick="goToNext(3)" type="radio" id="virtual" class="checkbox-form" name="virtual" value="Virtuel">
-            <label for="virtual" class="label-form">60+ min.</label>
+            <input onclick="goToNext(3)" type="radio" id="conversation-time5" class="checkbox-form" name="conversation-time" value="60m">
+            <label for="conversation-time5" class="label-form">60+ min.</label>
         </form>
     </div><!--DROP DOWN -->
 
@@ -60,14 +60,14 @@
 
     <div class="form-drop-style">
         <form>
-            <input onclick="goToNext(4)" type="radio" id="personal" class="checkbox-form" name="personal" value="Personlig">
-            <label for="personal" class="label-form">Kvinde</label>
+            <input onclick="goToNext(4)" type="radio" id="gender1" class="checkbox-form" name="gender" value="female">
+            <label for="gender1" class="label-form">Kvinde</label>
 
-            <input onclick="goToNext(4)" type="radio" id="phone" class="checkbox-form" name="personal" value="Personlig">
-            <label for="phone" class="label-form">Mand</label>
+            <input onclick="goToNext(4)" type="radio" id="gender2" class="checkbox-form" name="gender" value="male">
+            <label for="gender2" class="label-form">Mand</label>
 
-            <input onclick="goToNext(4)" type="radio" id="virtual" class="checkbox-form" name="virtual" value="Virtuel">
-            <label for="virtual" class="label-form">Gruppe</label>
+            <input onclick="goToNext(4)" type="radio" id="gender3" class="checkbox-form" name="gender" value="group">
+            <label for="gender3" class="label-form">Gruppe</label>
         </form>
     </div><!--DROP DOWN -->
 
@@ -75,11 +75,11 @@
 
     <div class="form-drop-style">
         <form>
-            <input onclick="goToNext(5)" type="radio" id="personal" class="checkbox-form" name="personal" value="Personlig">
-            <label for="personal" class="label-form">Aktiv</label>
+            <input onclick="goToNext(5)" type="radio" id="active-student1" class="checkbox-form" name="active-student" value="active">
+            <label for="active-student1" class="label-form">Aktiv</label>
 
-            <input onclick="goToNext(5)" type="radio" id="phone" class="checkbox-form" name="personal" value="Personlig">
-            <label for="phone" class="label-form">Ikke aktiv</label>
+            <input onclick="goToNext(5)" type="radio" id="active-student2" class="checkbox-form" name="active-student" value="unactive">
+            <label for="active-student2" class="label-form">Ikke aktiv</label>
         </form>
     </div><!--DROP DOWN -->
 
@@ -87,20 +87,20 @@
 
     <div class="form-drop-style">
         <form>
-            <input onclick="goToNext(6)" type="radio" id="personal" class="checkbox-form" name="personal" value="Personlig">
-            <label for="personal" class="label-form">Odense</label>
+            <input onclick="goToNext(6)" type="radio" id="institution1" class="checkbox-form" name="institution" value="odense">
+            <label for="institution1" class="label-form">Odense</label>
 
-            <input onclick="goToNext(6)" type="radio" id="phone" class="checkbox-form" name="personal" value="Personlig">
-            <label for="phone" class="label-form">Vejle</label>
+            <input onclick="goToNext(6)" type="radio" id="institution2" class="checkbox-form" name="institution" value="vejle">
+            <label for="institution2" class="label-form">Vejle</label>
 
-            <input onclick="goToNext(6)" type="radio" id="virtual" class="checkbox-form" name="virtual" value="Virtuel">
-            <label for="virtual" class="label-form">Jelling</label>
+            <input onclick="goToNext(6)" type="radio" id="institution3" class="checkbox-form" name="institution" value="jelling">
+            <label for="institution3" class="label-form">Jelling</label>
 
-            <input onclick="goToNext(6)" type="radio" id="virtual" class="checkbox-form" name="virtual" value="Virtuel">
-            <label for="virtual" class="label-form">Svendborg</label>
+            <input onclick="goToNext(6)" type="radio" id="institution4" class="checkbox-form" name="institution" value="svendborg">
+            <label for="institution4" class="label-form">Svendborg</label>
 
-            <input onclick="goToNext(6)" type="radio" id="virtual" class="checkbox-form" name="virtual" value="Virtuel">
-            <label for="virtual" class="label-form">Fredericia</label>
+            <input onclick="goToNext(6)" type="radio" id="institution5" class="checkbox-form" name="institution" value="fredericia">
+            <label for="institution5" class="label-form">Fredericia</label>
 
         </form>
     </div><!--DROP DOWN -->
@@ -109,14 +109,14 @@
 
     <div class="form-drop-style">
         <form>
-            <input onclick="goToNext(7)" type="radio" id="personal" class="checkbox-form" name="personal" value="Personlig">
-            <label for="personal" class="label-form">MMD</label>
+            <input onclick="goToNext(7)" type="radio" id="fieldofstudy1" class="checkbox-form" name="personal" value="mmd">
+            <label for="fieldofstudy1" class="label-form">MMD</label>
 
-            <input onclick="goToNext(7)" type="radio" id="phone" class="checkbox-form" name="personal" value="Personlig">
-            <label for="phone" class="label-form">Datamatiker</label>
+            <input onclick="goToNext(7)" type="radio" id="fieldofstudy2" class="checkbox-form" name="personal" value="datamatiker">
+            <label for="fieldofstudy2" class="label-form">Datamatiker</label>
 
-            <input onclick="goToNext(7)" type="radio" id="virtual" class="checkbox-form" name="virtual" value="Virtuel">
-            <label for="virtual" class="label-form">Webudvikler</label>
+            <input onclick="goToNext(7)" type="radio" id="fieldofstudy3" class="checkbox-form" name="virtual" value="webudvikler">
+            <label for="fieldofstudy3" class="label-form">Webudvikler</label>
         </form>
     </div><!--DROP DOWN -->
 
