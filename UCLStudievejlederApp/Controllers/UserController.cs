@@ -4,12 +4,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using DatabaseAccess.FieldOfStudy;
 using DatabaseAccess.Institution;
+using DatabaseAccess.User;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using UCLStudievejlederApp.Data;
 using UCLStudievejlederApp.Models.Generic;
 using UCLStudievejlederApp.Models.User;
 using static DatabaseAccess.FieldOfStudy.FieldOfStudyDb;
+using static DatabaseAccess.User.UserDb;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -19,11 +21,13 @@ namespace UCLStudievejlederApp.Controllers
     {
         private SignInManager<ApplicationUser> _signManager;
         private UserManager<ApplicationUser> _userManager;
+        private readonly UserDb _userDb;
 
         public UserController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signManager)
         {
             _userManager = userManager;
             _signManager = signManager;
+            _userDb = new UserDb();
         }
 
         [HttpGet]
@@ -88,7 +92,8 @@ namespace UCLStudievejlederApp.Controllers
 
         public IActionResult EditUser()
         {
-            return View();
+            List<User> users = _userDb.GetAllUsers();
+            return View(users);
         }
     }
 }

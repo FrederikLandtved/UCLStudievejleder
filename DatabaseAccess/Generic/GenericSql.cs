@@ -13,7 +13,6 @@ namespace DatabaseAccess.Generic
             try
             {
                 SqlConnection connection = new SqlConnection(connectionString);
-                //string sql = "SELECT * FROM [dbo].[Institution]";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {

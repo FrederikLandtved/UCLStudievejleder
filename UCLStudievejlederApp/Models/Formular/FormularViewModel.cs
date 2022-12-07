@@ -1,15 +1,10 @@
 ﻿using UCLStudievejlederApp.Models.Generic;
+using static DatabaseAccess.Question.QuestionDb;
 
 namespace UCLStudievejlederApp.Models.Formular
 {
     public class FormularViewModel
     {
-        public List<FormularAnswerModel> Questions { get; set; } = new List<FormularAnswerModel>();
-    }
-
-    public class FormularAnswerModel
-    {
-        public int QuestionId { get; set; }
-        public List<UCLSelectModel> Options { get; set; } = new List<UCLSelectModel>();
+        public List<Question> Questions { get; set; } = new List<Question>();
     }
 }
