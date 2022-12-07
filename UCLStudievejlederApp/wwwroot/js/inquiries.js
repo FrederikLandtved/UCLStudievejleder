@@ -22,4 +22,13 @@ function goToNext(number) {
     allDropDowns[number].classList.toggle("show");
 }
 
+// Date
 
+let monthControl = document.querySelector('input[type="month"]');
+
+let objectDate = new Date();
+let month = objectDate.getMonth() + 1;
+
+let year = objectDate.getFullYear();
+
+monthControl.value = year + '-' +  month;

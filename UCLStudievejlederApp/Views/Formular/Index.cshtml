@@ -11,10 +11,10 @@
     <div class="form-drop-style show">
         <form></form>
         @*@foreach (UCLSelectModel question in Model.Questions[0].Options)*@
-        {
-   
-          <h3><input type="month"/>  <!---question.Name--></h3>
-        }
+        @*{*@
+
+        <h3><input type="month" name="month-year" class="month"  />  <!---question.Name--></h3>
+        @*}*@
     </div><!--DROP DOWN -->
 
     <button class="form-title">Type af henvendelse</button>
