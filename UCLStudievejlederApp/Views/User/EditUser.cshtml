@@ -1,8 +1,5 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@using static DatabaseAccess.User.UserDb
+@model List<User>
 
 
 <h1>Administrer brugere</h1>
@@ -12,37 +9,21 @@
 </div>
 
 <table class="user-edit" cellspacing="0" cellpadding="0">
-    <tr>
-       
+    <tr> 
         <th>Navn</th>
         <th>E-mail</th>
         <th>Institution</th>
         <th>Studieretning</th>
         
     </tr>
-  <tr>
-    <td>Freddddd</td>
-    <td>frede@false.dk</td>
-    <td>Odense</td>
-    <td>Datamatiker</td>
-  </tr>
-  <tr>
-    <td>Sebbe Danmark</td>
-    <td>sebbee@true.dk</td>
-    <td>Jelling</td>
-    <td>MMD</td>
-  </tr>
-  <tr>
-    <td>Jacob Pundris</td>
-    <td>jd@richie.dk</td>
-    <td>Svendborg</td>
-    <td>Webudvikler</td>
-  </tr>
-  <tr>
-    <td>Mia Studie</td>
-    <td>miadb@ja.dk</td>
-    <td>Fredericia</td>
-    <td>Professionel studerende</td>
-  </tr>
+
+    @foreach(User user in Model) {
+        <tr>
+            <td>@user.FullName</td>
+            <td>@user.Email</td>
+            <td>Odense</td>
+            <td>Datamatiker</td>
+        </tr>
+    }
 </table>
 
