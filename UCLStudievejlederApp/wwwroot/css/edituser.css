@@ -1,0 +1,22 @@
+﻿.user-edit {
+    width: 100%;
+    font-size: 20px;
+    text-align: left;
+    margin-top: 40px;
+    border: none;
+    color: white;
+    border-spacing: 0 20px;
+   
+}
+
+.user-edit tr {
+    background-color: #00454E;
+    height:50px;
+    margin-left:10px;
+    
+    
+}
+    .user-edit td, th{
+        padding-left: 30px;
+    }
+
