@@ -1,77 +1,48 @@
-﻿using Microsoft.Data.SqlClient;
+﻿using DatabaseAccess.Generic;
+using Microsoft.Data.SqlClient;
+using static DatabaseAccess.Generic.GenericSql;
 
 namespace DatabaseAccess.Institution
 {
     public class InstitutionDb
     {
         string connectionString = "Server=tcp:ucldataserver.database.windows.net,1433;Initial Catalog=UCLDataPROD;Persist Security Info=False;User ID=azureuser;Password=Stefan$ebastianJacobMia;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30";
-
+        private readonly GenericSql _genericSql;
+        public InstitutionDb()
+        {
+            _genericSql = new GenericSql();
+        }
 
         public List<Institution> GetAllInstitutions()
         {
-            try
+            List<Institution> institutions = new List<Institution>();
+            SqlDataReader reader = _genericSql.Select("SELECT * FROM [dbo].[Institution]");
+
+            while (reader.Read())
             {
-                SqlConnection connection = new SqlConnection(connectionString);
-                List<Institution> allInstitutions = new List<Institution>();
-
-                string sql = "SELECT * FROM [dbo].[Institution]";
-
-                using (SqlCommand command = new SqlCommand(sql, connection))
+                institutions.Add(new Institution
                 {
-                    connection.Open();
-                    using (SqlDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            Institution institution = new Institution();
-                            institution.InstitutionId = reader.GetInt32(0);
-                            institution.Name = reader.GetString(1);
-
-                            allInstitutions.Add(institution);   
-                        }
-                    }
-                    connection.Close();
-                }
-
-                return allInstitutions;
-
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("Something went wrong.");
-                throw;
+                    InstitutionId = reader.GetInt32(0),
+                    Name = reader.GetString(1)
+                });
             }
 
-            return new List<Institution>();
+            return institutions;
 
         }
         public void LinkUserToInstitution(int userId, int institutionId)
         {
-            try
+            string query = "INSERT INTO dbo.[UserHasInstitution] (UserId, InstitutionId) VALUES (@userId, @institutionId)";
+
+
+            List<InsertModel> inserts = new List<InsertModel>
             {
-                using (SqlConnection connection = new SqlConnection(connectionString))
-                {
-                    string query = "INSERT INTO dbo.[UserHasInstitution] (UserId, InstitutionId) VALUES (@userId, @institutionId)";
+                new InsertModel { Parameter = "@userId", Value = userId.ToString() },
+                new InsertModel { Parameter = "@institutionId", Value = institutionId.ToString() }
 
-                    using (SqlCommand command = new SqlCommand(query, connection))
-                    {
-                        command.Parameters.AddWithValue("@userId", userId);
-                        command.Parameters.AddWithValue("@institutionId", institutionId);
+            };
 
-                        connection.Open();
-                        int result = command.ExecuteNonQuery();
-
-                        // Check Error
-                        if (result < 0)
-                            Console.WriteLine("Error inserting data into Database!");
-                    }
-                }
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
+            _genericSql.Insert(query, inserts);
         }
     }
 
