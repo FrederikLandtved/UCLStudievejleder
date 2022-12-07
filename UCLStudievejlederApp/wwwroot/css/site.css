@@ -134,3 +134,8 @@ body {
     cursor: pointer;
     background-color: #00232A;
 }
+
+.page-description {
+    color: #6d6d6d;
+    margin-top: 5px;
+}

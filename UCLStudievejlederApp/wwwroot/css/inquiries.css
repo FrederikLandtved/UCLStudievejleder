@@ -18,11 +18,13 @@
     border: 0;
     /*position: relative;*/
     float: left;
+    transition: 0.2s ease-in-out all;
 }
 
-.form-title:hover {
-    cursor: pointer;
-}
+    .form-title:hover {
+        cursor: pointer;
+        background-color: #00454ef7;
+    }
 
 /*.form-title img {
     height: 20px;
@@ -44,8 +46,6 @@
 }
 
 .checkbox-form {
-    /*    border: 0;
-    border-radius: 0;*/
     min-width: 20px;
     height: 20px;
     accent-color: #00454e;
@@ -67,9 +67,9 @@
 }
 
 .form-submit {
-    margin-top: 100px;
-    float: right;
-    margin-right: 120px;
+    margin-top: 30px;
+    position: relative;
+    text-align: right;
 }
 
 .form-submit button {
