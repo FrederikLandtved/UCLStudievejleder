@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DatabaseAccess.FieldOfStudy;
+using DatabaseAccess.FieldOfStudy.Models;
 using DatabaseAccess.Institution;
+using DatabaseAccess.Institution.Models;
 using DatabaseAccess.User;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -38,10 +40,10 @@ namespace UCLStudievejlederApp.Controllers
             InstitutionDb institutionDb = new InstitutionDb();
             FieldOfStudyDb fieldOfStudyDb = new FieldOfStudyDb();
 
-            foreach(Institution institution in institutionDb.GetAllInstitutions())
+            foreach(InstitutionModel institution in institutionDb.GetAllInstitutions())
                 registerUserModel.AllInstitutions.Add(new UCLSelectModel { Id = institution.InstitutionId, Name = institution.Name });
             
-            foreach (FieldOfStudy fieldOfStudy in fieldOfStudyDb.GetAllFieldsOfStudy())
+            foreach (FieldOfStudyModel fieldOfStudy in fieldOfStudyDb.GetAllFieldsOfStudy())
                 registerUserModel.AllFieldsOfStudy.Add(new UCLSelectModel { Id = fieldOfStudy.FieldOfStudyId, Name = fieldOfStudy.Name });
            
 

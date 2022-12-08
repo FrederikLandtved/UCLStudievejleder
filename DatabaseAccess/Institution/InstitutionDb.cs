@@ -1,4 +1,6 @@
-﻿using DatabaseAccess.Generic;
+﻿using DatabaseAccess.FieldOfStudy.Models;
+using DatabaseAccess.Generic;
+using DatabaseAccess.Institution.Models;
 using Microsoft.Data.SqlClient;
 using static DatabaseAccess.Generic.GenericSql;
 
@@ -13,14 +15,14 @@ namespace DatabaseAccess.Institution
             _genericSql = new GenericSql();
         }
 
-        public List<Institution> GetAllInstitutions()
+        public List<InstitutionModel> GetAllInstitutions()
         {
-            List<Institution> institutions = new List<Institution>();
+            List<InstitutionModel> institutions = new List<InstitutionModel>();
             SqlDataReader reader = _genericSql.Select("SELECT * FROM [dbo].[Institution]");
 
             while (reader.Read())
             {
-                institutions.Add(new Institution
+                institutions.Add(new InstitutionModel
                 {
                     InstitutionId = reader.GetInt32(0),
                     Name = reader.GetString(1)
@@ -30,6 +32,34 @@ namespace DatabaseAccess.Institution
             return institutions;
 
         }
+
+        public List<InstitutionModel> GetInstitutionsByUserId(int userId)
+        {
+            List<InstitutionModel> institutions = new List<InstitutionModel>();
+
+            SqlDataReader reader = _genericSql.Select("SELECT * FROM [dbo].[UserHasInstitution] WHERE UserId = " + userId);
+
+            while (reader.Read())
+                institutions.Add(GetInstitution(reader.GetInt32(0)));
+
+            return institutions;
+        }
+
+        public InstitutionModel GetInstitution(int institutionId)
+        {
+            InstitutionModel institution = new InstitutionModel();
+
+            SqlDataReader reader = _genericSql.Select("SELECT * FROM [dbo].[Institution] WHERE InstitutionId = " + institutionId);
+
+            while (reader.Read())
+            {
+                institution.InstitutionId = reader.GetInt32(0);
+                institution.Name = reader.GetString(1);
+            }
+
+            return institution;
+        }
+
         public void LinkUserToInstitution(int userId, int institutionId)
         {
             string query = "INSERT INTO dbo.[UserHasInstitution] (UserId, InstitutionId) VALUES (@userId, @institutionId)";
@@ -44,17 +74,5 @@ namespace DatabaseAccess.Institution
 
             _genericSql.Insert(query, inserts);
         }
-    }
-
-    public class Institution : UCLListItem
-    {
-        public int InstitutionId { get; set; }
-        public string Name { get; set; }
-    }
-
-
-    public class UCLListItem
-    {
-        public bool IsSelected { get; set; }
     }
 }

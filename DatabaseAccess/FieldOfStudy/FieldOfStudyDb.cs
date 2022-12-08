@@ -1,6 +1,7 @@
 ﻿using DatabaseAccess.Generic;
 using Microsoft.Data.SqlClient;
 using static DatabaseAccess.Generic.GenericSql;
+using DatabaseAccess.FieldOfStudy.Models;
 
 namespace DatabaseAccess.FieldOfStudy
 {
@@ -13,14 +14,14 @@ namespace DatabaseAccess.FieldOfStudy
             _genericSql = new GenericSql();
         }
 
-        public List<FieldOfStudy> GetAllFieldsOfStudy()
+        public List<FieldOfStudyModel> GetAllFieldsOfStudy()
         {
-            List<FieldOfStudy> fieldOfStudies = new List<FieldOfStudy>();
+            List<FieldOfStudyModel> fieldOfStudies = new List<FieldOfStudyModel>();
             SqlDataReader reader = _genericSql.Select("SELECT * FROM [dbo].[FieldOfStudy]");
 
             while (reader.Read())
             {
-                fieldOfStudies.Add(new FieldOfStudy
+                fieldOfStudies.Add(new FieldOfStudyModel
                 {
                     FieldOfStudyId = reader.GetInt32(0),
                     Name = reader.GetString(1)
@@ -30,6 +31,34 @@ namespace DatabaseAccess.FieldOfStudy
             return fieldOfStudies;
 
         }
+
+        public List<FieldOfStudyModel> GetFieldsOfStudyByUserId(int userId)
+        {
+            List<FieldOfStudyModel> fieldOfStudies = new List<FieldOfStudyModel>();
+
+            SqlDataReader reader = _genericSql.Select("SELECT * FROM [dbo].[UserHasInstitution] WHERE UserId = " + userId);
+
+            while (reader.Read())
+                fieldOfStudies.Add(GetFieldOfStudy(0));
+
+            return fieldOfStudies;
+        }
+
+        public FieldOfStudyModel GetFieldOfStudy(int fieldOfStudyId)
+        {
+            FieldOfStudyModel fieldOfStudy = new FieldOfStudyModel();
+
+            SqlDataReader reader = _genericSql.Select("SELECT * FROM [dbo].[FieldOfStudy] WHERE FieldOfStudyId = " + fieldOfStudyId);
+
+            while (reader.Read())
+            {
+                fieldOfStudy.FieldOfStudyId = reader.GetInt32(0);
+                fieldOfStudy.Name = reader.GetString(1);
+            }
+
+            return fieldOfStudy;
+        }
+
         public void LinkUserToFieldOfStudy(int userId, int fieldOfStudyId)
         {
             string query = "INSERT INTO dbo.[UserHasFieldOfStudy] (UserId, FieldOfStudyId) VALUES (@userId, @fieldOfStudyId)";
@@ -42,13 +71,6 @@ namespace DatabaseAccess.FieldOfStudy
             };
 
             _genericSql.Insert(query, inserts);
-        }
-
-        public class FieldOfStudy
-        {
-            public int FieldOfStudyId { get; set; }
-            public string Name { get; set; }
-            public bool IsSelected { get; set; }
         }
     }
 }
