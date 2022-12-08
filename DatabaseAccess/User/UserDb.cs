@@ -1,4 +1,8 @@
-﻿using DatabaseAccess.Generic;
+﻿using DatabaseAccess.FieldOfStudy;
+using DatabaseAccess.FieldOfStudy.Models;
+using DatabaseAccess.Generic;
+using DatabaseAccess.Institution;
+using DatabaseAccess.Institution.Models;
 using Microsoft.Data.SqlClient;
 using static DatabaseAccess.Generic.GenericSql;
 
@@ -7,9 +11,14 @@ namespace DatabaseAccess.User
     public class UserDb
     {
         private readonly GenericSql _genericSql;
+        private readonly FieldOfStudyDb _fieldOfStudyDb;
+        private readonly InstitutionDb _institutionDb;
+
         public UserDb()
         {
             _genericSql = new GenericSql();
+            _fieldOfStudyDb = new FieldOfStudyDb();
+            _institutionDb = new InstitutionDb();
         }
 
         public List<User> GetAllUsers()
@@ -36,6 +45,8 @@ namespace DatabaseAccess.User
             public int UserId { get; set; }
             public string FullName { get; set; }
             public string Email { get; set; }
+            public List<FieldOfStudyModel> FieldOfStudies { get; set; } = new List<FieldOfStudyModel>();
+            public List<InstitutionModel> Institutions { get; set; } = new List<InstitutionModel>();
         }
     }
 }
