@@ -7,6 +7,7 @@ using DatabaseAccess.FieldOfStudy.Models;
 using DatabaseAccess.Institution;
 using DatabaseAccess.Institution.Models;
 using DatabaseAccess.User;
+using DatabaseAccess.User.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using UCLStudievejlederApp.Data;
@@ -94,13 +95,30 @@ namespace UCLStudievejlederApp.Controllers
 
         public IActionResult EditUser()
         {
-            List<User> users = _userDb.GetAllUsers();
-            return View(users);
+            List<UserMinimalModel> model = _userDb.GetMinimalUserList();
+
+            return View(model);
         }
 
-        public IActionResult EditOneUser()
+        public IActionResult EditOneUser(int userId)
         {
-            RegisterUserModel model = new RegisterUserModel();
+            UserModel user = _userDb.GetUser(userId);
+            InstitutionDb institutionDb = new InstitutionDb();
+            FieldOfStudyDb fieldOfStudyDb = new FieldOfStudyDb();
+
+            RegisterUserModel model = new RegisterUserModel
+            {
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Email = user.Email
+            };
+
+            foreach (InstitutionModel institution in institutionDb.GetAllInstitutions())
+                model.AllInstitutions.Add(new UCLSelectModel { Id = institution.InstitutionId, Name = institution.Name, IsSelected = user.Institutions.Any(x => x.InstitutionId == institution.InstitutionId) });
+
+            foreach (FieldOfStudyModel fieldOfStudy in fieldOfStudyDb.GetAllFieldsOfStudy())
+                model.AllFieldsOfStudy.Add(new UCLSelectModel { Id = fieldOfStudy.FieldOfStudyId, Name = fieldOfStudy.Name, IsSelected = user.FieldOfStudies.Any(x => x.FieldOfStudyId == fieldOfStudy.FieldOfStudyId) });
+
             return View(model);
         }
     }

@@ -40,7 +40,7 @@ namespace DatabaseAccess.Institution
             SqlDataReader reader = _genericSql.Select("SELECT * FROM [dbo].[UserHasInstitution] WHERE UserId = " + userId);
 
             while (reader.Read())
-                institutions.Add(GetInstitution(reader.GetInt32(0)));
+                institutions.Add(GetInstitution(reader.GetInt32(1)));
 
             return institutions;
         }

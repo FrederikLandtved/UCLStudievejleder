@@ -33,6 +33,32 @@ namespace DatabaseAccess.Generic
             }
         }
 
+        public SqlDataReader ExecuteSproc(string sproc)
+        {
+            try
+            {
+                SqlConnection connection = new SqlConnection(connectionString);
+
+                using (SqlCommand command = new SqlCommand(sproc, connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader(CommandBehavior.CloseConnection);
+
+                    return reader;
+                    connection.Close();
+                }
+
+                return null;
+
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Something went wrong.");
+                throw;
+            }
+        }
+
         public void Insert(string query, List<InsertModel> parameters)
         {
             try

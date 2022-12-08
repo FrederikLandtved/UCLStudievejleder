@@ -36,10 +36,10 @@ namespace DatabaseAccess.FieldOfStudy
         {
             List<FieldOfStudyModel> fieldOfStudies = new List<FieldOfStudyModel>();
 
-            SqlDataReader reader = _genericSql.Select("SELECT * FROM [dbo].[UserHasInstitution] WHERE UserId = " + userId);
+            SqlDataReader reader = _genericSql.Select("SELECT * FROM [dbo].[UserHasFieldOfStudy] WHERE UserId = " + userId);
 
             while (reader.Read())
-                fieldOfStudies.Add(GetFieldOfStudy(0));
+                fieldOfStudies.Add(GetFieldOfStudy(reader.GetInt32(0)));
 
             return fieldOfStudies;
         }
