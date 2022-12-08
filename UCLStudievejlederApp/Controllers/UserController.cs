@@ -95,6 +95,12 @@ namespace UCLStudievejlederApp.Controllers
             List<User> users = _userDb.GetAllUsers();
             return View(users);
         }
+
+        public IActionResult EditOneUser()
+        {
+            RegisterUserModel model = new RegisterUserModel();
+            return View(model);
+        }
     }
 }
 
