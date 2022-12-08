@@ -37,10 +37,10 @@ namespace DatabaseAccess.Institution
         {
             List<InstitutionModel> institutions = new List<InstitutionModel>();
 
-            SqlDataReader reader = _genericSql.Select("SELECT * FROM [dbo].[UserHasInstitution] WHERE UserId = " + userId);
+            SqlDataReader reader = _genericSql.ExecuteSproc("GetInstitutionsFromUserId", new List<ParameterModel> { new ParameterModel { Parameter = "@UserId", Value = userId.ToString()} });
 
             while (reader.Read())
-                institutions.Add(GetInstitution(reader.GetInt32(1)));
+                institutions.Add(new InstitutionModel { InstitutionId = reader.GetInt32(0), Name = reader.GetString(1) });
 
             return institutions;
         }
@@ -65,10 +65,10 @@ namespace DatabaseAccess.Institution
             string query = "INSERT INTO dbo.[UserHasInstitution] (UserId, InstitutionId) VALUES (@userId, @institutionId)";
 
 
-            List<InsertModel> inserts = new List<InsertModel>
+            List<ParameterModel> inserts = new List<ParameterModel>
             {
-                new InsertModel { Parameter = "@userId", Value = userId.ToString() },
-                new InsertModel { Parameter = "@institutionId", Value = institutionId.ToString() }
+                new ParameterModel { Parameter = "@userId", Value = userId.ToString() },
+                new ParameterModel { Parameter = "@institutionId", Value = institutionId.ToString() }
 
             };
 

@@ -33,7 +33,7 @@ namespace DatabaseAccess.Generic
             }
         }
 
-        public SqlDataReader ExecuteSproc(string sproc)
+        public SqlDataReader ExecuteSproc(string sproc, List<ParameterModel> parameters)
         {
             try
             {
@@ -42,6 +42,13 @@ namespace DatabaseAccess.Generic
                 using (SqlCommand command = new SqlCommand(sproc, connection))
                 {
                     command.CommandType = CommandType.StoredProcedure;
+
+                    if(parameters.Any())
+                    {
+                        foreach (ParameterModel param in parameters)
+                            command.Parameters.Add(new SqlParameter(param.Parameter, param.Value));
+                    }
+
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader(CommandBehavior.CloseConnection);
 
@@ -59,7 +66,7 @@ namespace DatabaseAccess.Generic
             }
         }
 
-        public void Insert(string query, List<InsertModel> parameters)
+        public void Insert(string query, List<ParameterModel> parameters)
         {
             try
             {
@@ -67,7 +74,7 @@ namespace DatabaseAccess.Generic
                 {
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        foreach(InsertModel model in parameters)
+                        foreach(ParameterModel model in parameters)
                             command.Parameters.AddWithValue(model.Parameter, model.Value);
 
                         connection.Open();
@@ -86,7 +93,7 @@ namespace DatabaseAccess.Generic
             }
         }
 
-        public class InsertModel
+        public class ParameterModel
         {
             public string Parameter { get; set; }
             public string Value { get; set; }

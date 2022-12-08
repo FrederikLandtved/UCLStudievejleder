@@ -63,7 +63,7 @@ namespace DatabaseAccess.User
         public List<UserMinimalModel> GetMinimalUserList()
         {
             List<UserMinimalModel> users = new List<UserMinimalModel>();
-            SqlDataReader reader = _genericSql.ExecuteSproc("sp_GetUsersInstitutionsAndFieldsOfStudy");
+            SqlDataReader reader = _genericSql.ExecuteSproc("sp_GetUsersInstitutionsAndFieldsOfStudy", new List<ParameterModel>());
 
             while (reader.Read())
             {

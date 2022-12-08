@@ -2,6 +2,8 @@
 using Microsoft.Data.SqlClient;
 using static DatabaseAccess.Generic.GenericSql;
 using DatabaseAccess.FieldOfStudy.Models;
+using DatabaseAccess.Institution.Models;
+using DatabaseAccess.Institution;
 
 namespace DatabaseAccess.FieldOfStudy
 {
@@ -36,10 +38,10 @@ namespace DatabaseAccess.FieldOfStudy
         {
             List<FieldOfStudyModel> fieldOfStudies = new List<FieldOfStudyModel>();
 
-            SqlDataReader reader = _genericSql.Select("SELECT * FROM [dbo].[UserHasFieldOfStudy] WHERE UserId = " + userId);
+            SqlDataReader reader = _genericSql.ExecuteSproc("sp_GetFieldsOfStudyFromUserId", new List<ParameterModel> { new ParameterModel { Parameter = "@UserId", Value = userId.ToString() } });
 
             while (reader.Read())
-                fieldOfStudies.Add(GetFieldOfStudy(reader.GetInt32(0)));
+                fieldOfStudies.Add(new FieldOfStudyModel { FieldOfStudyId = reader.GetInt32(0), Name = reader.GetString(1) });
 
             return fieldOfStudies;
         }
@@ -63,10 +65,10 @@ namespace DatabaseAccess.FieldOfStudy
         {
             string query = "INSERT INTO dbo.[UserHasFieldOfStudy] (UserId, FieldOfStudyId) VALUES (@userId, @fieldOfStudyId)";
            
-            List<InsertModel> inserts = new List<InsertModel>
+            List<ParameterModel> inserts = new List<ParameterModel>
             {
-                new InsertModel { Parameter = "@userId", Value = userId.ToString() },
-                new InsertModel { Parameter = "@fieldOfStudyId", Value = fieldOfStudyId.ToString() }
+                new ParameterModel { Parameter = "@userId", Value = userId.ToString() },
+                new ParameterModel { Parameter = "@fieldOfStudyId", Value = fieldOfStudyId.ToString() }
 
             };
 
