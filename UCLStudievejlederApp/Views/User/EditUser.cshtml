@@ -1,4 +1,4 @@
-﻿@using static DatabaseAccess.User.UserDb
+﻿@using static DatabaseAccess.User.UserDb;
 @model List<User>
 
 
@@ -23,6 +23,7 @@
             <td>@user.Email</td>
             <td>Odense</td>
             <td>Datamatiker</td>
+            <td><a asp-controller="User" asp-action="EditOneUser" class="editUserBtn">Rediger bruger</a></td>
         </tr>
     }
 </table>
