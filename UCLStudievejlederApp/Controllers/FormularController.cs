@@ -12,9 +12,9 @@ namespace UCLStudievejlederApp.Controllers
     public class FormularController : Controller
     {
         private readonly QuestionDb _questionDb;
-        public FormularController()
+        public FormularController(QuestionDb questionDb)
         {
-            _questionDb = new QuestionDb();
+            _questionDb = questionDb;
         }
 
         public IActionResult Index()

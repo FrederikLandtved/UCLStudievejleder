@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using DatabaseAccess.FieldOfStudy;
@@ -25,26 +26,26 @@ namespace UCLStudievejlederApp.Controllers
         private SignInManager<ApplicationUser> _signManager;
         private UserManager<ApplicationUser> _userManager;
         private readonly UserDb _userDb;
-
-        public UserController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signManager)
+        private readonly InstitutionDb _institutionDb;
+        private readonly FieldOfStudyDb _fieldOfStudyDb;
+        public UserController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signManager, FieldOfStudyDb fieldOfStudyDb, InstitutionDb institutionDb)
         {
             _userManager = userManager;
             _signManager = signManager;
             _userDb = new UserDb();
-        }
+            _institutionDb = institutionDb;
+            _fieldOfStudyDb = fieldOfStudyDb;
+    }
 
         [HttpGet]
         public IActionResult CreateUser()
         {
             RegisterUserModel registerUserModel = new RegisterUserModel();
 
-            InstitutionDb institutionDb = new InstitutionDb();
-            FieldOfStudyDb fieldOfStudyDb = new FieldOfStudyDb();
-
-            foreach(InstitutionModel institution in institutionDb.GetAllInstitutions())
+            foreach(InstitutionModel institution in _institutionDb.GetAllInstitutions())
                 registerUserModel.AllInstitutions.Add(new UCLSelectModel { Id = institution.InstitutionId, Name = institution.Name });
             
-            foreach (FieldOfStudyModel fieldOfStudy in fieldOfStudyDb.GetAllFieldsOfStudy())
+            foreach (FieldOfStudyModel fieldOfStudy in _fieldOfStudyDb.GetAllFieldsOfStudy())
                 registerUserModel.AllFieldsOfStudy.Add(new UCLSelectModel { Id = fieldOfStudy.FieldOfStudyId, Name = fieldOfStudy.Name });
            
 
@@ -61,19 +62,17 @@ namespace UCLStudievejlederApp.Controllers
 
                 if (result.Succeeded)
                 {
-                    InstitutionDb institutionDb = new InstitutionDb();
-                    FieldOfStudyDb fieldOfStudyDb = new FieldOfStudyDb();
 
                     foreach (UCLSelectModel userInstitution in model.AllInstitutions)
                     {
                         if (userInstitution.IsSelected == true)
-                            institutionDb.LinkUserToInstitution(user.UserId, userInstitution.Id);
+                            _institutionDb.LinkUserToInstitution(user.UserId, userInstitution.Id);
                     }
 
                     foreach (UCLSelectModel userFieldOfStudy in model.AllFieldsOfStudy)
                     {
                         if (userFieldOfStudy.IsSelected == true)
-                            fieldOfStudyDb.LinkUserToFieldOfStudy(user.UserId, userFieldOfStudy.Id);
+                            _fieldOfStudyDb.LinkUserToFieldOfStudy(user.UserId, userFieldOfStudy.Id);
                     }
 
                     model.SuccessMessage = $"Brugeren {model.FirstName} {model.LastName} blev oprettet.";
@@ -102,9 +101,10 @@ namespace UCLStudievejlederApp.Controllers
 
         public IActionResult EditOneUser(int userId)
         {
+
             UserModel user = _userDb.GetUser(userId);
-            InstitutionDb institutionDb = new InstitutionDb();
-            FieldOfStudyDb fieldOfStudyDb = new FieldOfStudyDb();
+            user.FieldOfStudies = _fieldOfStudyDb.GetFieldsOfStudyByUserId(userId);
+            user.Institutions = _institutionDb.GetInstitutionsByUserId(userId);
 
             RegisterUserModel model = new RegisterUserModel
             {
@@ -113,10 +113,10 @@ namespace UCLStudievejlederApp.Controllers
                 Email = user.Email
             };
 
-            foreach (InstitutionModel institution in institutionDb.GetAllInstitutions())
+            foreach (InstitutionModel institution in _institutionDb.GetAllInstitutions())
                 model.AllInstitutions.Add(new UCLSelectModel { Id = institution.InstitutionId, Name = institution.Name, IsSelected = user.Institutions.Any(x => x.InstitutionId == institution.InstitutionId) });
 
-            foreach (FieldOfStudyModel fieldOfStudy in fieldOfStudyDb.GetAllFieldsOfStudy())
+            foreach (FieldOfStudyModel fieldOfStudy in _fieldOfStudyDb.GetAllFieldsOfStudy())
                 model.AllFieldsOfStudy.Add(new UCLSelectModel { Id = fieldOfStudy.FieldOfStudyId, Name = fieldOfStudy.Name, IsSelected = user.FieldOfStudies.Any(x => x.FieldOfStudyId == fieldOfStudy.FieldOfStudyId) });
 
             return View(model);

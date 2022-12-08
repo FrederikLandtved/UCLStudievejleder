@@ -4,21 +4,28 @@ using static DatabaseAccess.Generic.GenericSql;
 using DatabaseAccess.FieldOfStudy.Models;
 using DatabaseAccess.Institution.Models;
 using DatabaseAccess.Institution;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace DatabaseAccess.FieldOfStudy
 {
     public class FieldOfStudyDb
     {
-        string connectionString = "Server=tcp:ucldataserver.database.windows.net,1433;Initial Catalog=UCLDataPROD;Persist Security Info=False;User ID=azureuser;Password=Stefan$ebastianJacobMia;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30";
         private readonly GenericSql _genericSql;
-        public FieldOfStudyDb()
+        private readonly IMemoryCache _memoryCache;
+
+        public FieldOfStudyDb(IMemoryCache memoryCache)
         {
             _genericSql = new GenericSql();
+            _memoryCache = memoryCache;
         }
 
         public List<FieldOfStudyModel> GetAllFieldsOfStudy()
         {
             List<FieldOfStudyModel> fieldOfStudies = new List<FieldOfStudyModel>();
+            var cachedFields = _memoryCache.Get<List<FieldOfStudyModel>>("AllFieldsOfStudy");
+            if (cachedFields != null)
+                return cachedFields;
+
             SqlDataReader reader = _genericSql.Select("SELECT * FROM [dbo].[FieldOfStudy]");
 
             while (reader.Read())
@@ -30,6 +37,7 @@ namespace DatabaseAccess.FieldOfStudy
                 });
             }
 
+            _memoryCache.Set("AllFieldsOfStudy", fieldOfStudies, TimeSpan.FromDays(1));
             return fieldOfStudies;
 
         }
@@ -41,8 +49,8 @@ namespace DatabaseAccess.FieldOfStudy
             SqlDataReader reader = _genericSql.ExecuteSproc("sp_GetFieldsOfStudyFromUserId", new List<ParameterModel> { new ParameterModel { Parameter = "@UserId", Value = userId.ToString() } });
 
             while (reader.Read())
-                fieldOfStudies.Add(new FieldOfStudyModel { FieldOfStudyId = reader.GetInt32(0), Name = reader.GetString(1) });
-
+                fieldOfStudies.Add(new FieldOfStudyModel { FieldOfStudyId = reader.GetInt32(0), Name = reader.GetString(1), IsSelected = true });
+            
             return fieldOfStudies;
         }
 

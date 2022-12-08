@@ -1,5 +1,8 @@
 ﻿using DatabaseAccess.Generic;
+using DatabaseAccess.Institution;
+using DatabaseAccess.Institution.Models;
 using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Caching.Memory;
 using static DatabaseAccess.Generic.GenericSql;
 using static DatabaseAccess.Question.AnswerOptionDb;
 
@@ -9,15 +12,22 @@ namespace DatabaseAccess.Question
     {
         private readonly GenericSql _genericSql;
         private readonly AnswerOptionDb _answerOptionDb;
-        public QuestionDb()
+        private readonly IMemoryCache _memoryCache;
+
+        public QuestionDb(IMemoryCache memoryCache)
         {
             _genericSql = new GenericSql();
             _answerOptionDb = new AnswerOptionDb();
+            _memoryCache = memoryCache;
         }
 
         public List<Question> GetAllQuestionsWithAnswers()
         {
             List<Question> questions = new List<Question>();
+            var cachedQuestions = _memoryCache.Get<List<Question>>("AllQuestionsWithAnswers");
+            if (cachedQuestions != null)
+                return cachedQuestions;
+
             SqlDataReader reader = _genericSql.Select("SELECT * FROM [dbo].[Question]");
 
             while (reader.Read())
@@ -31,6 +41,7 @@ namespace DatabaseAccess.Question
                 });
             }
 
+            _memoryCache.Set("AllQuestionsWithAnswers", questions, TimeSpan.FromMinutes(5));
             return questions;
         }
 

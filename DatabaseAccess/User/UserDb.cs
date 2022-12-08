@@ -13,14 +13,10 @@ namespace DatabaseAccess.User
     public class UserDb
     {
         private readonly GenericSql _genericSql;
-        private readonly FieldOfStudyDb _fieldOfStudyDb;
-        private readonly InstitutionDb _institutionDb;
 
         public UserDb()
         {
             _genericSql = new GenericSql();
-            _fieldOfStudyDb = new FieldOfStudyDb();
-            _institutionDb = new InstitutionDb();
         }
 
         public List<UserModel> GetAllUsers()
@@ -45,16 +41,14 @@ namespace DatabaseAccess.User
         public UserModel GetUser(int userId)
         {
             UserModel user = new UserModel();
-            SqlDataReader reader = _genericSql.Select("SELECT * FROM [dbo].[AspNetUsers] WHERE UserId = " + userId);
+            SqlDataReader reader = _genericSql.Select("SELECT UserId, FirstName, LastName, Email FROM [dbo].[AspNetUsers] WHERE UserId = " + userId);
 
             while (reader.Read())
             {
-                user.UserId = reader.GetInt32(17);
-                user.FirstName = reader.GetString(15);
-                user.LastName = reader.GetString(16);
+                user.UserId = reader.GetInt32(0);
+                user.FirstName = reader.GetString(1);
+                user.LastName = reader.GetString(2);
                 user.Email = reader.GetString(3);
-                user.FieldOfStudies = _fieldOfStudyDb.GetFieldsOfStudyByUserId(userId);
-                user.Institutions = _institutionDb.GetInstitutionsByUserId(userId);
             }
 
             return user;
