@@ -2,21 +2,30 @@
     width: 100%;
     font-size: 20px;
     text-align: left;
-    margin-top: 40px;
     border: none;
     color: white;
     border-spacing: 0 20px;
-   
+    border-collapse: collapse;
 }
 
-.user-edit tr {
-    background-color: #00454E;
-    height:50px;
-    margin-left:10px;
-    
-    
-}
+    .user-edit tr {
+        background-color: white;
+        height: 50px;
+        margin-left: 10px;
+        color: black;
+        border-bottom: 1px solid #00454E;
+    }
     .user-edit td, th{
         padding-left: 30px;
     }
+
+    .user-edit tr:nth-child(1) {
+        background-color: #00454E;
+        color:white;
+    }
+
+
+.formular-header {
+    margin-top: 100px;
+}
 
