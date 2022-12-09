@@ -1,5 +1,5 @@
-﻿@using static DatabaseAccess.User.UserDb;
-@model List<User>
+﻿@using DatabaseAccess.User.Models
+@model List<UserMinimalModel>
 
 
 <h1>Administrér brugere</h1>
@@ -14,16 +14,17 @@
         <th>E-mail</th>
         <th>Institution</th>
         <th>Studieretning</th>
-        
+        <th>Redigér</th>
     </tr>
 
-    @foreach(User user in Model) {
+    @foreach (UserMinimalModel user in Model)
+    {
         <tr>
             <td>@user.FullName</td>
             <td>@user.Email</td>
-            <td>Odense</td>
-            <td>Datamatiker</td>
-            <td><a asp-controller="User" asp-action="EditOneUser" class="editUserBtn">Rediger bruger</a></td>
+            <td>@user.Institutions</td>
+            <td>@user.FieldsOfStudy</td>
+            <td><a asp-controller="User" asp-action="EditOneUser" asp-route-userId="@user.UserId" class="editUserBtn">Rediger bruger</a></td>
         </tr>
     }
 </table>

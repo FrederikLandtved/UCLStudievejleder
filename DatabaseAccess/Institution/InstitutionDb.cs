@@ -2,22 +2,28 @@
 using DatabaseAccess.Generic;
 using DatabaseAccess.Institution.Models;
 using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Caching.Memory;
 using static DatabaseAccess.Generic.GenericSql;
 
 namespace DatabaseAccess.Institution
 {
     public class InstitutionDb
     {
-        string connectionString = "Server=tcp:ucldataserver.database.windows.net,1433;Initial Catalog=UCLDataPROD;Persist Security Info=False;User ID=azureuser;Password=Stefan$ebastianJacobMia;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30";
         private readonly GenericSql _genericSql;
-        public InstitutionDb()
+        private readonly IMemoryCache _memoryCache;
+        public InstitutionDb(IMemoryCache memoryCache)
         {
             _genericSql = new GenericSql();
+            _memoryCache = memoryCache;
         }
 
         public List<InstitutionModel> GetAllInstitutions()
         {
             List<InstitutionModel> institutions = new List<InstitutionModel>();
+            var cachedInstitutions = _memoryCache.Get<List<InstitutionModel>>("AllInstitutions");
+            if (cachedInstitutions != null)
+                return cachedInstitutions;
+
             SqlDataReader reader = _genericSql.Select("SELECT * FROM [dbo].[Institution]");
 
             while (reader.Read())
@@ -29,6 +35,7 @@ namespace DatabaseAccess.Institution
                 });
             }
 
+            _memoryCache.Set("AllInstitutions", institutions, TimeSpan.FromDays(1));
             return institutions;
 
         }
@@ -37,10 +44,10 @@ namespace DatabaseAccess.Institution
         {
             List<InstitutionModel> institutions = new List<InstitutionModel>();
 
-            SqlDataReader reader = _genericSql.Select("SELECT * FROM [dbo].[UserHasInstitution] WHERE UserId = " + userId);
+            SqlDataReader reader = _genericSql.ExecuteSproc("GetInstitutionsFromUserId", new List<ParameterModel> { new ParameterModel { Parameter = "@UserId", Value = userId.ToString()} });
 
             while (reader.Read())
-                institutions.Add(GetInstitution(reader.GetInt32(0)));
+                institutions.Add(new InstitutionModel { InstitutionId = reader.GetInt32(0), Name = reader.GetString(1), IsSelected = true });
 
             return institutions;
         }
@@ -65,10 +72,10 @@ namespace DatabaseAccess.Institution
             string query = "INSERT INTO dbo.[UserHasInstitution] (UserId, InstitutionId) VALUES (@userId, @institutionId)";
 
 
-            List<InsertModel> inserts = new List<InsertModel>
+            List<ParameterModel> inserts = new List<ParameterModel>
             {
-                new InsertModel { Parameter = "@userId", Value = userId.ToString() },
-                new InsertModel { Parameter = "@institutionId", Value = institutionId.ToString() }
+                new ParameterModel { Parameter = "@userId", Value = userId.ToString() },
+                new ParameterModel { Parameter = "@institutionId", Value = institutionId.ToString() }
 
             };
 
