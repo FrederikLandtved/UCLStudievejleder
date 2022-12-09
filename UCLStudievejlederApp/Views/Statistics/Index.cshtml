@@ -1,141 +1,896 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
-
-<div class="marginMaker"></div>
-<div class="navbar">
-    <a href="#home">Home</a>
-    <a href="#news">News</a>
-    <div class="dropdown">
-        <button class="dropbtn" onclick="myFunction()">
-            Dropdown
-            <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-content" id="myDropdown">
-            <a href="#">Link 1</a>
-            <a href="#">Link 2</a>
-            <a href="#">Link 3</a>
+﻿<div class="container pt-4">
+    <!-- Section: Main chart -->
+    <section class="mb-4">
+        <div class="card">
+            <div class="card-header py-3">
+                <h5 class="mb-0 text-center"><strong>Sales</strong></h5>
+            </div>
+            <div class="card-body">
+                <canvas class="my-4 w-100" id="myChart" height="380"></canvas>
+            </div>
         </div>
+    </section>
+    <!-- Section: Main chart -->
+    <!--Section: Sales Performance KPIs-->
+    <section class="mb-4">
+        <div class="card">
+            <div class="card-header text-center py-3">
+                <h5 class="mb-0 text-center">
+                    <strong>Fordeling af henvendelser sorteret efter hevendelses emne</strong>
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover text-nowrap">
+                        <thead>
+                            <tr>
+                                <th scope="col"></th>
+                                <th scope="col">Odense</th>
+                                <th scope="col">Vejle</th>
+                                <th scope="col">Jelling</th>
+                                <th scope="col">Svendborg</th>
+                                <th scope="col">Fredericia</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                           
+                            <tr>
+                                <th scope="row">Administrative forhold</th>
+                                <td>
+                                    <span class="text-danger">
+                                        <i class="fas fa-caret-down me-1"></i><span>-48.8%%</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-danger">
+                                        <i class="fas fa-caret-down me-1"></i><span>-11.5%</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success">
+                                        <i class="fas fa-caret-up me-1"></i><span>20%</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success">
+                                        <i class="fas fa-caret-up me-1"></i><span>29.6%</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-danger">
+                                        <i class="fas fa-caret-down me-1"></i><span>-11.5%</span>
+                                    </span>
+                                </td>
+                            </tr>
 
-        <button class="dropbtn" onclick="myFunction()">
-            Dropdown
-            <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-content" id="myDropdown">
-            <a href="#">Link 1</a>
-            <a href="#">Link 2</a>
-            <a href="#">Link 3</a>
-        </div>
 
-        <button class="dropbtn" onclick="myFunction()">
-            Dropdown
-            <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-content" id="myDropdown">
-            <a href="#">Link 1</a>
-            <a href="#">Link 2</a>
-            <a href="#">Link 3</a>
-        </div>
+                            <tr>
+                                <th scope="row">Barsel</th>
+                                <td>
+                                    <span class="text-danger">
+                                        <i class="fas fa-caret-down me-1"></i><span>-17,654</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success">
+                                        <i class="fas fa-caret-up me-1"></i><span>28</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success">
+                                        <i class="fas fa-caret-up me-1"></i><span>111</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success">
+                                        <i class="fas fa-caret-up me-1"></i><span>$1,092.72</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-danger">
+                                        <i class="fas fa-caret-down me-1"></i><span>$-1.78</span>
+                                    </span>
+                                </td>
+                            </tr>
 
-        <button class="dropbtn" onclick="myFunction()">
-            Dropdown
-            <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-content" id="myDropdown">
-            <a href="#">Link 1</a>
-            <a href="#">Link 2</a>
-            <a href="#">Link 3</a>
-        </div>
+                            <tr>
+                                <th scope="row">Eksamen</th>
+                                <td>
+                                    <span class="text-danger">
+                                        <i class="fas fa-caret-down me-1"></i><span>-17,654</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success">
+                                        <i class="fas fa-caret-up me-1"></i><span>28</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success">
+                                        <i class="fas fa-caret-up me-1"></i><span>111</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success">
+                                        <i class="fas fa-caret-up me-1"></i><span>$1,092.72</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-danger">
+                                        <i class="fas fa-caret-down me-1"></i><span>$-1.78</span>
+                                    </span>
+                                </td>
+                            </tr>
 
-        <button class="dropbtn" onclick="myFunction()">
-            Dropdown
-            <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-content" id="myDropdown">
-            <a href="#">Link 1</a>
-            <a href="#">Link 2</a>
-            <a href="#">Link 3</a>
-        </div>
+                             <tr>
+                                <th scope="row">Fastholde trivsel</th>
+                                <td>
+                                    <span class="text-danger">
+                                        <i class="fas fa-caret-down me-1"></i><span>-17,654</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success">
+                                        <i class="fas fa-caret-up me-1"></i><span>28</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success">
+                                        <i class="fas fa-caret-up me-1"></i><span>111</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success">
+                                        <i class="fas fa-caret-up me-1"></i><span>$1,092.72</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-danger">
+                                        <i class="fas fa-caret-down me-1"></i><span>$-1.78</span>
+                                    </span>
+                                </td>
+                            </tr>
 
-         <button class="dropbtn" onclick="myFunction()">
-            Dropdown
-            <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-content" id="myDropdown">
-            <a href="#">Link 1</a>
-            <a href="#">Link 2</a>
-            <a href="#">Link 3</a>
-        </div>
+                             <tr>
+                                <th scope="row">Internationale muligheder</th>
+                                <td>
+                                    <span class="text-danger">
+                                        <i class="fas fa-caret-down me-1"></i><span>-17,654</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success">
+                                        <i class="fas fa-caret-up me-1"></i><span>28</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success">
+                                        <i class="fas fa-caret-up me-1"></i><span>111</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success">
+                                        <i class="fas fa-caret-up me-1"></i><span>$1,092.72</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-danger">
+                                        <i class="fas fa-caret-down me-1"></i><span>$-1.78</span>
+                                    </span>
+                                </td>
+                            </tr>
 
-        <button class="dropbtn" onclick="myFunction()">
-            Dropdown
-            <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-content" id="myDropdown">
-            <a href="#">Link 1</a>
-            <a href="#">Link 2</a>
-            <a href="#">Link 3</a>
-        </div>
+                             <tr>
+                                <th scope="row">Mistrivsel</th>
+                                <td>
+                                    <span class="text-danger">
+                                        <i class="fas fa-caret-down me-1"></i><span>-17,654</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success">
+                                        <i class="fas fa-caret-up me-1"></i><span>28</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success">
+                                        <i class="fas fa-caret-up me-1"></i><span>111</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success">
+                                        <i class="fas fa-caret-up me-1"></i><span>$1,092.72</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-danger">
+                                        <i class="fas fa-caret-down me-1"></i><span>$-1.78</span>
+                                    </span>
+                                </td>
+                            </tr>
 
-        <button class="dropbtn" onclick="myFunction()">
-            Dropdown
-            <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-content" id="myDropdown">
-            <a href="#">Link 1</a>
-            <a href="#">Link 2</a>
-            <a href="#">Link 3</a>
+                             <tr>
+                                <th scope="row">Optagelsesvejledning </th>
+                                <td>
+                                    <span class="text-danger">
+                                        <i class="fas fa-caret-down me-1"></i><span>-17,654</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success">
+                                        <i class="fas fa-caret-up me-1"></i><span>28</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success">
+                                        <i class="fas fa-caret-up me-1"></i><span>111</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success">
+                                        <i class="fas fa-caret-up me-1"></i><span>$1,092.72</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-danger">
+                                        <i class="fas fa-caret-down me-1"></i><span>$-1.78</span>
+                                    </span>
+                                </td>
+                            </tr>
+
+                             <tr>
+                                <th scope="row">Ordensreglement </th>
+                                <td>
+                                    <span class="text-danger">
+                                        <i class="fas fa-caret-down me-1"></i><span>-17,654</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success">
+                                        <i class="fas fa-caret-up me-1"></i><span>28</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success">
+                                        <i class="fas fa-caret-up me-1"></i><span>111</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success">
+                                        <i class="fas fa-caret-up me-1"></i><span>$1,092.72</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-danger">
+                                        <i class="fas fa-caret-down me-1"></i><span>$-1.78</span>
+                                    </span>
+                                </td>
+                            </tr>
+
+                             <tr>
+                                <th scope="row">Orlov </th>
+                                <td>
+                                    <span class="text-danger">
+                                        <i class="fas fa-caret-down me-1"></i><span>-17,654</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success">
+                                        <i class="fas fa-caret-up me-1"></i><span>28</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success">
+                                        <i class="fas fa-caret-up me-1"></i><span>111</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success">
+                                        <i class="fas fa-caret-up me-1"></i><span>$1,092.72</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-danger">
+                                        <i class="fas fa-caret-down me-1"></i><span>$-1.78</span>
+                                    </span>
+                                </td>
+                            </tr>
+
+                             <tr>
+                                <th scope="row">Overflytning/genindskrivning </th>
+                                <td>
+                                    <span class="text-danger">
+                                        <i class="fas fa-caret-down me-1"></i><span>-17,654</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success">
+                                        <i class="fas fa-caret-up me-1"></i><span>28</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success">
+                                        <i class="fas fa-caret-up me-1"></i><span>111</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success">
+                                        <i class="fas fa-caret-up me-1"></i><span>$1,092.72</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-danger">
+                                        <i class="fas fa-caret-down me-1"></i><span>$-1.78</span>
+                                    </span>
+                                </td>
+                            </tr>
+
+                             <tr>
+                                <th scope="row">Personlige forhold</th>
+                                <td>
+                                    <span class="text-danger">
+                                        <i class="fas fa-caret-down me-1"></i><span>-17,654</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success">
+                                        <i class="fas fa-caret-up me-1"></i><span>28</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success">
+                                        <i class="fas fa-caret-up me-1"></i><span>111</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success">
+                                        <i class="fas fa-caret-up me-1"></i><span>$1,092.72</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-danger">
+                                        <i class="fas fa-caret-down me-1"></i><span>$-1.78</span>
+                                    </span>
+                                </td>
+                            </tr>
+
+                             <tr>
+                                <th scope="row">Praktik i DK</th>
+                                <td>
+                                    <span class="text-danger">
+                                        <i class="fas fa-caret-down me-1"></i><span>-17,654</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success">
+                                        <i class="fas fa-caret-up me-1"></i><span>28</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success">
+                                        <i class="fas fa-caret-up me-1"></i><span>111</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success">
+                                        <i class="fas fa-caret-up me-1"></i><span>$1,092.72</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-danger">
+                                        <i class="fas fa-caret-down me-1"></i><span>$-1.78</span>
+                                    </span>
+                                </td>
+                            </tr>
+
+                             <tr>
+                                <th scope="row">Ikke relevant henvendelse </th>
+                                <td>
+                                    <span class="text-danger">
+                                        <i class="fas fa-caret-down me-1"></i><span>-17,654</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success">
+                                        <i class="fas fa-caret-up me-1"></i><span>28</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success">
+                                        <i class="fas fa-caret-up me-1"></i><span>111</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success">
+                                        <i class="fas fa-caret-up me-1"></i><span>$1,092.72</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-danger">
+                                        <i class="fas fa-caret-down me-1"></i><span>$-1.78</span>
+                                    </span>
+                                </td>
+                            </tr>
+
+                             <tr>
+                                <th scope="row">SPS </th>
+                                <td>
+                                    <span class="text-danger">
+                                        <i class="fas fa-caret-down me-1"></i><span>-17,654</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success">
+                                        <i class="fas fa-caret-up me-1"></i><span>28</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success">
+                                        <i class="fas fa-caret-up me-1"></i><span>111</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success">
+                                        <i class="fas fa-caret-up me-1"></i><span>$1,092.72</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-danger">
+                                        <i class="fas fa-caret-down me-1"></i><span>$-1.78</span>
+                                    </span>
+                                </td>
+                            </tr>
+
+                            v
+
+                             <tr>
+                                <th scope="row">Studieophør </th>
+                                <td>
+                                    <span class="text-danger">
+                                        <i class="fas fa-caret-down me-1"></i><span>-17,654</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success">
+                                        <i class="fas fa-caret-up me-1"></i><span>28</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success">
+                                        <i class="fas fa-caret-up me-1"></i><span>111</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success">
+                                        <i class="fas fa-caret-up me-1"></i><span>$1,092.72</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-danger">
+                                        <i class="fas fa-caret-down me-1"></i><span>$-1.78</span>
+                                    </span>
+                                </td>
+                            </tr>
+
+                             <tr>
+                                <th scope="row">Studieplanlægning </th>
+                                <td>
+                                    <span class="text-danger">
+                                        <i class="fas fa-caret-down me-1"></i><span>-17,654</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success">
+                                        <i class="fas fa-caret-up me-1"></i><span>28</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success">
+                                        <i class="fas fa-caret-up me-1"></i><span>111</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success">
+                                        <i class="fas fa-caret-up me-1"></i><span>$1,092.72</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-danger">
+                                        <i class="fas fa-caret-down me-1"></i><span>$-1.78</span>
+                                    </span>
+                                </td>
+                            </tr>
+
+                             <tr>
+                                <th scope="row">Studietvivl/studievalg Studieudfordringer  </th>
+                                <td>
+                                    <span class="text-danger">
+                                        <i class="fas fa-caret-down me-1"></i><span>-17,654</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success">
+                                        <i class="fas fa-caret-up me-1"></i><span>28</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success">
+                                        <i class="fas fa-caret-up me-1"></i><span>111</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success">
+                                        <i class="fas fa-caret-up me-1"></i><span>$1,092.72</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-danger">
+                                        <i class="fas fa-caret-down me-1"></i><span>$-1.78</span>
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th scope="row">Sygdom(egne) </th>
+                                <td>
+                                    <span class="text-danger">
+                                        <i class="fas fa-caret-down me-1"></i><span>-17,654</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success">
+                                        <i class="fas fa-caret-up me-1"></i><span>28</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success">
+                                        <i class="fas fa-caret-up me-1"></i><span>111</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success">
+                                        <i class="fas fa-caret-up me-1"></i><span>$1,092.72</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-danger">
+                                        <i class="fas fa-caret-down me-1"></i><span>$-1.78</span>
+                                    </span>
+                                </td>
+                            </tr>
+
+                             <tr>
+                                <th scope="row">Undervisningen (Samarbejdsvanskeligheder</th>
+                                <td>
+                                    <span class="text-danger">
+                                        <i class="fas fa-caret-down me-1"></i><span>-17,654</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success">
+                                        <i class="fas fa-caret-up me-1"></i><span>28</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success">
+                                        <i class="fas fa-caret-up me-1"></i><span>111</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success">
+                                        <i class="fas fa-caret-up me-1"></i><span>$1,092.72</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-danger">
+                                        <i class="fas fa-caret-down me-1"></i><span>$-1.78</span>
+                                    </span>
+                                </td>
+                            </tr>
+
+
+
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
+    <!--Section: Sales Performance KPIs-->
+    <!--Section: Minimal statistics cards-->
+    <section>
+      
+           
+        <div class="row">
+            <div class="col-xl-3 col-sm-6 col-12 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between px-md-1">
+                            <div>
+                                <h3 class="text-info">48%</h3>
+                                <p class="mb-0">Telefonisk hevendelse</p>
+                            </div>
+                            <div class="align-self-center">
+                                <i class="fas fa-phone text-info fa-3x"></i>
+                            </div>
+                        </div>
+                        <div class="px-md-1">
+                            <div class="progress mt-3 mb-1 rounded" style="height: 7px">
+                                <div class="progress-bar bg-info"
+                                     role="progressbar"
+                                     style="width: 48%"
+                                     aria-valuenow="48"
+                                     aria-valuemin="0"
+                                     aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 col-12 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between px-md-1">
+                            <div>
+                                <h3 class="text-warning">22%</h3>
+                                <p class="mb-0">Mail henvendelser</p>
+                            </div>
+                            <div class="align-self-center">
+                                <i class="far fa-envelope text-warning fa-3x"></i>
+                            </div>
+                        </div>
+                        <div class="px-md-1">
+                            <div class="progress mt-3 mb-1 rounded" style="height: 7px">
+                                <div class="progress-bar bg-warning"
+                                     role="progressbar"
+                                     style="width: 22%"
+                                     aria-valuenow="22"
+                                     aria-valuemin="0"
+                                     aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 col-12 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between px-md-1">
+                            <div>
+                                <h3 class="text-success">30 %</h3>
+                                <p class="mb-0">Personlige henvendelser</p>
+                            </div>
+                            <div class="align-self-center">
+                                <i class="fas  fa-person text-success fa-3x"></i>
+                            </div>
+                        </div>
+                        <div class="px-md-1">
+                            <div class="progress mt-3 mb-1 rounded" style="height: 7px">
+                                <div class="progress-bar bg-success"
+                                     role="progressbar"
+                                     style="width: 30%"
+                                     aria-valuenow="30"
+                                     aria-valuemin="0"
+                                     aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-sm-6 col-12 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between px-md-1">
+                            <div>
+                                <h3 class="text-danger">62,8</h3>
+                                <p class="mb-0">Procent tilfredshed</p>
+                            </div>
+                            <div class="align-self-center">
+                                <i class="fas fa-face-smile-beam text-danger fa-3x"></i>
+                            </div>
+                        </div>
+                        <div class="px-md-1">
+                            <div class="progress mt-3 mb-1 rounded" style="height: 7px">
+                                <div class="progress-bar bg-danger"
+                                     role="progressbar"
+                                     style="width: 62.8%"
+                                     aria-valuenow="62.8"
+                                     aria-valuemin="0"
+                                     aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--Section: Minimal statistics cards-->
+    <!--Section: Statistics with subtitles-->
+    <section>
+        
+
+        <div class="row">
+
+            <div class="col-xl-6 col-md-12 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between p-md-1">
+                            <div class="d-flex flex-row">
+                                <div class="align-self-center">
+                                    <h2 class="h1 mb-0 me-4">2913</h2>
+                                </div>
+                                <div>
+                                    <h4>Antal samtaler i år</h4>
+                                    <p class="mb-0">UCL Fredericia</p>
+                                </div>
+                            </div>
+                            <div class="align-self-center">
+                                <img src="~/assets/images/UCLLogoFredericia.png" alt="UCL Fredericia logo">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-6 col-md-12 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between p-md-1">
+                            <div class="d-flex flex-row">
+                                <div class="align-self-center">
+                                    <h2 class="h1 mb-0 me-4">2913</h2>
+                                </div>
+                                <div>
+                                    <h4>Antal samtaler i år</h4>
+                                    <p class="mb-0">UCL Svendborg</p>
+                                </div>
+                            </div>
+                            <div class="align-self-center">
+                                <img src="~/assets/images/UCLLogoSvandborg.png" alt="UCL Svandborg logo">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-6 col-md-12 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between p-md-1">
+                            <div class="d-flex flex-row">
+                                <div class="align-self-center">
+                                    <h2 class="h1 mb-0 me-4">2913</h2>
+                                </div>
+                                <div>
+                                    <h4>Antal samtaler i år</h4>
+                                    <p class="mb-0">UCL Jelling</p>
+                                </div>
+                            </div>
+                            <div class="align-self-center">
+                                <img src="~/assets/images/UCLLogoJelling.png" alt="UCL Jelling logo">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-6 col-md-12 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between p-md-1">
+                            <div class="d-flex flex-row">
+                                <div class="align-self-center">
+                                    <h2 class="h1 mb-0 me-4">2913</h2>
+                                </div>
+                                <div>
+                                    <h4>Antal Samtaler i år</h4>
+                                    <p class="mb-0">UCL Vejle </p>
+                                </div>
+                            </div>
+                            <div class="align-self-center">
+                                <img src="~/assets/images/UCLLogoVejle.png" alt="UCL Vejle logo">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-6 col-md-12 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between p-md-1">
+                            <div class="d-flex flex-row">
+                                <div class="align-self-center">
+                                    <h2 class="h1 mb-0 me-4">20913</h2>
+                                </div>
+                                <div>
+                                    <h4>Antal Samtaler i år</h4>
+                                    <p class="mb-0">UCL Odense</p>
+                                </div>
+                            </div>
+                            <div class="align-self-center">
+                                <img src="~/assets/images/UCLLogoOdense.png" alt="UCL Odense logo">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-6 col-md-12 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between p-md-1">
+                            <div class="d-flex flex-row">
+                                <div class="align-self-center">
+                                    <h2 class="h1 mb-0 me-4">14567</h2>
+                                </div>
+                                <div>
+                                    <h4>Total Antal Samtaler i år</h4>
+                                    <p class="mb-0">UCL</p>
+                                </div>
+                            </div>
+                            <div class="align-self-center">
+                                <img src="~/assets/images/UCLLogoAfdelinger.png" alt="UCL Odense logo">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+   
 </div>
 
-<button class="button">Exporter til Excel to</button>
-
-<canvas id="myChart" width="50" height="20"></canvas>
 
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-<script>
-    const ctx = document.getElementById('myChart');
+    <script>
+    // Graph
+    var ctx = document.getElementById("myChart");
 
-    new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: ['Barsel', 'Eksamen', 'Trivsel', 'Orlov', 'Praktik', 'Sydom'],
-        datasets: [{
-          label: '# of Votes',
-          data: [12, 19, 3, 5, 2, 3],
-          borderWidth: 1
-        }]
-      },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true
-          }
-        }
-      }
+    var myChart = new Chart(ctx, {
+        type: "line",
+        data: {
+            labels: [
+                "Januar",
+                "feburar",
+                "Marts",
+                "April",
+                "Maj",
+                "Juni",
+                "Juli",
+                "August",
+                "September",
+                "Oktober",
+                "November",
+                "December",
+            ],
+            datasets: [
+                {
+                    data: [835, 1548, 2564, 4284, 6541, 8244, 9541,10548,12548,12958, 13528, 14567],
+                    lineTension: 0,
+                    backgroundColor: "transparent",
+                    borderColor: "#00454E",
+                    borderWidth: 4,
+                    pointBackgroundColor: "#007bff",
+                },
+            ],
+        },
+        options: {
+            scales: {
+                yAxes: [
+                    {
+                        ticks: {
+                            beginAtZero: false,
+                        },
+                    },
+                ],
+            },
+            legend: {
+                display: false,
+            },
+        },
     });
-</script>
-<script>
-    function myFunction() {
-        document.getElementById("myDropdown").classList.toggle("show");
-    }
-
-    // Close the dropdown if the user clicks outside of it
-    window.onclick = function (e) {
-        if (!e.target.matches('.dropbtn')) {
-            var myDropdown = document.getElementById("myDropdown");
-            if (myDropdown.classList.contains('show')) {
-                myDropdown.classList.remove('show');
-            }
-        }
-    }
-
-</script>
-
-
-<script src="~/js/FilterMenu.js"></script>
+    </script>
