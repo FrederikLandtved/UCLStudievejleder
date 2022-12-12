@@ -1,3 +1,6 @@
-﻿*, :after, :before {
-    box-sizing: unset!important;
+﻿
+
+.sidebar, a, .sidebar-icon{
+    box-sizing: unset !important;
 }
+
