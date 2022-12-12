@@ -17,8 +17,6 @@
           rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
           rel="stylesheet" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.1/mdb.min.css"
-          rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js" integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw=="
             crossorigin="anonymous"></script>
 </head>
@@ -40,10 +38,10 @@
         </div>
     </div><!-- OVERLAY -->
 
-    <div class="sidebar">
-        <a asp-controller="Formular" asp-action="Index"><img class="sidebar-icon border" src="~/assets/icons/pencil.png" /></a>
-        <a asp-controller="Statistics" asp-action="Index"><img class="sidebar-icon border" src="~/assets/icons/statistics.png" /></a>
-        <a asp-controller="Formular" asp-action="FormularList"><img class="sidebar-icon border" src="~/assets/icons/list.png" /></a>
+    <div class="sidebar-own">
+        <a asp-controller="Formular" asp-action="Index"><img class="sidebar-icon border-own" src="~/assets/icons/pencil.png" /></a>
+        <a asp-controller="Statistics" asp-action="Index"><img class="sidebar-icon border-own" src="~/assets/icons/statistics.png" /></a>
+        <a asp-controller="Formular" asp-action="FormularList"><img class="sidebar-icon border-own" src="~/assets/icons/list.png" /></a>
         <img class="sidebar-icon" src="~/assets/icons/settings.png" onclick="openNav()" />
     </div><!-- SIDE BAR -->
 
@@ -81,7 +79,7 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.1/mdb.min.js"></script>
+
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
