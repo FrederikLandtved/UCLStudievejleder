@@ -9,6 +9,8 @@ namespace UCLStudievejlederApp.Models.User
 {
     public class RegisterUserModel
     {
+        public int UserId { get; set; }
+
         [Required(ErrorMessage = "Email er påkrævet.")]
         [EmailAddress]
         [Display(Name = "Email")]

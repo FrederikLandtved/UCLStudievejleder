@@ -38,6 +38,16 @@ namespace DatabaseAccess.User
             return users;
         }
 
+        public void UpdateUser(UserModel model)
+        {
+            SqlDataReader reader = _genericSql.ExecuteSproc("sp_UpdateUser", new List<ParameterModel> { 
+                new ParameterModel {Parameter = "@UserId", Value = model.UserId.ToString()},
+                new ParameterModel {Parameter = "@FirstName", Value = model.FirstName},
+                new ParameterModel {Parameter = "@LastName", Value = model.LastName}
+            });
+
+        }
+
         public UserModel GetUser(int userId)
         {
             UserModel user = new UserModel();

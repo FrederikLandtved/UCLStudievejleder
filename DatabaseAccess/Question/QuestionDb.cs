@@ -52,6 +52,9 @@ namespace DatabaseAccess.Question
             public string QuestionString { get; set; }
             public int QuestionTypeId { get; set; }
             public List<AnswerOption> AnswerOptions { get; set; } = new List<AnswerOption>();
+
+            public int SingleChosenOption { get; set; }
+            public string DropdownChosenOption { get; set; }
         }
     }
 }

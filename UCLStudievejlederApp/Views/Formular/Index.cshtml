@@ -7,43 +7,61 @@
 
 <h1>Registrér henvendelse</h1>
 <p class="page-description">Her kan du registrere en ny henvendelse</p>
-
+@{
+    int currentMonth = DateTime.Now.Month;
+}
+<form asp-controller="Formular" asp-action="PostFormular" method="post">
 <div class="form-wrapper">
     @foreach(Question question in Model.Questions){
         int indexOfQuestion = Model.Questions.IndexOf(question);
 
         <div class="question-container">
-            <button class="form-title"><img src="" alt="" />@question.QuestionString</button>
+            <div class="form-title"><img src="" alt="" />@question.QuestionString</div>
 
             <div class="form-drop-style">
                 <div class="answer-options">
-                    @if (question.QuestionTypeId == 1)
-                    {
-                        <div class="radio-button-container">
-                            <input type="month" />
-                        </div>
+                    @if (question.QuestionTypeId == 1) {
+                            List<SelectListItem> items = new List<SelectListItem>();
+                            @foreach (var option in Model.Questions[indexOfQuestion].AnswerOptions)
+                            {
+                                int answerIndex = Model.Questions[indexOfQuestion].AnswerOptions.IndexOf(option);
+
+                                @Html.HiddenFor(m => m.Questions[indexOfQuestion].AnswerOptions[answerIndex].AnswerOptionId)
+                                @Html.HiddenFor(m => m.Questions[indexOfQuestion].AnswerOptions[answerIndex].QuestionId)
+                                items.Add(new SelectListItem { Text = option.AnswerOptionString, Value = option.AnswerOptionId.ToString(), Selected = option.IsSelected });
+                            }
+                            SelectList selectList = new SelectList(items, "Value", "Text", items[currentMonth].Value);
+
+
+                            @Html.DropDownListFor(m => Model.Questions[indexOfQuestion].DropdownChosenOption, selectList, "Vælg måned")
                     }
 
-                    @foreach(AnswerOption answerOption in question.AnswerOptions) {
-                        int indexOfAnswerOption = question.AnswerOptions.IndexOf(answerOption);
-                        string name = question.QuestionString + indexOfAnswerOption;
 
-                        <!-- Render as Multiple choice (Checkboxes) -->
-                        @if (question.QuestionTypeId == 2)
-                        {
-                            <div class="radio-button-container">
-                                <input  type="checkbox" id="@name" class="checkbox-form" name="@question.QuestionString" value="@answerOption.AnswerOptionId">
-                                <label for="@name" class="label-form">@answerOption.AnswerOptionString</label>
-                            </div>
-                        }
+                    @foreach (var AnswerOption in question.AnswerOptions)
+                    {
+                        int answerIndex = question.AnswerOptions.IndexOf(AnswerOption);
 
-                        <!-- Render as Single choice (Radio button) -->
+                        @Html.HiddenFor(m => m.Questions[indexOfQuestion].AnswerOptions[answerIndex].AnswerOptionId)
+                        @Html.HiddenFor(m => m.Questions[indexOfQuestion].AnswerOptions[answerIndex].QuestionId)
+
                         @if (question.QuestionTypeId == 3)
                         {
-                            <div class="radio-button-container">
-                                <input onclick="goToNext(@indexOfQuestion+1)" type="radio" id="@name" class="checkbox-form" name="@question.QuestionString" value="@answerOption.AnswerOptionId">
-                                <label for="@name" class="label-form">@answerOption.AnswerOptionString</label>
-                            </div>
+                                <div class="radio-button-container">
+                                    <label class="label-form" onclick="goToNext(@indexOfQuestion+1)">
+                                    @Html.RadioButtonFor(m => Model.Questions[indexOfQuestion].SingleChosenOption, AnswerOption.AnswerOptionId, new { @class="checkbox-form" })
+                                        @AnswerOption.AnswerOptionString
+                                    </label>
+                                </div>
+                        }
+
+                        @if (question.QuestionTypeId == 2)
+                        {
+                                <div class="radio-button-container">
+                                    <label class="label-form">
+                                    @Html.CheckBoxFor(m => Model.Questions[indexOfQuestion].AnswerOptions[answerIndex].IsSelected, new { @class="checkbox-form" })
+                                        @AnswerOption.AnswerOptionString    
+                                    </label>
+                                </div>
                         }
                     }
 
@@ -56,5 +74,5 @@
 <div class="form-submit">
     <button type="submit" value="Submit">Indsend</button>
 </div><!-- FORM SUBMIT -->
-
+</form>
 <script src="~/js/inquiries.js"></script>

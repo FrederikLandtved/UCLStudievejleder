@@ -66,6 +66,8 @@ namespace DatabaseAccess.Generic
             }
         }
 
+
+
         public void Insert(string query, List<ParameterModel> parameters)
         {
             try

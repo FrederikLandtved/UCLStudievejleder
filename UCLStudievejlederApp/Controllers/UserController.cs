@@ -99,6 +99,7 @@ namespace UCLStudievejlederApp.Controllers
             return View(model);
         }
 
+        [HttpGet]
         public IActionResult EditOneUser(int userId)
         {
 
@@ -110,7 +111,8 @@ namespace UCLStudievejlederApp.Controllers
             {
                 FirstName = user.FirstName,
                 LastName = user.LastName,
-                Email = user.Email
+                Email = user.Email,
+                UserId = user.UserId
             };
 
             foreach (InstitutionModel institution in _institutionDb.GetAllInstitutions())
@@ -121,6 +123,18 @@ namespace UCLStudievejlederApp.Controllers
 
             return View(model);
         }
+        
+        [HttpPost]
+        public IActionResult EditOneUser(RegisterUserModel model)
+        {
+            UserModel user = _userDb.GetUser(model.UserId);
+            user.FirstName = model.FirstName;
+            user.LastName = model.LastName;
+            _userDb.UpdateUser(user);
+
+            return RedirectToAction("EditOneUser", new { userId = model.UserId });
+        }
+
     }
 }
 

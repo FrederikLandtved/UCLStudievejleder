@@ -18,7 +18,9 @@
         <div class="success-message">@Model.SuccessMessage</div>
     }
 
-    <form id="registerForm" asp-controller="User" asp-action="CreateUser" method="post" autocomplete="off">
+    <form id="registerForm" asp-controller="User" asp-action="EditOneUser" method="post" autocomplete="off">
+
+        @Html.HiddenFor(x => x.UserId)
         <div asp-validation-summary="ModelOnly" class="ucl-validation-danger"></div>
         <div class="form-item">
             <label asp-for="Email"></label>

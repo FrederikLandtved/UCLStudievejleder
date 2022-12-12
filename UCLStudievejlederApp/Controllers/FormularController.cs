@@ -17,17 +17,26 @@ namespace UCLStudievejlederApp.Controllers
             _questionDb = questionDb;
         }
 
+        [HttpGet]
         public IActionResult Index()
         {
             FormularViewModel model = new FormularViewModel();
             model.Questions = _questionDb.GetAllQuestionsWithAnswers();
+            string currentDate = DateTime.Now.ToString("MMMM yyyy");
 
             for (int i = -12; i <= 0; i++)
             {
-                model.Questions[0].AnswerOptions.Add(new AnswerOption { QuestionId = 1, AnswerOptionString = DateTime.Now.AddMonths(i).ToString("MMMM yyyy") });
+                string dateString = DateTime.Now.AddMonths(i).ToString("MMMM yyyy");
+                model.Questions[0].AnswerOptions.Add(new AnswerOption { QuestionId = 1, AnswerOptionString = dateString, AnswerOptionId = i + 12, IsSelected = (currentDate == dateString) });
             }
 
             return View(model);
+        }
+
+        [HttpPost] 
+        public IActionResult PostFormular(FormularViewModel model)
+        {
+            return null;
         }
 
         public IActionResult FormularList()

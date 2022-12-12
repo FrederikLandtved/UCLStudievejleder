@@ -30,7 +30,6 @@ namespace DatabaseAccess.Question
             return answerOptions;
         }
 
-
         public class AnswerOption
         {
             public int AnswerOptionId { get; set; }
