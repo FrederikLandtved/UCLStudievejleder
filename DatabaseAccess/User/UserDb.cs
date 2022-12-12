@@ -64,6 +64,19 @@ namespace DatabaseAccess.User
             return user;
         }
 
+        public int GetUserId(string userToken)
+        {
+            SqlDataReader reader = _genericSql.Select("SELECT UserId FROM dbo.AspNetUsers WHERE Id = '" + userToken + "'");
+            int userId = 0;
+
+            while (reader.Read())
+            {
+                userId = reader.GetInt32(0);
+            }
+
+            return userId;
+        }
+
         public List<UserMinimalModel> GetMinimalUserList()
         {
             List<UserMinimalModel> users = new List<UserMinimalModel>();

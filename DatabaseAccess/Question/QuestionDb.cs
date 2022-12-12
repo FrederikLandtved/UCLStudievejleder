@@ -1,6 +1,7 @@
 ﻿using DatabaseAccess.Generic;
 using DatabaseAccess.Institution;
 using DatabaseAccess.Institution.Models;
+using DatabaseAccess.User;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Caching.Memory;
 using static DatabaseAccess.Generic.GenericSql;
@@ -24,9 +25,9 @@ namespace DatabaseAccess.Question
         public List<Question> GetAllQuestionsWithAnswers()
         {
             List<Question> questions = new List<Question>();
-            var cachedQuestions = _memoryCache.Get<List<Question>>("AllQuestionsWithAnswers");
-            if (cachedQuestions != null)
-                return cachedQuestions;
+            //var cachedQuestions = _memoryCache.Get<List<Question>>("AllQuestionsWithAnswers");
+            //if (cachedQuestions != null)
+            //    return cachedQuestions;
 
             SqlDataReader reader = _genericSql.Select("SELECT * FROM [dbo].[Question]");
 
@@ -41,8 +42,24 @@ namespace DatabaseAccess.Question
                 });
             }
 
-            _memoryCache.Set("AllQuestionsWithAnswers", questions, TimeSpan.FromMinutes(5));
+            //_memoryCache.Set("AllQuestionsWithAnswers", questions, TimeSpan.FromMinutes(5));
             return questions;
+        }
+
+        public void CreateQuestionAnswer(int questionId, int answerOptionId, int formularId)
+        {
+            string query = "INSERT INTO dbo.[QuestionAnswer] (QuestionId, AnswerOptionId, FormularId) VALUES (@questionId, @answerOptionId, @formularId)";
+
+
+            List<ParameterModel> inserts = new List<ParameterModel>
+            {
+                new ParameterModel { Parameter = "@questionId", Value = questionId.ToString() },
+                new ParameterModel { Parameter = "@answerOptionId", Value = answerOptionId.ToString() },
+                new ParameterModel { Parameter = "@formularId", Value = formularId.ToString() }
+
+            };
+
+            _genericSql.Insert(query, inserts);
         }
 
 

@@ -1,6 +1,5 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@using UCLStudievejlederApp.Models.Formular
+@model MyFormularsModel
 @{
 }
 <head>
@@ -20,29 +19,29 @@
 
 <table class="user-edit formular-header" cellspacing="0" cellpadding="0">
     <tr>
-        <th>Mødeform<span class="arrow up"></span></th>
-        <th>Tidsforbrug<span class="arrow up"></span></th>
-        <th>Køn<span class="arrow up"></span></th>
+        <th>Måned<span class="arrow up"></span></th>
+        <th>Type<span class="arrow up"></span></th>
+        <th>Samtaletid<span class="arrow up"></span></th>
+        <th>Hvem?<span class="arrow up"></span></th>
+        <th>Status<span class="arrow up"></span></th>
+        <th>Institution<span class="arrow up"></span></th>
         <th>Studieretning<span class="arrow up"></span></th>
         <th>Emne/Kategori<span class="arrow up"></span></th>
-
     </tr>
     <!-- Skal gentages for hver udfyld formular -->
-    <tr>
-        <th>Personlig</th>
-        <th>1-20 min</th>
-        <th>Kvinde</th>
-        <th>Multimediedesigner</th>
-        <th>Eksamensangst</th>
-    </tr>
-
-    <tr>
-        <th>Virtuel</th>
-        <th>21-40 min</th>
-        <th>Kvinde</th>
-        <th>Datamatiker</th>
-        <th>Orlov</th>
-    </tr>
+    @foreach(FormularListItemModel listItem in Model.Formulars) 
+    {
+        <tr>
+            <th>@listItem.Month</th>
+            <th>@listItem.TypeOfEnquiry</th>
+            <th>@listItem.ConversationTime</th>
+            <th>@listItem.WhoWereGuided</th>
+            <th>@listItem.Level</th>
+            <th>@listItem.ChoosePrimaryInstitution</th>
+            <th>@listItem.ChooseAllFieldsOfStudies</th>
+            <th>@listItem.SubjectCategory</th>
+        </tr>
+    }
 </table>
 
 
