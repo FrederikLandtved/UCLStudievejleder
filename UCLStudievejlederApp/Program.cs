@@ -1,6 +1,9 @@
 using DatabaseAccess.FieldOfStudy;
+using DatabaseAccess.FormularDbAccess;
 using DatabaseAccess.Institution;
 using DatabaseAccess.Question;
+using DatabaseAccess.QuestionAnswer;
+using DatabaseAccess.User;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.DotNet.Scaffolding.Shared.ProjectModel;
 using Microsoft.EntityFrameworkCore;
@@ -21,6 +24,10 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<FieldOfStudyDb, FieldOfStudyDb>();
 builder.Services.AddScoped<InstitutionDb, InstitutionDb>();
 builder.Services.AddScoped<QuestionDb, QuestionDb>();
+builder.Services.AddScoped<QuestionAnswerDb, QuestionAnswerDb>();
+builder.Services.AddScoped<AnswerOptionDb, AnswerOptionDb>();
+builder.Services.AddScoped<UserDb, UserDb>();
+builder.Services.AddScoped<FormularDbAccess, FormularDbAccess>();
 
 var app = builder.Build();
 

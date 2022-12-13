@@ -66,6 +66,44 @@ namespace DatabaseAccess.Generic
             }
         }
 
+        public int InsertRowAndReturnId(string sproc, List<ParameterModel> parameters, string outputParamName)
+        {
+            try
+            {
+                SqlConnection connection = new SqlConnection(connectionString);
+
+                using (SqlCommand command = new SqlCommand(sproc, connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    if (parameters.Any())
+                    {
+                        foreach (ParameterModel param in parameters)
+                            command.Parameters.Add(new SqlParameter(param.Parameter, param.Value));
+                    }
+
+                    connection.Open();
+                    SqlParameter outputParam = new SqlParameter(outputParamName, SqlDbType.Int);
+                    outputParam.Direction = ParameterDirection.Output;
+                    command.Parameters.Add(outputParam);
+
+                    // Execute the stored procedure
+                    command.ExecuteNonQuery();
+
+                    return (int)outputParam.Value;
+                    connection.Close();
+                }
+
+                return 0;
+
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Something went wrong.");
+                throw;
+            }
+        }
+
         public void Insert(string query, List<ParameterModel> parameters)
         {
             try

@@ -38,6 +38,16 @@ namespace DatabaseAccess.User
             return users;
         }
 
+        public void UpdateUser(UserModel model)
+        {
+            SqlDataReader reader = _genericSql.ExecuteSproc("sp_UpdateUser", new List<ParameterModel> { 
+                new ParameterModel {Parameter = "@UserId", Value = model.UserId.ToString()},
+                new ParameterModel {Parameter = "@FirstName", Value = model.FirstName},
+                new ParameterModel {Parameter = "@LastName", Value = model.LastName}
+            });
+
+        }
+
         public UserModel GetUser(int userId)
         {
             UserModel user = new UserModel();
@@ -52,6 +62,19 @@ namespace DatabaseAccess.User
             }
 
             return user;
+        }
+
+        public int GetUserId(string userToken)
+        {
+            SqlDataReader reader = _genericSql.Select("SELECT UserId FROM dbo.AspNetUsers WHERE Id = '" + userToken + "'");
+            int userId = 0;
+
+            while (reader.Read())
+            {
+                userId = reader.GetInt32(0);
+            }
+
+            return userId;
         }
 
         public List<UserMinimalModel> GetMinimalUserList()
