@@ -22,7 +22,7 @@ namespace DatabaseAccess.FormularDbAccess
             int newFormularId = _genericSql.InsertRowAndReturnId("sp_CreateNewFormular", new List<ParameterModel> 
             { 
                 new ParameterModel { Parameter = "@UserId", Value = userId.ToString() },
-                new ParameterModel { Parameter = "@DateSubmitted", Value = dateSubmitted.ToString() }
+                new ParameterModel { Parameter = "@DateSubmitted", Value = dateSubmitted.ToString("yyyy-MM-dd") }
             }, "@FormularId");
 
             return newFormularId;
