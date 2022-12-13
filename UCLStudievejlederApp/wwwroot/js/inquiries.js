@@ -1,5 +1,5 @@
 ﻿const allButtons = document.querySelectorAll(".form-title");
-
+const inquiryResult = document.querySelectorAll(".inquiry-result-title");
 
 allButtons.forEach(function (item) {
     item.addEventListener("click", function () {
