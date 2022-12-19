@@ -71,7 +71,6 @@ namespace DatabaseAccess.Institution
         {
             string query = "INSERT INTO dbo.[UserHasInstitution] (UserId, InstitutionId) VALUES (@userId, @institutionId)";
 
-
             List<ParameterModel> inserts = new List<ParameterModel>
             {
                 new ParameterModel { Parameter = "@userId", Value = userId.ToString() },

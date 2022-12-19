@@ -13,22 +13,16 @@ namespace DatabaseAccess.Question
     {
         private readonly GenericSql _genericSql;
         private readonly AnswerOptionDb _answerOptionDb;
-        private readonly IMemoryCache _memoryCache;
 
-        public QuestionDb(IMemoryCache memoryCache)
+        public QuestionDb()
         {
             _genericSql = new GenericSql();
             _answerOptionDb = new AnswerOptionDb();
-            _memoryCache = memoryCache;
         }
 
         public List<Question> GetAllQuestionsWithAnswers()
         {
             List<Question> questions = new List<Question>();
-            //var cachedQuestions = _memoryCache.Get<List<Question>>("AllQuestionsWithAnswers");
-            //if (cachedQuestions != null)
-            //    return cachedQuestions;
-
             SqlDataReader reader = _genericSql.Select("SELECT * FROM [dbo].[Question]");
 
             while (reader.Read())
@@ -42,7 +36,6 @@ namespace DatabaseAccess.Question
                 });
             }
 
-            //_memoryCache.Set("AllQuestionsWithAnswers", questions, TimeSpan.FromMinutes(5));
             return questions;
         }
 

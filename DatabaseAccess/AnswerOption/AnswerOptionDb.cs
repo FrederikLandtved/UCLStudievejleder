@@ -71,6 +71,7 @@ namespace DatabaseAccess.Question
             public int QuestionId { get; set; }
             public string AnswerOptionString { get; set; }
             public bool IsSelected { get; set; }
+            public bool IsFavorite { get; set; }
         }
 
         public class FormularAnswers

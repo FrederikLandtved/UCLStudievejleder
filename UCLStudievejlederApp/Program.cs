@@ -21,13 +21,15 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.R
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddScoped<FieldOfStudyDb, FieldOfStudyDb>();
-builder.Services.AddScoped<InstitutionDb, InstitutionDb>();
-builder.Services.AddScoped<QuestionDb, QuestionDb>();
-builder.Services.AddScoped<QuestionAnswerDb, QuestionAnswerDb>();
-builder.Services.AddScoped<AnswerOptionDb, AnswerOptionDb>();
-builder.Services.AddScoped<UserDb, UserDb>();
-builder.Services.AddScoped<FormularDbAccess, FormularDbAccess>();
+builder.Services.AddMemoryCache();
+
+builder.Services.AddTransient<FieldOfStudyDb, FieldOfStudyDb>();
+builder.Services.AddTransient<InstitutionDb, InstitutionDb>();
+builder.Services.AddTransient<QuestionDb, QuestionDb>();
+builder.Services.AddTransient<QuestionAnswerDb, QuestionAnswerDb>();
+builder.Services.AddTransient<AnswerOptionDb, AnswerOptionDb>();
+builder.Services.AddTransient<UserDb, UserDb>();
+builder.Services.AddTransient<FormularDbAccess, FormularDbAccess>();
 
 var app = builder.Build();
 

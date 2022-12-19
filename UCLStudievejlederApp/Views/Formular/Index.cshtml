@@ -16,7 +16,7 @@
         int indexOfQuestion = Model.Questions.IndexOf(question);
 
         <div class="question-container">
-            <div class="form-title"><img src="" alt="" />@question.QuestionString - <span class="inquiry-result-title"></span></div>
+            <div class="form-title"><img src="" alt="" />@question.QuestionString  <span class="inquiry-result-title"></span></div>
 
             <div class="form-drop-style">
                 <div class="answer-options">
@@ -33,9 +33,15 @@
                             SelectList selectList = new SelectList(items, "Value", "Text", items[currentMonth].Value);
 
 
-                            @Html.DropDownListFor(m => Model.Questions[indexOfQuestion].DropdownChosenOption, selectList, "Vælg måned")
+                            @Html.DropDownListFor(m => Model.Questions[indexOfQuestion].DropdownChosenOption, selectList, "Vælg måned", new { @class = "select-dropdown" })
                     }
 
+                    @if (question.QuestionTypeId == 2)
+                    {
+                        <div class="search-input-container">
+                            <input type="text" placeholder="Søg...">
+                        </div>
+                    }
 
                     @foreach (var AnswerOption in question.AnswerOptions)
                     {
@@ -46,22 +52,30 @@
 
                         @if (question.QuestionTypeId == 3)
                         {
-                                <div class="radio-button-container">
-                                    <label class="label-form" onclick="goToNext(@indexOfQuestion+1)">
-                                    @Html.RadioButtonFor(m => Model.Questions[indexOfQuestion].SingleChosenOption, AnswerOption.AnswerOptionId, new { @class="checkbox-form" })
-                                        @AnswerOption.AnswerOptionString
-                                    </label>
-                                </div>
+                            <div class="radio-button-container">
+                                <label class="label-form" onclick="goToNext(@indexOfQuestion+1)">
+                                @Html.RadioButtonFor(m => Model.Questions[indexOfQuestion].SingleChosenOption, AnswerOption.AnswerOptionId, new { @class="checkbox-form ucl-radiobtn" })@AnswerOption.AnswerOptionString
+                                </label>
+                            </div>
                         }
 
                         @if (question.QuestionTypeId == 2)
                         {
-                                <div class="radio-button-container">
+                            @if(AnswerOption.IsFavorite) {
+                                <div style="background-color: red;" class="radio-button-container">
                                     <label class="label-form">
-                                    @Html.CheckBoxFor(m => Model.Questions[indexOfQuestion].AnswerOptions[answerIndex].IsSelected, new { @class="checkbox-form" })
-                                        @AnswerOption.AnswerOptionString    
+                                        @Html.CheckBoxFor(m => Model.Questions[indexOfQuestion].AnswerOptions[answerIndex].IsSelected, new { @class="checkbox-form" })
+                                        @AnswerOption.AnswerOptionString
                                     </label>
                                 </div>
+                            } else {
+                                <div class="radio-button-container">
+                                    <label class="label-form">
+                                        @Html.CheckBoxFor(m => Model.Questions[indexOfQuestion].AnswerOptions[answerIndex].IsSelected, new { @class="checkbox-form" })
+                                        @AnswerOption.AnswerOptionString
+                                    </label>
+                                </div>
+                            }
                         }
                     }
 

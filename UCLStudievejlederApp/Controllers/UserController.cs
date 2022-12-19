@@ -79,14 +79,6 @@ namespace UCLStudievejlederApp.Controllers
 
                     return View(model);
                 }
-
-                else
-                {
-                    foreach (var error in result.Errors)
-                    {
-                        ModelState.AddModelError("", error.Description);
-                    }
-                }
             }
 
             return View(model);
