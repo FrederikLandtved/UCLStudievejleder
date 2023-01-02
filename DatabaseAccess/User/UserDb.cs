@@ -14,9 +14,9 @@ namespace DatabaseAccess.User
     {
         private readonly GenericSql _genericSql;
 
-        public UserDb()
+        public UserDb(GenericSql genericSql)
         {
-            _genericSql = new GenericSql();
+            _genericSql = genericSql;
         }
 
         public List<UserModel> GetAllUsers()

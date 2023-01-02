@@ -11,9 +11,9 @@ namespace DatabaseAccess.Formulars
     {
         private readonly GenericSql _genericSql;
 
-        public FormularDb() { 
-        
-            _genericSql = new GenericSql();
+        public FormularDb(GenericSql genericSql)
+        {
+            _genericSql = genericSql;
         }
 
         public List<Formulars> GetAllFormulars()

@@ -1,13 +1,20 @@
 ﻿using DatabaseAccess.User;
 using Microsoft.Data.SqlClient;
 using System.Data;
+using DatabaseAccess.Generic.Models;
 
 namespace DatabaseAccess.Generic
 {
     public class GenericSql
     {
-        private string connectionString = "Server=tcp:ucldataserver.database.windows.net,1433;Initial Catalog=UCLDataPROD;Persist Security Info=False;User ID=azureuser;Password=Stefan$ebastianJacobMia;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30";
+        private string connectionString = "";
+        private readonly IConfiguration _configuration;
 
+        public GenericSql(IConfiguration configuration)
+        {
+            _configuration = configuration;
+            connectionString = _configuration.GetSection("ConnectionStrings").Get<ConnectionStrings>().DefaultConnection;
+        }
         public SqlDataReader Select(string query)
         {
             try

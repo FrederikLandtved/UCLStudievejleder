@@ -12,9 +12,9 @@ namespace DatabaseAccess.FormularDbAccess
     {
         private readonly GenericSql _genericSql;
 
-        public FormularDbAccess(IMemoryCache memoryCache)
+        public FormularDbAccess(IMemoryCache memoryCache, GenericSql genericSql)
         {
-            _genericSql = new GenericSql();
+            _genericSql = genericSql;
         }
 
         public int CreateNewFormular(int userId, DateTime dateSubmitted)

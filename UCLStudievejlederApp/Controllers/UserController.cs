@@ -28,11 +28,11 @@ namespace UCLStudievejlederApp.Controllers
         private readonly UserDb _userDb;
         private readonly InstitutionDb _institutionDb;
         private readonly FieldOfStudyDb _fieldOfStudyDb;
-        public UserController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signManager, FieldOfStudyDb fieldOfStudyDb, InstitutionDb institutionDb)
+        public UserController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signManager, FieldOfStudyDb fieldOfStudyDb, InstitutionDb institutionDb, UserDb userDb)
         {
             _userManager = userManager;
             _signManager = signManager;
-            _userDb = new UserDb();
+            _userDb = userDb;
             _institutionDb = institutionDb;
             _fieldOfStudyDb = fieldOfStudyDb;
     }

@@ -13,9 +13,9 @@ namespace DatabaseAccess.FieldOfStudy
         private readonly GenericSql _genericSql;
         private readonly IMemoryCache _memoryCache;
 
-        public FieldOfStudyDb(IMemoryCache memoryCache)
+        public FieldOfStudyDb(IMemoryCache memoryCache, GenericSql genericSql)
         {
-            _genericSql = new GenericSql();
+            _genericSql = genericSql;
             _memoryCache = memoryCache;
         }
 

@@ -8,9 +8,9 @@ namespace DatabaseAccess.Question
     public class AnswerOptionDb
     {
         private readonly GenericSql _genericSql;
-        public AnswerOptionDb()
+        public AnswerOptionDb(GenericSql genericSql)
         {
-            _genericSql = new GenericSql();
+            _genericSql = genericSql;
         }
 
         public List<AnswerOption> GetAnswerOptionsByQuestionId(int questionId)

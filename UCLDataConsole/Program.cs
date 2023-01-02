@@ -1,9 +1,9 @@
 ﻿using Microsoft.Data.SqlClient;
-string connectionString = "Server=tcp:ucldataserver.database.windows.net,1433;Initial Catalog=UCLDataPROD;Persist Security Info=False;User ID=azureuser;Password=Stefan$ebastianJacobMia;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30";
+string connectionString = "CONNECTION STRING HERE";
 
 //try
 //{
-//    string connectionString = "Server=tcp:ucldataserver.database.windows.net,1433;Initial Catalog=UCLDataPROD;Persist Security Info=False;User ID=azureuser;Password=Stefan$ebastianJacobMia;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30";
+//    string connectionString = "CONNECTION STRING HERE";
 //    SqlConnection connection = new SqlConnection(connectionString);
 
 //    string sql = "SELECT * FROM [dbo].[Question]";

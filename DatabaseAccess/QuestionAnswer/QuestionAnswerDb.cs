@@ -8,9 +8,9 @@ namespace DatabaseAccess.QuestionAnswer
     {
         private readonly GenericSql _genericSql;
 
-        public QuestionAnswerDb()
+        public QuestionAnswerDb(GenericSql genericSql)
         {
-            _genericSql = new GenericSql();
+            _genericSql = genericSql;
         }
 
         public List<QuestionAnswerModel> GetQuestionAnswersForFormular(int formularId)

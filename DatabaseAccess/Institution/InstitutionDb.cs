@@ -11,9 +11,9 @@ namespace DatabaseAccess.Institution
     {
         private readonly GenericSql _genericSql;
         private readonly IMemoryCache _memoryCache;
-        public InstitutionDb(IMemoryCache memoryCache)
+        public InstitutionDb(IMemoryCache memoryCache, GenericSql genericSql)
         {
-            _genericSql = new GenericSql();
+            _genericSql = genericSql;
             _memoryCache = memoryCache;
         }
 

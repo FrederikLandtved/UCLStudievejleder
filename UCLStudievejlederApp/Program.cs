@@ -1,5 +1,7 @@
 using DatabaseAccess.FieldOfStudy;
 using DatabaseAccess.FormularDbAccess;
+using DatabaseAccess.Formulars;
+using DatabaseAccess.Generic;
 using DatabaseAccess.Institution;
 using DatabaseAccess.Question;
 using DatabaseAccess.QuestionAnswer;
@@ -23,13 +25,15 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddMemoryCache();
 
-builder.Services.AddTransient<FieldOfStudyDb, FieldOfStudyDb>();
-builder.Services.AddTransient<InstitutionDb, InstitutionDb>();
-builder.Services.AddTransient<QuestionDb, QuestionDb>();
-builder.Services.AddTransient<QuestionAnswerDb, QuestionAnswerDb>();
-builder.Services.AddTransient<AnswerOptionDb, AnswerOptionDb>();
-builder.Services.AddTransient<UserDb, UserDb>();
-builder.Services.AddTransient<FormularDbAccess, FormularDbAccess>();
+builder.Services.AddScoped<GenericSql, GenericSql>();
+builder.Services.AddScoped<FieldOfStudyDb, FieldOfStudyDb>();
+builder.Services.AddScoped<InstitutionDb, InstitutionDb>();
+builder.Services.AddScoped<QuestionDb, QuestionDb>();
+builder.Services.AddScoped<QuestionAnswerDb, QuestionAnswerDb>();
+builder.Services.AddScoped<AnswerOptionDb, AnswerOptionDb>();
+builder.Services.AddScoped<UserDb, UserDb>();
+builder.Services.AddScoped<FormularDb, FormularDb>();
+builder.Services.AddScoped<FormularDbAccess, FormularDbAccess>();
 
 var app = builder.Build();
 

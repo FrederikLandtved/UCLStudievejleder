@@ -14,10 +14,10 @@ namespace DatabaseAccess.Question
         private readonly GenericSql _genericSql;
         private readonly AnswerOptionDb _answerOptionDb;
 
-        public QuestionDb()
+        public QuestionDb(GenericSql genericSql, AnswerOptionDb answerOptionDb)
         {
-            _genericSql = new GenericSql();
-            _answerOptionDb = new AnswerOptionDb();
+            _genericSql = genericSql;
+            _answerOptionDb = answerOptionDb;
         }
 
         public List<Question> GetAllQuestionsWithAnswers()
