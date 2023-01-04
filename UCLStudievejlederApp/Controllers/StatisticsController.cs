@@ -9,7 +9,8 @@ namespace UCLStudievejlederApp.Controllers
     {
         public IActionResult Index()
         {
-            
+            //hvor mange procent hevendelser er der totalt
+
             StatisticViewModel statisticViewModel = new StatisticViewModel();
             FormularDb formularDb = new FormularDb();
             statisticViewModel.AllFormulars = formularDb.GetAllFormulars().Count();
@@ -19,7 +20,42 @@ namespace UCLStudievejlederApp.Controllers
 
             statisticViewModel.PersonalFormulars = personalPercent;
 
+            //-----Hvor mangehenvendelser i procent per afdeling------
+
+            //Fredericia
+            double amountOfFredericia = formularDb.GetAmountOfAnswers(13, 6);
+            double countFredericia = Math.Round((amountOfFredericia / statisticViewModel.AllFormulars) * 100, 1);
+          
+            statisticViewModel.amountOfFredericiaFormulars = countFredericia;
+
+            //Jelling
+            double amountOfJelling = formularDb.GetAmountOfAnswers(14, 6);
+            double countJelling = Math.Round((amountOfJelling / statisticViewModel.AllFormulars) * 100, 1);
+
+            statisticViewModel.amountOfJellingFormulars = countJelling;
+
+            //Odense
+            double amountOfOdense = formularDb.GetAmountOfAnswers(15, 6);
+            double countOdense = Math.Round((amountOfOdense / statisticViewModel.AllFormulars) * 100, 1);
+
+            statisticViewModel.amountOfOdenseFormulars = countOdense;
+
+            //Svendborg
+            double amountOfSvendborg = formularDb.GetAmountOfAnswers(16, 6);
+            double countSvendborg = Math.Round((amountOfSvendborg / statisticViewModel.AllFormulars) * 100, 1);
+
+            statisticViewModel.amountOfSvendborgFormulars = countSvendborg;
+
+            //Vejle
+            double amountOfVejle = formularDb.GetAmountOfAnswers(17, 6);
+            double countVejle = Math.Round((amountOfVejle / statisticViewModel.AllFormulars) * 100, 1);
+
+            statisticViewModel.amountOfVejleFormulars = countVejle;
+
+
             
+
+            //------Hvor mange procent af henvendelserne er telefonisk/virtuelle/personlige------
 
             double amountOfPhone = formularDb.GetAmountOfAnswers(2, 2);
             double phonePercent = Math.Round((amountOfPhone / statisticViewModel.AllFormulars) * 100, 1);
