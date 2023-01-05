@@ -69,8 +69,9 @@
                                         </label>
                                     </div>
                             } else {
-                                <div class="radio-button-container">
+                                <div class="radio-button-container tooltip">
                                     <label class="label-form">
+                                        <span class="tooltiptext">@AnswerOption.Description</span>
                                         @Html.CheckBoxFor(m => Model.Questions[indexOfQuestion].AnswerOptions[answerIndex].IsSelected, new { @class="checkbox-form" })
                                         @AnswerOption.AnswerOptionString
                                     </label>
