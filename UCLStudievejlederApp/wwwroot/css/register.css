@@ -81,10 +81,6 @@ input[type=checkbox]:checked ~ div {
     margin-top: 20px;
 }
 
-.register-user-container {
-    max-width: 800px;
-}
-
 .success-message {
     background: #d5ead5;
     width: fit-content;
