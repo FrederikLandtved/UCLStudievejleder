@@ -25,6 +25,7 @@ namespace DatabaseAccess.Question
                     AnswerOptionId = reader.GetInt32(0),
                     QuestionId = reader.GetInt32(1),
                     AnswerOptionString = reader.GetString(2),
+                    Description = reader.IsDBNull(3) == true ? null : reader.GetString(3)
                 });
             }
 
@@ -70,6 +71,7 @@ namespace DatabaseAccess.Question
             public int AnswerOptionId { get; set; }
             public int QuestionId { get; set; }
             public string AnswerOptionString { get; set; }
+            public string? Description { get; set; }
             public bool IsSelected { get; set; }
             public bool IsFavorite { get; set; }
         }

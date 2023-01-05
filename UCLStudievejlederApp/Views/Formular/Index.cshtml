@@ -63,11 +63,11 @@
                         {
                             @if(AnswerOption.IsFavorite) {
                                     <div style="background-color: #00454E;" class="radio-button-container">
-                                    <label style="color: white;" class="label-form">
-                                        @Html.CheckBoxFor(m => Model.Questions[indexOfQuestion].AnswerOptions[answerIndex].IsSelected, new { @class="checkbox-form" })
-                                        @AnswerOption.AnswerOptionString
-                                    </label>
-                                </div>
+                                        <label style="color: white;" class="label-form">
+                                            @Html.CheckBoxFor(m => Model.Questions[indexOfQuestion].AnswerOptions[answerIndex].IsSelected, new { @class="checkbox-form" })
+                                            @AnswerOption.AnswerOptionString
+                                        </label>
+                                    </div>
                             } else {
                                 <div class="radio-button-container">
                                     <label class="label-form">
