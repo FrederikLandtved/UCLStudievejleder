@@ -2,6 +2,7 @@
 const allDropdowns = document.querySelectorAll(".select-dropdown");
 const inquiryResult = document.querySelectorAll(".inquiry-result-title");
 const radioBtns = document.querySelectorAll(".ucl-radiobtn");
+const tooltips = document.querySelectorAll(".tooltiptext");
 
 window.onload = init();
 
@@ -9,6 +10,12 @@ function init() {
     allDropdowns[0].onchange = () => {
         setChosenMonth();
     }
+
+    tooltips.forEach(function (tooltip) {
+        if (tooltip.innerText === "") {
+            tooltip.remove();
+        }
+    });
 
     allButtons.forEach(function (item) {
         item.onclick = () => {

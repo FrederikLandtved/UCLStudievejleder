@@ -27,10 +27,14 @@ namespace UCLStudievejlederApp.Controllers
             double amountOfPhone = _formularDb.GetAmountOfAnswers(2, 2);
             double phonePercent = Math.Round((amountOfPhone / statisticViewModel.AllFormulars) * 100, 1);
 
-
             statisticViewModel.PhoneFormulars = phonePercent;
 
-            statisticViewModel.VirtuelleFormulars = _formularDb.GetAmountOfAnswers(3, 2);
+
+            double amountOfVirtual = _formularDb.GetAmountOfAnswers(3, 2);
+            double virtualPercent = Math.Round((amountOfVirtual / statisticViewModel.AllFormulars) * 100, 1);
+
+            statisticViewModel.VirtuelleFormulars = virtualPercent;
+
             return View(statisticViewModel);
         }
 
