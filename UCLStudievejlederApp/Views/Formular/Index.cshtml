@@ -36,12 +36,12 @@
                             @Html.DropDownListFor(m => Model.Questions[indexOfQuestion].DropdownChosenOption, selectList, "Vælg måned", new { @class = "select-dropdown" })
                     }
 
-                    @if (question.QuestionTypeId == 2)
+                    @*@if (question.QuestionTypeId == 2)
                     {
                         <div class="search-input-container">
                             <input type="text" placeholder="Søg...">
                         </div>
-                    }
+                    }*@
 
                     @foreach (var AnswerOption in question.AnswerOptions)
                     {
@@ -62,8 +62,8 @@
                         @if (question.QuestionTypeId == 2)
                         {
                             @if(AnswerOption.IsFavorite) {
-                                <div style="background-color: red;" class="radio-button-container">
-                                    <label class="label-form">
+                                    <div style="background-color: #00454E;" class="radio-button-container">
+                                    <label style="color: white;" class="label-form">
                                         @Html.CheckBoxFor(m => Model.Questions[indexOfQuestion].AnswerOptions[answerIndex].IsSelected, new { @class="checkbox-form" })
                                         @AnswerOption.AnswerOptionString
                                     </label>

@@ -45,22 +45,22 @@ namespace UCLStudievejlederApp.Controllers
             int userId = _userDb.GetUserId(userToken);
 
             FormularViewModel model = new FormularViewModel();
-            var cachedModel = _memoryCache.Get<FormularViewModel>("QuestionModel");
+            //var cachedModel = _memoryCache.Get<FormularViewModel>("QuestionModel");
 
-            if (cachedModel != null)
-                return View(cachedModel);
+            //if (cachedModel != null)
+            //    return View(cachedModel);
 
             model.Questions = _questionDb.GetAllQuestionsWithAnswers();
             string currentDate = DateTime.Now.ToString("MMMM yyyy");
 
-            for (int i = -12; i <= 0; i++)
+            for (int i = -1; i <= 0; i++)
             {
                 string dateString = DateTime.Now.AddMonths(i).ToString("MMMM yyyy");
                 dateString = char.ToUpper(dateString[0]) + dateString.Substring(1).ToLower();
                 model.Questions[0].AnswerOptions.Add(new AnswerOption { QuestionId = 1, AnswerOptionString = dateString, AnswerOptionId = i + 12, IsSelected = (currentDate == dateString) });
             }
 
-            _memoryCache.Set("QuestionModel", model, TimeSpan.FromMinutes(5));
+            //_memoryCache.Set("QuestionModel", model, TimeSpan.FromMinutes(5));
 
             SetInstitutionsAndFieldsOfStudy(userId, model);
             return View(model);
