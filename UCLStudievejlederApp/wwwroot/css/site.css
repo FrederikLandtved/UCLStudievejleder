@@ -139,15 +139,25 @@ body {
 .page-description {
     color: #6d6d6d;
     margin-top: 5px;
+    font-size:25px;
 }
 
-.editUserBtn {
-    color: #FAE76A;
-    text-decoration:none;
+.editUsertext {
+    color: black;
+    text-decoration: none;
+    font-size: 20px;
 }
 
 .answer-options select {
     padding: 10px 0;
     width: 200px;
     margin: 10px;
+    font-size:25px;
+}
+.editUserBtn {
+    height: 40px;
+    width: 150px;
+    background-color: #FAE76A;
+    border: 1px solid black;
+    border-radius: 5px;
 }
