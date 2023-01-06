@@ -19,7 +19,7 @@ namespace DatabaseAccess.Formulars
 
         public List<Formulars> GetAllFormulars()
         {
-            List<Formulars> formulars = new List<Formulars>();
+            List<Formulars> formulars = new();
             
 
             SqlDataReader reader = _genericSql.Select("SELECT * FROM [dbo].[Formular]");

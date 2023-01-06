@@ -11,11 +11,11 @@ namespace UCLStudievejlederApp.Controllers
         {
             //hvor mange procent hevendelser er der totalt
 
-            StatisticViewModel statisticViewModel = new StatisticViewModel();
-            FormularDb formularDb = new FormularDb();
+            StatisticViewModel statisticViewModel = new();
+            FormularDb formularDb = new();
 
             //-----Hvor mangehenvendelser i procent per afdeling------
-            statisticViewModel.AllFormulars = formularDb.GetAllFormulars().Count();
+            statisticViewModel.AllFormulars = formularDb.GetAllFormulars().Count;
 
 
             //Fredericia
@@ -280,13 +280,11 @@ namespace UCLStudievejlederApp.Controllers
             double amountOfSubOkonomi = formularDb.GetAmountOfAnswers(89, 8);
             double okonomiSubPercent = Math.Round((amountOfSubOkonomi / statisticViewModel.AllFormulars) * 100, 1);
 
-            statisticViewModel.OkonomiSubFormulars = okonomiSubPercent;
-
             //Økonomi antal
             int amountOfSubOkonomiNr = formularDb.GetAmountOfAnswers(89, 8);
 
 
-            statisticViewModel = new StatisticViewModel()
+            statisticViewModel = new()
             {
                 amountOfFredericiaFormulars = countFredericia,
                 amountOfJellingFormulars = countJelling,
@@ -342,6 +340,7 @@ namespace UCLStudievejlederApp.Controllers
                 SygEgneSubFormularsNr = amountOfSubSygEgneNr,
                 UnvSamaVanSubFormulars = unvSamaVanSubPercent,
                 UnvSamaVanSubFormularsNr = amountOfSubUnvSamaVanNr,
+                OkonomiSubFormulars = okonomiSubPercent,
                 OkonomiSubFormularsNr = amountOfSubOkonomiNr
             };
 
