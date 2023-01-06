@@ -17,7 +17,7 @@
         <div class="card">
             <div class="card-header text-center py-3">
                 <h5 class="mb-0 text-center stath5">
-                    <strong>Fordeling af henvendelser sorteret efter hevendelses emne</strong>
+                    <strong>Antal hevendelser per emne</strong>
                 </h5>
             </div>
             <div class="card-body">
@@ -26,11 +26,9 @@
                         <thead>
                             <tr>
                                 <th scope="col"></th>
-                                <th scope="col">Odense</th>
-                                <th scope="col">Vejle</th>
-                                <th scope="col">Jelling</th>
-                                <th scope="col">Svendborg</th>
-                                <th scope="col">Fredericia</th>
+                                <th scope="col">Procent</th>
+                                <th scope="col">Antal</th>
+                              
                             </tr>
                         </thead>
                         <tbody>
@@ -38,174 +36,89 @@
                             <tr>
                                 <th scope="row">Administrative forhold</th>
                                 <td>
-                                    <span class="text-danger">
-                                        <i class="fas fa-caret-down me-1"></i><span>-48.8%%</span>
+                                    <span class="text-info">
+                                        <span>-@Model.AdminSubFormulars%</span>
                                     </span>
                                 </td>
                                 <td>
-                                    <span class="text-danger">
-                                        <i class="fas fa-caret-down me-1"></i><span>-11.5%</span>
+                                    <span class="text-success ">
+                                        <span>-11.5</span>
                                     </span>
                                 </td>
-                                <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>20%</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>29.6%</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-danger">
-                                        <i class="fas fa-caret-down me-1"></i><span>-11.5%</span>
-                                    </span>
-                                </td>
+                                
                             </tr>
 
 
                             <tr>
                                 <th scope="row">Barsel</th>
                                 <td>
-                                    <span class="text-danger">
-                                        <i class="fas fa-caret-down me-1"></i><span>-17,654</span>
+                                    <span class="text-info">
+                                        <span>-@Model.BarselSubFormulars%</span>
                                     </span>
                                 </td>
                                 <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>28</span>
+                                    <span class="text-success ">
+                                        <span>-11.5</span>
                                     </span>
                                 </td>
-                                <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>111</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>$1,092.72</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-danger">
-                                        <i class="fas fa-caret-down me-1"></i><span>$-1.78</span>
-                                    </span>
-                                </td>
+                                
                             </tr>
 
                             <tr>
                                 <th scope="row">Eksamen</th>
                                 <td>
-                                    <span class="text-danger">
-                                        <i class="fas fa-caret-down me-1"></i><span>-17,654</span>
+                                    <span class="text-info">
+                                        <span>-@Model.EksamenSubFormulars%</span>
                                     </span>
                                 </td>
                                 <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>28</span>
+                                    <span class="text-success ">
+                                        <span>-11.5</span>
                                     </span>
                                 </td>
-                                <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>111</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>$1,092.72</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-danger">
-                                        <i class="fas fa-caret-down me-1"></i><span>$-1.78</span>
-                                    </span>
-                                </td>
+                                
                             </tr>
 
                             <tr>
                                 <th scope="row">Fastholde trivsel</th>
                                 <td>
-                                    <span class="text-danger">
-                                        <i class="fas fa-caret-down me-1"></i><span>-17,654</span>
+                                    <span class="text-info">
+                                        <span>@Model.TrivselSubFormulars%</span>
                                     </span>
                                 </td>
                                 <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>28</span>
+                                    <span class="text-success ">
+                                        <span>-11.5</span>
                                     </span>
                                 </td>
-                                <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>111</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>$1,092.72</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-danger">
-                                        <i class="fas fa-caret-down me-1"></i><span>$-1.78</span>
-                                    </span>
-                                </td>
+                                
                             </tr>
 
                             <tr>
                                 <th scope="row">Internationale muligheder</th>
                                 <td>
-                                    <span class="text-danger">
-                                        <i class="fas fa-caret-down me-1"></i><span>-17,654</span>
+                                    <span class="text-info">
+                                        <span>@Model.InternationalSubFormulars%</span>
                                     </span>
                                 </td>
                                 <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>28</span>
+                                    <span class="text-success ">
+                                        <span>-11.5</span>
                                     </span>
                                 </td>
-                                <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>111</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>$1,092.72</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-danger">
-                                        <i class="fas fa-caret-down me-1"></i><span>$-1.78</span>
-                                    </span>
-                                </td>
+                               
                             </tr>
 
                             <tr>
                                 <th scope="row">Mistrivsel</th>
                                 <td>
-                                    <span class="text-danger">
-                                        <i class="fas fa-caret-down me-1"></i><span>-17,654</span>
+                                    <span class="text-info">
+                                        <span>@Model.MistrivselSubFormulars%</span>
                                     </span>
                                 </td>
                                 <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>28</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>111</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>$1,092.72</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-danger">
-                                        <i class="fas fa-caret-down me-1"></i><span>$-1.78</span>
+                                    <span class="text-success ">
+                                        <span>-11.5</span>
                                     </span>
                                 </td>
                             </tr>
@@ -213,28 +126,13 @@
                             <tr>
                                 <th scope="row">Optagelsesvejledning </th>
                                 <td>
-                                    <span class="text-danger">
-                                        <i class="fas fa-caret-down me-1"></i><span>-17,654</span>
+                                    <span class="text-info">
+                                        <span>@Model.OptVejSubFormulars%</span>
                                     </span>
                                 </td>
                                 <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>28</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>111</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>$1,092.72</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-danger">
-                                        <i class="fas fa-caret-down me-1"></i><span>$-1.78</span>
+                                    <span class="text-success ">
+                                        <span>-11.5</span>
                                     </span>
                                 </td>
                             </tr>
@@ -242,28 +140,13 @@
                             <tr>
                                 <th scope="row">Ordensreglement </th>
                                 <td>
-                                    <span class="text-danger">
-                                        <i class="fas fa-caret-down me-1"></i><span>-17,654</span>
+                                    <span class="text-info">
+                                        <span>@Model.OrdensrelSubFormulars%</span>
                                     </span>
                                 </td>
                                 <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>28</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>111</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>$1,092.72</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-danger">
-                                        <i class="fas fa-caret-down me-1"></i><span>$-1.78</span>
+                                    <span class="text-success ">
+                                        <span>-11.5</span>
                                     </span>
                                 </td>
                             </tr>
@@ -271,28 +154,13 @@
                             <tr>
                                 <th scope="row">Orlov </th>
                                 <td>
-                                    <span class="text-danger">
-                                        <i class="fas fa-caret-down me-1"></i><span>-17,654</span>
+                                    <span class="text-info">
+                                        <span>@Model.OrlovSubFormulars%</span>
                                     </span>
                                 </td>
                                 <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>28</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>111</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>$1,092.72</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-danger">
-                                        <i class="fas fa-caret-down me-1"></i><span>$-1.78</span>
+                                    <span class="text-success ">
+                                        <span>-11.5</span>
                                     </span>
                                 </td>
                             </tr>
@@ -300,28 +168,13 @@
                             <tr>
                                 <th scope="row">Overflytning/genindskrivning </th>
                                 <td>
-                                    <span class="text-danger">
-                                        <i class="fas fa-caret-down me-1"></i><span>-17,654</span>
+                                    <span class="text-info">
+                                        <span>@Model.OverflytGenindSubFormulars%</span>
                                     </span>
                                 </td>
                                 <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>28</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>111</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>$1,092.72</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-danger">
-                                        <i class="fas fa-caret-down me-1"></i><span>$-1.78</span>
+                                    <span class="text-success ">
+                                        <span>-11.5</span>
                                     </span>
                                 </td>
                             </tr>
@@ -329,28 +182,13 @@
                             <tr>
                                 <th scope="row">Personlige forhold</th>
                                 <td>
-                                    <span class="text-danger">
-                                        <i class="fas fa-caret-down me-1"></i><span>-17,654</span>
+                                    <span class="text-info">
+                                        <span>@Model.PersonForhSubFormulars%</span>
                                     </span>
                                 </td>
                                 <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>28</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>111</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>$1,092.72</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-danger">
-                                        <i class="fas fa-caret-down me-1"></i><span>$-1.78</span>
+                                    <span class="text-success ">
+                                        <span>-11.5</span>
                                     </span>
                                 </td>
                             </tr>
@@ -358,28 +196,13 @@
                             <tr>
                                 <th scope="row">Praktik i DK</th>
                                 <td>
-                                    <span class="text-danger">
-                                        <i class="fas fa-caret-down me-1"></i><span>-17,654</span>
+                                    <span class="text-info">
+                                        <span>@Model.PraktikSubFormulars%</span>
                                     </span>
                                 </td>
                                 <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>28</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>111</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>$1,092.72</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-danger">
-                                        <i class="fas fa-caret-down me-1"></i><span>$-1.78</span>
+                                    <span class="text-success ">
+                                        <span>-11.5</span>
                                     </span>
                                 </td>
                             </tr>
@@ -387,28 +210,13 @@
                             <tr>
                                 <th scope="row">Ikke relevant henvendelse </th>
                                 <td>
-                                    <span class="text-danger">
-                                        <i class="fas fa-caret-down me-1"></i><span>-17,654</span>
+                                    <span class="text-info">
+                                        <span>@Model.IkRelSubFormulars%</span>
                                     </span>
                                 </td>
                                 <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>28</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>111</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>$1,092.72</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-danger">
-                                        <i class="fas fa-caret-down me-1"></i><span>$-1.78</span>
+                                    <span class="text-success ">
+                                        <span>-11.5</span>
                                     </span>
                                 </td>
                             </tr>
@@ -416,59 +224,32 @@
                             <tr>
                                 <th scope="row">SPS </th>
                                 <td>
-                                    <span class="text-danger">
-                                        <i class="fas fa-caret-down me-1"></i><span>-17,654</span>
+                                    <span class="text-info">
+                                        <span>@Model.SPSSubFormulars%</span>
                                     </span>
                                 </td>
                                 <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>28</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>111</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>$1,092.72</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-danger">
-                                        <i class="fas fa-caret-down me-1"></i><span>$-1.78</span>
+                                    <span class="text-success ">
+                                        <span>-11.5</span>
                                     </span>
                                 </td>
                             </tr>
+
+                           
+
 
 
 
                             <tr>
                                 <th scope="row">Studieophør </th>
                                 <td>
-                                    <span class="text-danger">
-                                        <i class="fas fa-caret-down me-1"></i><span>-17,654</span>
+                                    <span class="text-info">
+                                        <span>@Model.StudOphSubFormulars%</span>
                                     </span>
                                 </td>
                                 <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>28</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>111</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>$1,092.72</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-danger">
-                                        <i class="fas fa-caret-down me-1"></i><span>$-1.78</span>
+                                    <span class="text-success ">
+                                        <span>-11.5</span>
                                     </span>
                                 </td>
                             </tr>
@@ -476,57 +257,41 @@
                             <tr>
                                 <th scope="row">Studieplanlægning </th>
                                 <td>
-                                    <span class="text-danger">
-                                        <i class="fas fa-caret-down me-1"></i><span>-17,654</span>
+                                    <span class="text-info">
+                                        <span>@Model.StdPlanSubFormulars%</span>
                                     </span>
                                 </td>
                                 <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>28</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>111</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>$1,092.72</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-danger">
-                                        <i class="fas fa-caret-down me-1"></i><span>$-1.78</span>
+                                    <span class="text-success ">
+                                        <span>-11.5</span>
                                     </span>
                                 </td>
                             </tr>
 
                             <tr>
-                                <th scope="row">Studietvivl/studievalg Studieudfordringer  </th>
+                                <th scope="row">Studietvivl/studievalg</th>
                                 <td>
-                                    <span class="text-danger">
-                                        <i class="fas fa-caret-down me-1"></i><span>-17,654</span>
+                                    <span class="text-info">
+                                        <span>@Model.StdTvivlSubFormulars%</span>
                                     </span>
                                 </td>
                                 <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>28</span>
+                                    <span class="text-success ">
+                                        <span>-11.5</span>
+                                    </span>
+                                </td>
+                            </tr>
+
+                             <tr>
+                                <th scope="row">Studieudfordringer </th>
+                                <td>
+                                    <span class="text-info">
+                                        <span>@Model.StdUdfSubFormulars%</span>
                                     </span>
                                 </td>
                                 <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>111</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>$1,092.72</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-danger">
-                                        <i class="fas fa-caret-down me-1"></i><span>$-1.78</span>
+                                    <span class="text-success ">
+                                        <span>-11.5</span>
                                     </span>
                                 </td>
                             </tr>
@@ -534,57 +299,41 @@
                             <tr>
                                 <th scope="row">Sygdom(egne) </th>
                                 <td>
-                                    <span class="text-danger">
-                                        <i class="fas fa-caret-down me-1"></i><span>-17,654</span>
+                                    <span class="text-info">
+                                        <span>@Model.SygEgneSubFormulars%</span>
                                     </span>
                                 </td>
                                 <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>28</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>111</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>$1,092.72</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-danger">
-                                        <i class="fas fa-caret-down me-1"></i><span>$-1.78</span>
+                                    <span class="text-success ">
+                                        <span>-11.5</span>
                                     </span>
                                 </td>
                             </tr>
 
                             <tr>
-                                <th scope="row">Undervisningen (Samarbejdsvanskeligheder</th>
+                                <th scope="row">Undervisningen (Samarbejdsvanskeligheder)</th>
                                 <td>
-                                    <span class="text-danger">
-                                        <i class="fas fa-caret-down me-1"></i><span>-17,654</span>
+                                    <span class="text-info">
+                                        <span>@Model.UnvSamaVanSubFormulars%</span>
                                     </span>
                                 </td>
                                 <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>28</span>
+                                    <span class="text-success ">
+                                        <span>-11.5</span>
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th scope="row">Økonomi</th>
+                                <td>
+                                    <span class="text-info">
+                                        <span>@Model.OkonomiSubFormulars%</span>
                                     </span>
                                 </td>
                                 <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>111</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>$1,092.72</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-danger">
-                                        <i class="fas fa-caret-down me-1"></i><span>$-1.78</span>
+                                    <span class="text-success ">
+                                        <span>-11.5</span>
                                     </span>
                                 </td>
                             </tr>
@@ -660,7 +409,7 @@
                     <div class="card-body">
                         <div class="d-flex justify-content-between px-md-1">
                             <div>
-                                <h3 class="text-success stath3">@Model.PersonalFormulars%</h3>
+                                <h3 class="text-success stath3">@Model.PersonalFormulars</h3>
                                 <p class="mb-0">Personlige henvendelser</p>
                             </div>
                             <div class="align-self-center">
@@ -715,7 +464,7 @@
                             </div>
                             
                         </div>
-                        <p class="mb-0">Max timeforbrug = 115 imer</p>
+                        <p class="mb-0">Max timeforbrug = @Model.TimeUseOneCountFormulars Timer</p>
                     </div>
                 </div>
             </div>
@@ -741,7 +490,7 @@
                                      aria-valuemax="100"></div>
                             </div>
                         </div>
-                        <p class="mb-0">Max timeforbrug = 275 imer</p>
+                        <p class="mb-0">Max timeforbrug = @Model.TimeUseTwoCountFormulars Timer</p>
                     </div>
                 </div>
             </div>
@@ -767,7 +516,7 @@
                                      aria-valuemax="100"></div>
                             </div>
                         </div>
-                        <p class="mb-0">Max timeforbrug = 178 imer</p>
+                        <p class="mb-0">Max timeforbrug = @Model.TimeUseThreeCountFormulars Timer</p>
                     </div>
                 </div>
             </div>
