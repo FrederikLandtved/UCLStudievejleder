@@ -32,7 +32,7 @@ namespace DatabaseAccess.Formulars
 
                 });
             }
-
+            reader.Close();
             return formulars;
         }
 
@@ -57,7 +57,7 @@ namespace DatabaseAccess.Formulars
 
             while (reader.Read())
                 amountOfRows++;
-
+            reader.Close();
             return amountOfRows;
         }
 

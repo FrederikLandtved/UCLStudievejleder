@@ -1,53 +1,54 @@
 ﻿@model StatisticViewModel;
 
- <link rel="stylesheet" href="~/css/statistics.css" asp-append-version="true" /><div class="container pt-4">
- 
-        
-      
+<link rel="stylesheet" href="~/css/statistics.css" asp-append-version="true" />
+<div class="container pt-4">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.1/mdb.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
 
 
- <div class="containerWrap">
-     
-    <div class="pages">
+
+    <div class="containerWrap">
+
+        <div class="pages">
             <div class="page one">
-            <section class="mb-4 w-100">
-            <div class="card">
-                <div class="card-header py-3">
-                    <h1 class="mb-0 text-center stath1 h1Henvendelser"><strong>Henvendelser</strong></h1>
-                     <div>
-            <button onClick="slide('next')">Tidsforbrug</button>
-        </div>
-                </div>
-                <div class="card-body">
-                    <canvas class="my-4 w-100" id="myChart" height="500"></canvas>
-                </div>
+                <section class="mb-4 w-100">
+                    <div class="card">
+                        <div class="card-header py-3">
+                            <h1 class="mb-0 text-center stath1 h1Henvendelser"><strong>Henvendelser</strong></h1>
+                            <div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <canvas class="my-4 w-100" id="myChart" height="500"></canvas>
+                        </div>
+                    </div>
+                    <button onClick="slide('next')">Tidsforbrug</button>
+                </section>
+
             </div>
-        </section>
-       
-      </div>
 
             <div class="page two">
                 <section class="mb-4 w-100">
-            <div class="card">
-                <div class="card-header py-3">
-                    <h1 class="mb-0 text-center stath1 h1Tidsforbrug"><strong>Tidsforbrug</strong></h1>
+                    <div class="card">
+                        <div class="card-header py-3">
+                            <h1 class="mb-0 text-center stath1 h1Tidsforbrug"><strong>Tidsforbrug</strong></h1>
                             <div>
                                 <button onClick="slide('prev')">Henvendelser</button>
                             </div>
-                </div>
-            <div class="card-body">
-                    <canvas class="my-4 w-100" id="myChart2" height="500"></canvas>
-                </div>
+                        </div>
+                        <div class="card-body">
+                            <canvas class="my-4 w-100" id="myChart2" height="500"></canvas>
+                        </div>
+                    </div>
+                </section>
+
             </div>
-        </section>
-        
-      </div>
+        </div>
     </div>
-  </div>
 
 
 
-    
+
 
 
 
@@ -66,7 +67,7 @@
                                 <th scope="col"></th>
                                 <th scope="col">Procent</th>
                                 <th scope="col">Antal</th>
-                              
+
                             </tr>
                         </thead>
                         <tbody>
@@ -83,7 +84,7 @@
                                         <span>@Model.AdminSubFormularsNr</span>
                                     </span>
                                 </td>
-                                
+
                             </tr>
 
 
@@ -99,7 +100,7 @@
                                         <span>@Model.BarselSubFormularsNr</span>
                                     </span>
                                 </td>
-                                
+
                             </tr>
 
                             <tr>
@@ -114,7 +115,7 @@
                                         <span>@Model.EksamenSubFormularsNr</span>
                                     </span>
                                 </td>
-                                
+
                             </tr>
 
                             <tr>
@@ -129,7 +130,7 @@
                                         <span>@Model.TrivselSubFormularsNr</span>
                                     </span>
                                 </td>
-                                
+
                             </tr>
 
                             <tr>
@@ -144,7 +145,7 @@
                                         <span>@Model.InternationalSubFormularsNr</span>
                                     </span>
                                 </td>
-                               
+
                             </tr>
 
                             <tr>
@@ -273,7 +274,7 @@
                                 </td>
                             </tr>
 
-                           
+
 
 
 
@@ -320,7 +321,7 @@
                                 </td>
                             </tr>
 
-                             <tr>
+                            <tr>
                                 <th scope="row">Studieudfordringer </th>
                                 <td>
                                     <span class="text-info">
@@ -385,182 +386,186 @@
             </div>
         </div>
     </section>
-  
 
 
-    <section>
+    @*Cards over henvendelsestype*@
+    <div class="minSlide">
+        
+        
+        <section>
 
-
-        <div class="row">
-            <div class="col-xl-4 col-sm-6 col-12 mb-4">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between px-md-1">
-                            <div>
-                                <h3 class="text-info stath3">@Model.PhoneFormulars%</h3>
-                                <p class="mb-0">Telefonisk hevendelse</p>
-                            </div>
-                            <div class="align-self-center">
-                                <i class="fas fa-phone text-info fa-3x"></i>
-                            </div>
-                        </div>
-                        <div class="px-md-1">
-                            <div class="progress mt-3 mb-1 rounded" style="height: 7px">
-                                <div class="progress-bar bg-info"
-                                     role="progressbar"
-                                     style="width: 48%"
-                                     aria-valuenow="48"
-                                     aria-valuemin="0"
-                                     aria-valuemax="100"></div>
+            <div>
+                <div class="row">
+                    <div class="col-xl-4 col-sm-6 col-12 mb-4">
+                        <div class="card bodysize">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between px-md-1">
+                                    <div>
+                                        <h3 class="text-info stath3">@Model.PhoneFormulars%</h3>
+                                        <p class="mb-0">Telefonisk hevendelse</p>
+                                    </div>
+                                    <div class="align-self-center">
+                                        <i class="fas fa-phone text-info fa-3x"></i>
+                                    </div>
+                                </div>
+                                <div class="px-md-1">
+                                    <div class="progress mt-3 mb-1 rounded" style="height: 7px">
+                                        <div class="progress-bar bg-info"
+                                             role="progressbar"
+                                             style="width: 48%"
+                                             aria-valuenow="48"
+                                             aria-valuemin="0"
+                                             aria-valuemax="100"></div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-sm-6 col-12 mb-4">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between px-md-1">
-                            <div>
-                                <h3 class="text-warning stath3">@Model.VirtuelleFormulars%</h3>
-                                <p class="mb-0 statp">Virtuelle henvendelser</p>
-                            </div>
-                            <div class="align-self-center">
-                                <i class="far fa-envelope text-warning fa-3x"></i>
-                            </div>
-                        </div>
-                        <div class="px-md-1">
-                            <div class="progress mt-3 mb-1 rounded" style="height: 7px">
-                                <div class="progress-bar bg-warning"
-                                     role="progressbar"
-                                     style="width: 22%"
-                                     aria-valuenow="22"
-                                     aria-valuemin="0"
-                                     aria-valuemax="100"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-sm-6 col-12 mb-4">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between px-md-1">
-                            <div>
-                                <h3 class="text-success stath3">@Model.PersonalFormulars%</h3>
-                                <p class="mb-0">Personlige henvendelser</p>
-                            </div>
-                            <div class="align-self-center">
-                                <i class="fas  fa-person text-success fa-3x"></i>
-                            </div>
-                        </div>
-                        <div class="px-md-1">
-                            <div class="progress mt-3 mb-1 rounded" style="height: 7px">
-                                <div class="progress-bar bg-success"
-                                     role="progressbar"
-                                     style="width:30%"
-                                     aria-valuenow="30"
-                                     aria-valuemin="0"
-                                     aria-valuemax="100"></div>
+                    <div class="col-xl-4 col-sm-6 col-12 mb-4">
+                        <div class="card bodysize">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between px-md-1">
+                                    <div>
+                                        <h3 class="text-warning stath3">@Model.VirtuelleFormulars%</h3>
+                                        <p class="mb-0 statp">Virtuelle henvendelser</p>
+                                    </div>
+                                    <div class="align-self-center">
+                                        <i class="far fa-envelope text-warning fa-3x"></i>
+                                    </div>
+                                </div>
+                                <div class="px-md-1">
+                                    <div class="progress mt-3 mb-1 rounded" style="height: 7px">
+                                        <div class="progress-bar bg-warning"
+                                             role="progressbar"
+                                             style="width: 22%"
+                                             aria-valuenow="22"
+                                             aria-valuemin="0"
+                                             aria-valuemax="100"></div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <div class="col-xl-4 col-sm-6 col-12 mb-4">
+                        <div class="card bodysize">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between px-md-1">
+                                    <div>
+                                        <h3 class="text-success stath3">@Model.PersonalFormulars%</h3>
+                                        <p class="mb-0">Personlige henvendelser</p>
+                                    </div>
+                                    <div class="align-self-center">
+                                        <i class="fas  fa-person text-success fa-3x"></i>
+                                    </div>
+                                </div>
+                                <div class="px-md-1">
+                                    <div class="progress mt-3 mb-1 rounded" style="height: 7px">
+                                        <div class="progress-bar bg-success"
+                                             role="progressbar"
+                                             style="width:30%"
+                                             aria-valuenow="30"
+                                             aria-valuemin="0"
+                                             aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
                 </div>
             </div>
 
-            
-        </div>
-    </section>
 
-    <section>
-    </section>
- 
-    <section>
+        </section>
+        <section>
 
-
-        <div class="row">
-            <div class="col-xl-4 col-sm-6 col-12 mb-4">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between px-md-1">
-                            <div>
-                                <h3 class="text-info stath3">@Model.TimeUseOneFormulars%</h3>
-                                <p class="mb-0">Tidsforbrug</p>
+            <div class="row">
+                <div class="col-xl-4 col-sm-6 col-12 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between px-md-1">
+                                <div>
+                                    <h3 class="text-info stath3">@Model.TimeUseOneFormulars%</h3>
+                                    <p class="mb-0">Tidsforbrug</p>
+                                </div>
+                                <div class="align-self-center">
+                                    <img src="~/assets/images/1-20.png" alt="Tidsinterval 1-20min.">
+                                </div>
                             </div>
-                            <div class="align-self-center">
-                                <img src="~/assets/images/1-20.png" alt="Tidsinterval 1-20min.">
+                            <div class="px-md-1">
+                                <div class="progress mt-3 mb-1 rounded" style="height: 7px">
+                                    <div class="progress-bar bg-info"
+                                         role="progressbar"
+                                         style="width: 20%"
+                                         aria-valuenow="20"
+                                         aria-valuemin="0"
+                                         aria-valuemax="100"></div>
+                                </div>
+
                             </div>
+                            <p class="mb-0">Max timeforbrug = @Model.TimeUseOneCountFormulars Timer</p>
                         </div>
-                        <div class="px-md-1">
-                            <div class="progress mt-3 mb-1 rounded" style="height: 7px">
-                                <div class="progress-bar bg-info"
-                                     role="progressbar"
-                                     style="width: 20%"
-                                     aria-valuenow="20"
-                                     aria-valuemin="0"
-                                     aria-valuemax="100"></div>
-                            </div>
-                            
-                        </div>
-                        <p class="mb-0">Max timeforbrug = @Model.TimeUseOneCountFormulars Timer</p>
                     </div>
                 </div>
-            </div>
-            <div class="col-xl-4 col-sm-6 col-12 mb-4">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between px-md-1">
-                            <div>
-                                <h3 class="text-warning stath3">@Model.TimeUseTwoFormulars%</h3>
-                                <p class="mb-0 statp">Tidsforbrug</p>
+                <div class="col-xl-4 col-sm-6 col-12 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between px-md-1">
+                                <div>
+                                    <h3 class="text-warning stath3">@Model.TimeUseTwoFormulars%</h3>
+                                    <p class="mb-0 statp">Tidsforbrug</p>
+                                </div>
+                                <div class="align-self-center">
+                                    <img src="~/assets/images/21-40.png" alt="Tidsinterval 21-40min.">
+                                </div>
                             </div>
-                            <div class="align-self-center">
-                                <img src="~/assets/images/21-40.png" alt="Tidsinterval 21-40min.">
+                            <div class="px-md-1">
+                                <div class="progress mt-3 mb-1 rounded" style="height: 7px">
+                                    <div class="progress-bar bg-warning"
+                                         role="progressbar"
+                                         style="width: 50%"
+                                         aria-valuenow="50"
+                                         aria-valuemin="0"
+                                         aria-valuemax="100"></div>
+                                </div>
                             </div>
+                            <p class="mb-0">Max timeforbrug = @Model.TimeUseTwoCountFormulars Timer</p>
                         </div>
-                        <div class="px-md-1">
-                            <div class="progress mt-3 mb-1 rounded" style="height: 7px">
-                                <div class="progress-bar bg-warning"
-                                     role="progressbar"
-                                     style="width: 50%"
-                                     aria-valuenow="50"
-                                     aria-valuemin="0"
-                                     aria-valuemax="100"></div>
-                            </div>
-                        </div>
-                        <p class="mb-0">Max timeforbrug = @Model.TimeUseTwoCountFormulars Timer</p>
                     </div>
                 </div>
-            </div>
-            <div class="col-xl-4 col-sm-6 col-12 mb-4">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between px-md-1">
-                            <div>
-                                <h3 class="text-success stath3">@Model.TimeUseThreeFormulars%</h3>
-                                <p class="mb-0">Tidsforbrug</p>
+                <div class="col-xl-4 col-sm-6 col-12 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between px-md-1">
+                                <div>
+                                    <h3 class="text-success stath3">@Model.TimeUseThreeFormulars%</h3>
+                                    <p class="mb-0">Tidsforbrug</p>
+                                </div>
+                                <div class="align-self-center">
+                                    <img src="~/assets/images/41-60.png" alt="Tidsinterval 41-60min.">
+                                </div>
                             </div>
-                            <div class="align-self-center">
-                                <img src="~/assets/images/41-60.png" alt="Tidsinterval 41-60min.">
+                            <div class="px-md-1">
+                                <div class="progress mt-3 mb-1 rounded" style="height: 7px">
+                                    <div class="progress-bar bg-success"
+                                         role="progressbar"
+                                         style="width: 30%"
+                                         aria-valuenow="30"
+                                         aria-valuemin="0"
+                                         aria-valuemax="100"></div>
+                                </div>
                             </div>
+                            <p class="mb-0">Max timeforbrug = @Model.TimeUseThreeCountFormulars Timer</p>
                         </div>
-                        <div class="px-md-1">
-                            <div class="progress mt-3 mb-1 rounded" style="height: 7px">
-                                <div class="progress-bar bg-success"
-                                     role="progressbar"
-                                     style="width: 30%"
-                                     aria-valuenow="30"
-                                     aria-valuemin="0"
-                                     aria-valuemax="100"></div>
-                            </div>
-                        </div>
-                        <p class="mb-0">Max timeforbrug = @Model.TimeUseThreeCountFormulars Timer</p>
                     </div>
                 </div>
-            </div>
 
-        </div>
-    </section>
+            </div>
+        </section>
+    </div>
+
+
 
 
 
@@ -577,8 +582,8 @@
                                     <h2 class="h1 mb-0 me-4">@Model.amountOfFredericiaFormulars%</h2>
                                 </div>
                                 <div>
-                                <h4 class="stath4">UCL Fredericia</h4>
-                                <p class="mb-0">Antal samtaler i år</p>
+                                    <h4 class="stath4">UCL Fredericia</h4>
+                                    <p class="mb-0">Antal samtaler i år</p>
                                 </div>
                             </div>
                             <div class="align-self-center">
@@ -598,8 +603,8 @@
                                     <h2 class="h1 mb-0 me-4 stath2">@Model.amountOfSvendborgFormulars%</h2>
                                 </div>
                                 <div>
-                                <h4>UCL Svendborg</h4>
-                                <p class="mb-0 statp">Antal samtaler i år</p>
+                                    <h4>UCL Svendborg</h4>
+                                    <p class="mb-0 statp">Antal samtaler i år</p>
                                 </div>
                             </div>
                             <div class="align-self-center">
@@ -620,7 +625,7 @@
                                 </div>
                                 <div>
                                     <h4 class="stath4">UCL Jelling</h4>
-                                <p class="mb-0">Antal samtaler i år</p>
+                                    <p class="mb-0">Antal samtaler i år</p>
                                 </div>
                             </div>
                             <div class="align-self-center">
@@ -641,7 +646,7 @@
                                 </div>
                                 <div>
                                     <h4>UCL Vejle </h4>
-                                <p class="mb-0 statp">Antal Samtaler i år</p>
+                                    <p class="mb-0 statp">Antal Samtaler i år</p>
                                 </div>
                             </div>
                             <div class="align-self-center">
@@ -662,7 +667,7 @@
                                 </div>
                                 <div>
                                     <h4 class="stath4">UCL Odense</h4>
-                                <p class="mb-0">Antal Samtaler i år</p>
+                                    <p class="mb-0">Antal Samtaler i år</p>
                                 </div>
                             </div>
                             <div class="align-self-center">
@@ -683,7 +688,7 @@
                                 </div>
                                 <div>
                                     <h4>Hele UCL</h4>
-                                <p class="mb-0 statp">Total Antal Samtaler i år</p>
+                                    <p class="mb-0 statp">Total Antal Samtaler i år</p>
                                 </div>
                             </div>
                             <div class="align-self-center">
@@ -698,28 +703,26 @@
 
 </div>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.1/mdb.min.js"></script>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.1/mdb.min.css"
-      rel="stylesheet" />
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
 
 <script>
     const pages = document.querySelectorAll(".page");
-        const translateAmount = 100;
-        let translate = 0;
+    const translateAmount = 100;
+    let translate = 0;
 
-        slide = (direction) => {
+    slide = (direction) => {
 
-          direction === "next" ? translate -= translateAmount : translate += translateAmount;
+        direction === "next" ? translate -= translateAmount : translate += translateAmount;
 
-          pages.forEach(
+        pages.forEach(
             pages => (pages.style.transform = `translateX(${translate}%)`)
-          );
-        }
+        );
+    }
 </script>
 
-<script>// Graph
+
+<script>
+    // Graph
     var ctx = document.getElementById("myChart");
 
     var myChart = new Chart(ctx, {
@@ -813,3 +816,21 @@
             },
         },
     });</script>
+
+
+<script>
+    $(document).ready(function () {
+        $(".minSlide").slick({
+            speed: 1000,
+            prevArrow: '<button class="slide-arrow prev-arrow"></button>',
+            nextArrow: '<button class="slide-arrow next-arrow"></button>'
+            
+        });
+    });
+</script>
+
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.1/mdb.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
