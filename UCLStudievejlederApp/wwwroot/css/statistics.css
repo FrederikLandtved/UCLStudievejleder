@@ -4,3 +4,55 @@
     box-sizing: unset !important;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+
+
+button {
+    padding: 8px;
+    width: 120px;
+    border: 2px solid black!important;
+    background-color: transparent;
+    color: black;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.1s;
+}
+
+    button:hover {
+        transform: scale(1.05);
+    }
+
+
+.containerWrap {
+    width: 100% !important;
+    overflow: hidden !important;
+}
+
+
+
+.pages {
+    display: flex;
+    box-sizing: border-box;
+    width: 135vw;
+    height: 50vw; 
+}
+
+.page {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    transition: all 0.7s;
+    color: white;
+    height: 100vh;
+}
+
+.card-header{
+    margin-top:50px;
+}
+.h1Henvendelser, .h1Tidsforbrug {
+    color: black;
+}
+

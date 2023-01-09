@@ -1,17 +1,55 @@
 ﻿@model StatisticViewModel;
 
  <link rel="stylesheet" href="~/css/statistics.css" asp-append-version="true" /><div class="container pt-4">
+ 
+        
+      
 
-    <section class="mb-4">
-        <div class="card">
-            <div class="card-header py-3">
-                <h1 class="mb-0 text-center stath1"><strong>Henvendelser</strong></h1>
-            </div>
-            <div class="card-body">
-                <canvas class="my-4 w-100" id="myChart" height="500"></canvas>
-            </div>
+
+ <div class="containerWrap">
+     
+    <div class="pages">
+            <div class="page one">
+            <section class="mb-4 w-100">
+            <div class="card">
+                <div class="card-header py-3">
+                    <h1 class="mb-0 text-center stath1 h1Henvendelser"><strong>Henvendelser</strong></h1>
+                     <div>
+            <button onClick="slide('next')">Tidsforbrug</button>
         </div>
-    </section>
+                </div>
+                <div class="card-body">
+                    <canvas class="my-4 w-100" id="myChart" height="500"></canvas>
+                </div>
+            </div>
+        </section>
+       
+      </div>
+
+            <div class="page two">
+                <section class="mb-4 w-100">
+            <div class="card">
+                <div class="card-header py-3">
+                    <h1 class="mb-0 text-center stath1 h1Tidsforbrug"><strong>Tidsforbrug</strong></h1>
+                            <div>
+                                <button onClick="slide('prev')">Henvendelser</button>
+                            </div>
+                </div>
+            <div class="card-body">
+                    <canvas class="my-4 w-100" id="myChart2" height="500"></canvas>
+                </div>
+            </div>
+        </section>
+        
+      </div>
+    </div>
+  </div>
+
+
+
+    
+
+
 
     <section class="mb-4">
         <div class="card">
@@ -500,7 +538,7 @@
                         <div class="d-flex justify-content-between px-md-1">
                             <div>
                                 <h3 class="text-success stath3">@Model.TimeUseThreeFormulars%</h3>
-                                <p class="mb-0">Personlige henvendelser</p>
+                                <p class="mb-0">Tidsforbrug</p>
                             </div>
                             <div class="align-self-center">
                                 <img src="~/assets/images/41-60.png" alt="Tidsinterval 41-60min.">
@@ -526,7 +564,7 @@
 
 
 
-
+    <section>
 
         <div class="row">
 
@@ -663,9 +701,74 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.1/mdb.min.js"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.1/mdb.min.css"
       rel="stylesheet" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<script>
+    const pages = document.querySelectorAll(".page");
+        const translateAmount = 100;
+        let translate = 0;
+
+        slide = (direction) => {
+
+          direction === "next" ? translate -= translateAmount : translate += translateAmount;
+
+          pages.forEach(
+            pages => (pages.style.transform = `translateX(${translate}%)`)
+          );
+        }
+</script>
 
 <script>// Graph
     var ctx = document.getElementById("myChart");
+
+    var myChart = new Chart(ctx, {
+        type: "line",
+        data: {
+            labels: [
+                "Januar",
+                "feburar",
+                "Marts",
+                "April",
+                "Maj",
+                "Juni",
+                "Juli",
+                "August",
+                "September",
+                "Oktober",
+                "November",
+                "December",
+            ],
+            datasets: [
+                {
+                    data: [835, 1548, 2564, 4284, 6541, 8244, 9541, 10548, 12548, 12958, 13528, 14567],
+                    lineTension: 0,
+                    backgroundColor: "transparent",
+                    borderColor: "#fae76a",
+                    borderWidth: 4,
+                    pointBackgroundColor: "#cae4e3",
+                },
+            ],
+        },
+        options: {
+            scales: {
+                yAxes: [
+                    {
+                        ticks: {
+                            beginAtZero: false,
+                        },
+                    },
+                ],
+            },
+            legend: {
+                display: false,
+            },
+        },
+    });</script>
+
+<script>
+    // Graph
+    var ctx = document.getElementById("myChart2");
 
     var myChart = new Chart(ctx, {
         type: "line",
