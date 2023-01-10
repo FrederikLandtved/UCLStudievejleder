@@ -1,36 +1,73 @@
 ﻿@model StatisticViewModel;
 
- <link rel="stylesheet" href="~/css/statistics.css" asp-append-version="true" /><div class="container pt-4">
+<link rel="stylesheet" href="~/css/statistics.css" asp-append-version="true" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.1/mdb.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
 
-    <section class="mb-4">
-        <div class="card">
-            <div class="card-header py-3">
-                <h1 class="mb-0 text-center stath1"><strong>Henvendelser</strong></h1>
+  
+    <div class="minSlideGraf">
+
+<section class="wrapGraf">
+
+   
+            <div class="page one">
+                <section class="mb-4 w-100">
+                    <div class="card">
+                        <div class="card-header py-3">
+                            <h1 class="mb-0 text-center stath1 h1Henvendelser"><strong>Henvendelser</strong></h1>
+                            <div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <canvas class="my-4 w-100" id="myChart" height="500"></canvas>
+                        </div>
+                    </div>
+                </section>
+
             </div>
-            <div class="card-body">
-                <canvas class="my-4 w-100" id="myChart" height="500"></canvas>
-            </div>
-        </div>
+
     </section>
+    <section class="wrapGraf">
+            <div class="page two">
+                <section class="mb-4 w-100">
+                    <div class="card">
+                        <div class="card-header py-3">
+                            <h1 class="mb-0 text-center stath1 h1Tidsforbrug"><strong>Tidsforbrug</strong></h1>
+                            <div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <canvas class="my-4 w-100" id="myChart2" height="500"></canvas>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </section>
+    </div>
+
+
+
+
+<div class="minSlideTabel">
+
 
     <section class="mb-4">
         <div class="card">
             <div class="card-header text-center py-3">
                 <h5 class="mb-0 text-center stath5">
-                    <strong>Fordeling af henvendelser sorteret efter hevendelses emne</strong>
+                    <strong>Antal henvendelser per emne</strong>
                 </h5>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-hover text-nowrap">
+                    <table class="table table-hover text-nowrap" id="example">
                         <thead>
                             <tr>
                                 <th scope="col"></th>
-                                <th scope="col">Odense</th>
-                                <th scope="col">Vejle</th>
-                                <th scope="col">Jelling</th>
-                                <th scope="col">Svendborg</th>
-                                <th scope="col">Fredericia</th>
+                                <th scope="col">Procent</th>
+                                <th scope="col">Antal</th>
+
                             </tr>
                         </thead>
                         <tbody>
@@ -38,174 +75,89 @@
                             <tr>
                                 <th scope="row">Administrative forhold</th>
                                 <td>
-                                    <span class="text-danger">
-                                        <i class="fas fa-caret-down me-1"></i><span>-48.8%%</span>
+                                    <span class="text-info">
+                                        <span>-@Model.AdminSubFormulars%</span>
                                     </span>
                                 </td>
                                 <td>
-                                    <span class="text-danger">
-                                        <i class="fas fa-caret-down me-1"></i><span>-11.5%</span>
+                                    <span class="text-success ">
+                                        <span>@Model.AdminSubFormularsNr</span>
                                     </span>
                                 </td>
-                                <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>20%</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>29.6%</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-danger">
-                                        <i class="fas fa-caret-down me-1"></i><span>-11.5%</span>
-                                    </span>
-                                </td>
+
                             </tr>
 
 
                             <tr>
                                 <th scope="row">Barsel</th>
                                 <td>
-                                    <span class="text-danger">
-                                        <i class="fas fa-caret-down me-1"></i><span>-17,654</span>
+                                    <span class="text-info">
+                                        <span>-@Model.BarselSubFormulars%</span>
                                     </span>
                                 </td>
                                 <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>28</span>
+                                    <span class="text-success ">
+                                        <span>@Model.BarselSubFormularsNr</span>
                                     </span>
                                 </td>
-                                <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>111</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>$1,092.72</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-danger">
-                                        <i class="fas fa-caret-down me-1"></i><span>$-1.78</span>
-                                    </span>
-                                </td>
+
                             </tr>
 
                             <tr>
                                 <th scope="row">Eksamen</th>
                                 <td>
-                                    <span class="text-danger">
-                                        <i class="fas fa-caret-down me-1"></i><span>-17,654</span>
+                                    <span class="text-info">
+                                        <span>@Model.EksamenSubFormulars%</span>
                                     </span>
                                 </td>
                                 <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>28</span>
+                                    <span class="text-success ">
+                                        <span>@Model.EksamenSubFormularsNr</span>
                                     </span>
                                 </td>
-                                <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>111</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>$1,092.72</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-danger">
-                                        <i class="fas fa-caret-down me-1"></i><span>$-1.78</span>
-                                    </span>
-                                </td>
+
                             </tr>
 
                             <tr>
                                 <th scope="row">Fastholde trivsel</th>
                                 <td>
-                                    <span class="text-danger">
-                                        <i class="fas fa-caret-down me-1"></i><span>-17,654</span>
+                                    <span class="text-info">
+                                        <span>@Model.TrivselSubFormulars%</span>
                                     </span>
                                 </td>
                                 <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>28</span>
+                                    <span class="text-success ">
+                                        <span>@Model.TrivselSubFormularsNr</span>
                                     </span>
                                 </td>
-                                <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>111</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>$1,092.72</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-danger">
-                                        <i class="fas fa-caret-down me-1"></i><span>$-1.78</span>
-                                    </span>
-                                </td>
+
                             </tr>
 
                             <tr>
                                 <th scope="row">Internationale muligheder</th>
                                 <td>
-                                    <span class="text-danger">
-                                        <i class="fas fa-caret-down me-1"></i><span>-17,654</span>
+                                    <span class="text-info">
+                                        <span>@Model.InternationalSubFormulars%</span>
                                     </span>
                                 </td>
                                 <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>28</span>
+                                    <span class="text-success ">
+                                        <span>@Model.InternationalSubFormularsNr</span>
                                     </span>
                                 </td>
-                                <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>111</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>$1,092.72</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-danger">
-                                        <i class="fas fa-caret-down me-1"></i><span>$-1.78</span>
-                                    </span>
-                                </td>
+
                             </tr>
 
                             <tr>
                                 <th scope="row">Mistrivsel</th>
                                 <td>
-                                    <span class="text-danger">
-                                        <i class="fas fa-caret-down me-1"></i><span>-17,654</span>
+                                    <span class="text-info">
+                                        <span>@Model.MistrivselSubFormulars%</span>
                                     </span>
                                 </td>
                                 <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>28</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>111</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>$1,092.72</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-danger">
-                                        <i class="fas fa-caret-down me-1"></i><span>$-1.78</span>
+                                    <span class="text-success ">
+                                        <span>@Model.MistrivselSubFormularsNr</span>
                                     </span>
                                 </td>
                             </tr>
@@ -213,28 +165,13 @@
                             <tr>
                                 <th scope="row">Optagelsesvejledning </th>
                                 <td>
-                                    <span class="text-danger">
-                                        <i class="fas fa-caret-down me-1"></i><span>-17,654</span>
+                                    <span class="text-info">
+                                        <span>@Model.OptVejSubFormulars%</span>
                                     </span>
                                 </td>
                                 <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>28</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>111</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>$1,092.72</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-danger">
-                                        <i class="fas fa-caret-down me-1"></i><span>$-1.78</span>
+                                    <span class="text-success ">
+                                        <span>@Model.OptVejSubFormularsNr</span>
                                     </span>
                                 </td>
                             </tr>
@@ -242,28 +179,13 @@
                             <tr>
                                 <th scope="row">Ordensreglement </th>
                                 <td>
-                                    <span class="text-danger">
-                                        <i class="fas fa-caret-down me-1"></i><span>-17,654</span>
+                                    <span class="text-info">
+                                        <span>@Model.OrdensrelSubFormulars%</span>
                                     </span>
                                 </td>
                                 <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>28</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>111</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>$1,092.72</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-danger">
-                                        <i class="fas fa-caret-down me-1"></i><span>$-1.78</span>
+                                    <span class="text-success ">
+                                        <span>@Model.OrdensrelSubFormularsNr</span>
                                     </span>
                                 </td>
                             </tr>
@@ -271,28 +193,13 @@
                             <tr>
                                 <th scope="row">Orlov </th>
                                 <td>
-                                    <span class="text-danger">
-                                        <i class="fas fa-caret-down me-1"></i><span>-17,654</span>
+                                    <span class="text-info">
+                                        <span>@Model.OrlovSubFormulars%</span>
                                     </span>
                                 </td>
                                 <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>28</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>111</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>$1,092.72</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-danger">
-                                        <i class="fas fa-caret-down me-1"></i><span>$-1.78</span>
+                                    <span class="text-success ">
+                                        <span>@Model.OrlovSubFormularsNr</span>
                                     </span>
                                 </td>
                             </tr>
@@ -300,28 +207,13 @@
                             <tr>
                                 <th scope="row">Overflytning/genindskrivning </th>
                                 <td>
-                                    <span class="text-danger">
-                                        <i class="fas fa-caret-down me-1"></i><span>-17,654</span>
+                                    <span class="text-info">
+                                        <span>@Model.OverflytGenindSubFormulars%</span>
                                     </span>
                                 </td>
                                 <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>28</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>111</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>$1,092.72</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-danger">
-                                        <i class="fas fa-caret-down me-1"></i><span>$-1.78</span>
+                                    <span class="text-success ">
+                                        <span>@Model.OverflytGenindSubFormularsNr</span>
                                     </span>
                                 </td>
                             </tr>
@@ -329,28 +221,13 @@
                             <tr>
                                 <th scope="row">Personlige forhold</th>
                                 <td>
-                                    <span class="text-danger">
-                                        <i class="fas fa-caret-down me-1"></i><span>-17,654</span>
+                                    <span class="text-info">
+                                        <span>@Model.PersonForhSubFormulars%</span>
                                     </span>
                                 </td>
                                 <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>28</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>111</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>$1,092.72</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-danger">
-                                        <i class="fas fa-caret-down me-1"></i><span>$-1.78</span>
+                                    <span class="text-success ">
+                                        <span>@Model.PersonForhSubFormularsNr</span>
                                     </span>
                                 </td>
                             </tr>
@@ -358,28 +235,13 @@
                             <tr>
                                 <th scope="row">Praktik i DK</th>
                                 <td>
-                                    <span class="text-danger">
-                                        <i class="fas fa-caret-down me-1"></i><span>-17,654</span>
+                                    <span class="text-info">
+                                        <span>@Model.PraktikSubFormulars%</span>
                                     </span>
                                 </td>
                                 <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>28</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>111</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>$1,092.72</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-danger">
-                                        <i class="fas fa-caret-down me-1"></i><span>$-1.78</span>
+                                    <span class="text-success ">
+                                        <span>@Model.PraktikSubFormularsNr</span>
                                     </span>
                                 </td>
                             </tr>
@@ -387,28 +249,13 @@
                             <tr>
                                 <th scope="row">Ikke relevant henvendelse </th>
                                 <td>
-                                    <span class="text-danger">
-                                        <i class="fas fa-caret-down me-1"></i><span>-17,654</span>
+                                    <span class="text-info">
+                                        <span>@Model.IkRelSubFormulars%</span>
                                     </span>
                                 </td>
                                 <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>28</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>111</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>$1,092.72</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-danger">
-                                        <i class="fas fa-caret-down me-1"></i><span>$-1.78</span>
+                                    <span class="text-success ">
+                                        <span>@Model.IkRelSubFormularsNr</span>
                                     </span>
                                 </td>
                             </tr>
@@ -416,59 +263,32 @@
                             <tr>
                                 <th scope="row">SPS </th>
                                 <td>
-                                    <span class="text-danger">
-                                        <i class="fas fa-caret-down me-1"></i><span>-17,654</span>
+                                    <span class="text-info">
+                                        <span>@Model.SPSSubFormulars%</span>
                                     </span>
                                 </td>
                                 <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>28</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>111</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>$1,092.72</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-danger">
-                                        <i class="fas fa-caret-down me-1"></i><span>$-1.78</span>
+                                    <span class="text-success ">
+                                        <span>@Model.SPSSubFormularsNr</span>
                                     </span>
                                 </td>
                             </tr>
 
 
 
+
+
+
                             <tr>
                                 <th scope="row">Studieophør </th>
                                 <td>
-                                    <span class="text-danger">
-                                        <i class="fas fa-caret-down me-1"></i><span>-17,654</span>
+                                    <span class="text-info">
+                                        <span>@Model.StudOphSubFormulars%</span>
                                     </span>
                                 </td>
                                 <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>28</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>111</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>$1,092.72</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-danger">
-                                        <i class="fas fa-caret-down me-1"></i><span>$-1.78</span>
+                                    <span class="text-success ">
+                                        <span>@Model.StudOphSubFormularsNr</span>
                                     </span>
                                 </td>
                             </tr>
@@ -476,57 +296,41 @@
                             <tr>
                                 <th scope="row">Studieplanlægning </th>
                                 <td>
-                                    <span class="text-danger">
-                                        <i class="fas fa-caret-down me-1"></i><span>-17,654</span>
+                                    <span class="text-info">
+                                        <span>@Model.StdPlanSubFormulars%</span>
                                     </span>
                                 </td>
                                 <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>28</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>111</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>$1,092.72</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-danger">
-                                        <i class="fas fa-caret-down me-1"></i><span>$-1.78</span>
+                                    <span class="text-success ">
+                                        <span>@Model.StdPlanSubFormularsNr</span>
                                     </span>
                                 </td>
                             </tr>
 
                             <tr>
-                                <th scope="row">Studietvivl/studievalg Studieudfordringer  </th>
+                                <th scope="row">Studietvivl/studievalg</th>
                                 <td>
-                                    <span class="text-danger">
-                                        <i class="fas fa-caret-down me-1"></i><span>-17,654</span>
+                                    <span class="text-info">
+                                        <span>@Model.StdTvivlSubFormulars%</span>
                                     </span>
                                 </td>
                                 <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>28</span>
+                                    <span class="text-success ">
+                                        <span>@Model.StdTvivlSubFormularsNr</span>
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th scope="row">Studieudfordringer </th>
+                                <td>
+                                    <span class="text-info">
+                                        <span>@Model.StdUdfSubFormulars%</span>
                                     </span>
                                 </td>
                                 <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>111</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>$1,092.72</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-danger">
-                                        <i class="fas fa-caret-down me-1"></i><span>$-1.78</span>
+                                    <span class="text-success ">
+                                        <span>@Model.StdUdfSubFormularsNr</span>
                                     </span>
                                 </td>
                             </tr>
@@ -534,57 +338,41 @@
                             <tr>
                                 <th scope="row">Sygdom(egne) </th>
                                 <td>
-                                    <span class="text-danger">
-                                        <i class="fas fa-caret-down me-1"></i><span>-17,654</span>
+                                    <span class="text-info">
+                                        <span>@Model.SygEgneSubFormulars%</span>
                                     </span>
                                 </td>
                                 <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>28</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>111</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>$1,092.72</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-danger">
-                                        <i class="fas fa-caret-down me-1"></i><span>$-1.78</span>
+                                    <span class="text-success ">
+                                        <span>@Model.SygEgneSubFormularsNr</span>
                                     </span>
                                 </td>
                             </tr>
 
                             <tr>
-                                <th scope="row">Undervisningen (Samarbejdsvanskeligheder</th>
+                                <th scope="row">Undervisningen (Samarbejdsvanskeligheder)</th>
                                 <td>
-                                    <span class="text-danger">
-                                        <i class="fas fa-caret-down me-1"></i><span>-17,654</span>
+                                    <span class="text-info">
+                                        <span>@Model.UnvSamaVanSubFormulars%</span>
                                     </span>
                                 </td>
                                 <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>28</span>
+                                    <span class="text-success ">
+                                        <span>@Model.UnvSamaVanSubFormularsNr</span>
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th scope="row">Økonomi</th>
+                                <td>
+                                    <span class="text-info">
+                                        <span>@Model.OkonomiSubFormulars%</span>
                                     </span>
                                 </td>
                                 <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>111</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-success">
-                                        <i class="fas fa-caret-up me-1"></i><span>$1,092.72</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="text-danger">
-                                        <i class="fas fa-caret-down me-1"></i><span>$-1.78</span>
+                                    <span class="text-success ">
+                                        <span>@Model.OkonomiSubFormularsNr</span>
                                     </span>
                                 </td>
                             </tr>
@@ -598,228 +386,788 @@
             </div>
         </div>
     </section>
-    <!--Section: Sales Performance KPIs-->
-    <!--Section: Minimal statistics cards-->
-    <section>
+    <section class="mb-4">
+        <div class="card">
+            <div class="card-header text-center py-3">
+                <h5 class="mb-0 text-center stath5">
+                    <strong>Antal henvendelser per emne</strong>
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover text-nowrap" id="example2">
+                        <thead>
+                            <tr>
+                                <th scope="col"></th>
+                                <th scope="col">Procent</th>
+                                <th scope="col">Antal</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr>
+                                <th scope="row">Administrative forhold</th>
+                                <td>
+                                    <span class="text-info">
+                                        <span>-@Model.AdminSubFormulars%</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success ">
+                                        <span>@Model.AdminSubFormularsNr</span>
+                                    </span>
+                                </td>
+
+                            </tr>
 
 
-        <div class="row">
-            <div class="col-xl-3 col-sm-6 col-12 mb-4">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between px-md-1">
-                            <div>
-                                <h3 class="text-info stath3">@Model.PhoneFormulars%</h3>
-                                <p class="mb-0">Telefonisk hevendelse</p>
-                            </div>
-                            <div class="align-self-center">
-                                <i class="fas fa-phone text-info fa-3x"></i>
-                            </div>
-                        </div>
-                        <div class="px-md-1">
-                            <div class="progress mt-3 mb-1 rounded" style="height: 7px">
-                                <div class="progress-bar bg-info"
-                                     role="progressbar"
-                                     style="width: 48%"
-                                     aria-valuenow="48"
-                                     aria-valuemin="0"
-                                     aria-valuemax="100"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-sm-6 col-12 mb-4">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between px-md-1">
-                            <div>
-                                <h3 class="text-warning stath3">@Model.VirtuelleFormulars%</h3>
-                                <p class="mb-0 statp">Virtuelle henvendelser</p>
-                            </div>
-                            <div class="align-self-center">
-                                <i class="far fa-envelope text-warning fa-3x"></i>
-                            </div>
-                        </div>
-                        <div class="px-md-1">
-                            <div class="progress mt-3 mb-1 rounded" style="height: 7px">
-                                <div class="progress-bar bg-warning"
-                                     role="progressbar"
-                                     style="width: 22%"
-                                     aria-valuenow="22"
-                                     aria-valuemin="0"
-                                     aria-valuemax="100"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-sm-6 col-12 mb-4">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between px-md-1">
-                            <div>
-                                <h3 class="text-success stath3">@Model.PersonalFormulars%</h3>
-                                <p class="mb-0">Personlige henvendelser</p>
-                            </div>
-                            <div class="align-self-center">
-                                <i class="fas  fa-person text-success fa-3x"></i>
-                            </div>
-                        </div>
-                        <div class="px-md-1">
-                            <div class="progress mt-3 mb-1 rounded" style="height: 7px">
-                                <div class="progress-bar bg-success"
-                                     role="progressbar"
-                                     style="width: 30%"
-                                     aria-valuenow="30"
-                                     aria-valuemin="0"
-                                     aria-valuemax="100"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                            <tr>
+                                <th scope="row">Barsel</th>
+                                <td>
+                                    <span class="text-info">
+                                        <span>-@Model.BarselSubFormulars%</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success ">
+                                        <span>@Model.BarselSubFormularsNr</span>
+                                    </span>
+                                </td>
 
-            <div class="col-xl-3 col-sm-6 col-12 mb-4">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between px-md-1">
-                            <div>
-                                <h3 class="text-danger">62,8%</h3>
-                                <p class="mb-0">Procent tilfredshed</p>
-                            </div>
-                            <div class="align-self-center">
-                                <i class="fas fa-face-smile-beam text-danger fa-3x"></i>
-                            </div>
-                        </div>
-                        <div class="px-md-1">
-                            <div class="progress mt-3 mb-1 rounded" style="height: 7px">
-                                <div class="progress-bar bg-danger"
-                                     role="progressbar"
-                                     style="width: 62.8%"
-                                     aria-valuenow="62.8"
-                                     aria-valuemin="0"
-                                     aria-valuemax="100"></div>
-                            </div>
-                        </div>
-                    </div>
+                            </tr>
+
+                            <tr>
+                                <th scope="row">Eksamen</th>
+                                <td>
+                                    <span class="text-info">
+                                        <span>@Model.EksamenSubFormulars%</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success ">
+                                        <span>@Model.EksamenSubFormularsNr</span>
+                                    </span>
+                                </td>
+
+                            </tr>
+
+                            <tr>
+                                <th scope="row">Fastholde trivsel</th>
+                                <td>
+                                    <span class="text-info">
+                                        <span>@Model.TrivselSubFormulars%</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success ">
+                                        <span>@Model.TrivselSubFormularsNr</span>
+                                    </span>
+                                </td>
+
+                            </tr>
+
+                            <tr>
+                                <th scope="row">Internationale muligheder</th>
+                                <td>
+                                    <span class="text-info">
+                                        <span>@Model.InternationalSubFormulars%</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success ">
+                                        <span>@Model.InternationalSubFormularsNr</span>
+                                    </span>
+                                </td>
+
+                            </tr>
+
+                            <tr>
+                                <th scope="row">Mistrivsel</th>
+                                <td>
+                                    <span class="text-info">
+                                        <span>@Model.MistrivselSubFormulars%</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success ">
+                                        <span>@Model.MistrivselSubFormularsNr</span>
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th scope="row">Optagelsesvejledning </th>
+                                <td>
+                                    <span class="text-info">
+                                        <span>@Model.OptVejSubFormulars%</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success ">
+                                        <span>@Model.OptVejSubFormularsNr</span>
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th scope="row">Ordensreglement </th>
+                                <td>
+                                    <span class="text-info">
+                                        <span>@Model.OrdensrelSubFormulars%</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success ">
+                                        <span>@Model.OrdensrelSubFormularsNr</span>
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th scope="row">Orlov </th>
+                                <td>
+                                    <span class="text-info">
+                                        <span>@Model.OrlovSubFormulars%</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success ">
+                                        <span>@Model.OrlovSubFormularsNr</span>
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th scope="row">Overflytning/genindskrivning </th>
+                                <td>
+                                    <span class="text-info">
+                                        <span>@Model.OverflytGenindSubFormulars%</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success ">
+                                        <span>@Model.OverflytGenindSubFormularsNr</span>
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th scope="row">Personlige forhold</th>
+                                <td>
+                                    <span class="text-info">
+                                        <span>@Model.PersonForhSubFormulars%</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success ">
+                                        <span>@Model.PersonForhSubFormularsNr</span>
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th scope="row">Praktik i DK</th>
+                                <td>
+                                    <span class="text-info">
+                                        <span>@Model.PraktikSubFormulars%</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success ">
+                                        <span>@Model.PraktikSubFormularsNr</span>
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th scope="row">Ikke relevant henvendelse </th>
+                                <td>
+                                    <span class="text-info">
+                                        <span>@Model.IkRelSubFormulars%</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success ">
+                                        <span>@Model.IkRelSubFormularsNr</span>
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th scope="row">SPS </th>
+                                <td>
+                                    <span class="text-info">
+                                        <span>@Model.SPSSubFormulars%</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success ">
+                                        <span>@Model.SPSSubFormularsNr</span>
+                                    </span>
+                                </td>
+                            </tr>
+
+
+
+
+
+
+                            <tr>
+                                <th scope="row">Studieophør </th>
+                                <td>
+                                    <span class="text-info">
+                                        <span>@Model.StudOphSubFormulars%</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success ">
+                                        <span>@Model.StudOphSubFormularsNr</span>
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th scope="row">Studieplanlægning </th>
+                                <td>
+                                    <span class="text-info">
+                                        <span>@Model.StdPlanSubFormulars%</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success ">
+                                        <span>@Model.StdPlanSubFormularsNr</span>
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th scope="row">Studietvivl/studievalg</th>
+                                <td>
+                                    <span class="text-info">
+                                        <span>@Model.StdTvivlSubFormulars%</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success ">
+                                        <span>@Model.StdTvivlSubFormularsNr</span>
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th scope="row">Studieudfordringer </th>
+                                <td>
+                                    <span class="text-info">
+                                        <span>@Model.StdUdfSubFormulars%</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success ">
+                                        <span>@Model.StdUdfSubFormularsNr</span>
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th scope="row">Sygdom(egne) </th>
+                                <td>
+                                    <span class="text-info">
+                                        <span>@Model.SygEgneSubFormulars%</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success ">
+                                        <span>@Model.SygEgneSubFormularsNr</span>
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th scope="row">Undervisningen (Samarbejdsvanskeligheder)</th>
+                                <td>
+                                    <span class="text-info">
+                                        <span>@Model.UnvSamaVanSubFormulars%</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success ">
+                                        <span>@Model.UnvSamaVanSubFormularsNr</span>
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th scope="row">Økonomi</th>
+                                <td>
+                                    <span class="text-info">
+                                        <span>@Model.OkonomiSubFormulars%</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success ">
+                                        <span>@Model.OkonomiSubFormularsNr</span>
+                                    </span>
+                                </td>
+                            </tr>
+
+
+
+
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
     </section>
 
+    </div>
+
+    @*Cards over henvendelsestype*@
+    <div class="minSlide">
+        
+        
+        <section>
+             <div class="card-header text-center py-3">
+                <h5 class="mb-0 text-center stath5">
+                    <strong>Procentvis fordeling af henvendelser baseret på henvendelserstyper</strong>
+                </h5>
+            </div>
+
+            <div>
+                <div class="row">
+                    <div class="col-xl-4 col-sm-12 col-12 mb-4">
+                        <div class="card bodysize">
+                           
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between px-md-1">
+                                    <div>
+                                        <h3 class="text-info stath3">@Model.PhoneFormulars%</h3>
+                                        <p class="mb-0">Telefonisk hevendelse</p>
+                                    </div>
+                                    <div class="align-self-center">
+                                        <i class="fas fa-phone text-info fa-3x"></i>
+                                    </div>
+                                </div>
+                                <div class="px-md-1">
+                                    <div class="progress mt-3 mb-1 rounded" style="height: 7px">
+                                        <div class="progress-bar bg-info"
+                                             role="progressbar"
+                                             style="width: 48%"
+                                             aria-valuenow="48"
+                                             aria-valuemin="0"
+                                             aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-sm-12 col-12 mb-4">
+                        <div class="card bodysize">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between px-md-1">
+                                    <div>
+                                        <h3 class="text-warning stath3">@Model.VirtuelleFormulars%</h3>
+                                        <p class="mb-0 statp">Virtuelle henvendelser</p>
+                                    </div>
+                                    <div class="align-self-center">
+                                        <i class="far fa-envelope text-warning fa-3x"></i>
+                                    </div>
+                                </div>
+                                <div class="px-md-1">
+                                    <div class="progress mt-3 mb-1 rounded" style="height: 7px">
+                                        <div class="progress-bar bg-warning"
+                                             role="progressbar"
+                                             style="width: 22%"
+                                             aria-valuenow="22"
+                                             aria-valuemin="0"
+                                             aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-sm-12 col-12 mb-4">
+                        <div class="card bodysize">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between px-md-1">
+                                    <div>
+                                        <h3 class="text-success stath3">@Model.PersonalFormulars%</h3>
+                                        <p class="mb-0">Personlige henvendelser</p>
+                                    </div>
+                                    <div class="align-self-center">
+                                        <i class="fas  fa-person text-success fa-3x"></i>
+                                    </div>
+                                </div>
+                                <div class="px-md-1">
+                                    <div class="progress mt-3 mb-1 rounded" style="height: 7px">
+                                        <div class="progress-bar bg-success"
+                                             role="progressbar"
+                                             style="width:30%"
+                                             aria-valuenow="30"
+                                             aria-valuemin="0"
+                                             aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+        </section>
+        <section>
+
+        <div class="card-header text-center py-3">
+                <h5 class="mb-0 text-center stath5">
+                    <strong>Fordeling af forventet/tendes og reelle timeforbrug</strong>
+                </h5>
+            </div>
+
+            <div class="row">
+                <div class="col-xl-4 col-sm-12 col-12 mb-4">
+                    <div class="card bodysize">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between px-md-1">
+                                <div>
+                                    <h3 class=" stath3 text-success">1600 Timer</h3>
+                                    <p class="mb-0">Forventet timeforbrug</p>
+                                    <p class="mb-0">Per måned</p>
+                                </div>
+                                <div class="align-self-center">
+                                    <i class="fa-regular fa-circle-check fa-3x text-success"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-sm-12 col-12 mb-4">
+                    <div class="card bodysize">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between px-md-1">
+                                <div>
+                                    <h3 class="text-warning stath3">1868 Timer</h3>
+                                    <p class="mb-0">Tendens timeforbrug</p>
+                                    <p class="mb-0">Per måned</p>
+                                </div>
+                                <div class="align-self-center">
+                                    <i class="fa-solid fa-triangle-exclamation fa-3x text-warning"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-sm-12 col-12 mb-4">
+                    <div class="card bodysize">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between px-md-1">
+                                <div>
+                                    <h3 class="text-danger stath3">1600 Timer</h3>
+                                    <p class="mb-0">Reelle timeforbrug</p>
+                                    <p class="mb-0">September</p>
+                                </div>
+                                <div class="align-self-center">
+                                    <i class="fa-solid fa-car-on fa-3x text-danger"></i>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    
+
     <section>
+          <div class="card-header text-center py-3">
+                <h5 class="mb-0 text-center stath5">
+                    <strong>Procentvis fordeling af henvendelsers tidsinterval</strong>
+                </h5>
+            </div>
+
+    <div class="row">
+                <div class="col-xl-4 col-sm-12 col-12 mb-4">
+                    <div class="card bodysize">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between px-md-1">
+                                <div>
+                                    <h3 class="text-info stath3">@Model.TimeUseOneFormulars%</h3>
+                                    <p class="mb-0">Tidsforbrug</p>
+                                </div>
+                                <div class="align-self-center">
+                                    <img src="~/assets/images/1-20.png" alt="Tidsinterval 1-20min.">
+                                </div>
+                            </div>
+                            <div class="px-md-1">
+                                <div class="progress mt-3 mb-1 rounded" style="height: 7px">
+                                    <div class="progress-bar bg-info"
+                                         role="progressbar"
+                                         style="width: 20%"
+                                         aria-valuenow="20"
+                                         aria-valuemin="0"
+                                         aria-valuemax="100"></div>
+                                </div>
+
+                            </div>
+                            <p class="mb-0">Max timeforbrug = @Model.TimeUseOneCountFormulars Timer</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-sm-6 col-12 mb-4">
+                    <div class="card bodysize">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between px-md-1">
+                                <div>
+                                    <h3 class="text-warning stath3">@Model.TimeUseTwoFormulars%</h3>
+                                    <p class="mb-0 statp">Tidsforbrug</p>
+                                </div>
+                                <div class="align-self-center">
+                                    <img src="~/assets/images/21-40.png" alt="Tidsinterval 21-40min.">
+                                </div>
+                            </div>
+                            <div class="px-md-1">
+                                <div class="progress mt-3 mb-1 rounded" style="height: 7px">
+                                    <div class="progress-bar bg-warning"
+                                         role="progressbar"
+                                         style="width: 50%"
+                                         aria-valuenow="50"
+                                         aria-valuemin="0"
+                                         aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                            <p class="mb-0">Max timeforbrug = @Model.TimeUseTwoCountFormulars Timer</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-sm-6 col-12 mb-4">
+                    <div class="card bodysize">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between px-md-1">
+                                <div>
+                                    <h3 class="text-success stath3">@Model.TimeUseThreeFormulars%</h3>
+                                    <p class="mb-0">Tidsforbrug</p>
+                                </div>
+                                <div class="align-self-center">
+                                    <img src="~/assets/images/41-60.png" alt="Tidsinterval 41-60min.">
+                                </div>
+                            </div>
+                            <div class="px-md-1">
+                                <div class="progress mt-3 mb-1 rounded" style="height: 7px">
+                                    <div class="progress-bar bg-success"
+                                         role="progressbar"
+                                         style="width: 30%"
+                                         aria-valuenow="30"
+                                         aria-valuemin="0"
+                                         aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                            <p class="mb-0">Max timeforbrug = @Model.TimeUseThreeCountFormulars Timer</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+  </div>
 
 
-        <div class="row">
 
-            <div class="col-xl-6 col-md-12 mb-4">
-                <div class="card">
+
+<div class="minSlideHenv">
+    
+    <section>
+        <div class="card-header text-center py-3">
+                <h5 class="mb-0 text-center stath5">
+                    <strong>Procentvis fordeling af henvendelser baseret på afdeling</strong>
+                </h5>
+            </div>
+
+     <div class="row">
+
+            <div class="col-xl-4 col-md-12 mb-4">
+                <div class="card bodysize">
                     <div class="card-body">
                         <div class="d-flex justify-content-between p-md-1">
                             <div class="d-flex flex-row">
                                 <div class="align-self-center">
-                                    <h2 class="h1 mb-0 me-4">2913</h2>
+                                    <h2 class="h1 mb-0 me-4">@Model.amountOfFredericiaFormulars%</h2>
                                 </div>
                                 <div>
-                                    <h4 class="stath4">Antal samtaler i år</h4>
-                                    <p class="mb-0">UCL Fredericia</p>
+                                    <h4 class="stath4">UCL Fredericia</h4>
+                                    <p class="mb-0">Antal samtaler i år</p>
                                 </div>
                             </div>
                             <div class="align-self-center">
                                 <img src="~/assets/images/UCLLogoFredericia.png" alt="UCL Fredericia logo">
                             </div>
                         </div>
+                         <div class="px-md-1">
+                                <div class="progress mt-3 mb-1 rounded" style="height: 7px">
+                                    <div class="progress-bar bg-success"
+                                         role="progressbar"
+                                         style="width: 15%"
+                                         aria-valuenow="15"
+                                         aria-valuemin="0"
+                                         aria-valuemax="100"></div>
+                                </div>
+                            </div>
                     </div>
                 </div>
             </div>
 
-            <div class="col-xl-6 col-md-12 mb-4">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between p-md-1">
-                            <div class="d-flex flex-row">
-                                <div class="align-self-center">
-                                    <h2 class="h1 mb-0 me-4 stath2">2913</h2>
-                                </div>
-                                <div>
-                                    <h4>Antal samtaler i år</h4>
-                                    <p class="mb-0 statp">UCL Svendborg</p>
-                                </div>
-                            </div>
+        <div class="col-xl-4 col-md-12 mb-4">
+            <div class="card bodysize">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between p-md-1">
+                        <div class="d-flex flex-row">
                             <div class="align-self-center">
-                                <img src="~/assets/images/UCLLogoSvandborg.png" alt="UCL Svandborg logo">
+                                <h2 class="h1 mb-0 me-4">@Model.amountOfJellingFormulars%</h2>
+                            </div>
+                            <div>
+                                <h4 class="stath4">UCL Jelling</h4>
+                                <p class="mb-0">Antal samtaler i år</p>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-xl-6 col-md-12 mb-4">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between p-md-1">
-                            <div class="d-flex flex-row">
-                                <div class="align-self-center">
-                                    <h2 class="h1 mb-0 me-4">2913</h2>
-                                </div>
-                                <div>
-                                    <h4 class="stath4">Antal samtaler i år</h4>
-                                    <p class="mb-0">UCL Jelling</p>
-                                </div>
-                            </div>
-                            <div class="align-self-center">
-                                <img src="~/assets/images/UCLLogoJelling.png" alt="UCL Jelling logo">
-                            </div>
+                        <div class="align-self-center">
+                            <img src="~/assets/images/UCLLogoJelling.png" alt="UCL Jelling logo">
                         </div>
                     </div>
+                     <div class="px-md-1">
+                                <div class="progress mt-3 mb-1 rounded" style="height: 7px">
+                                    <div class="progress-bar bg-success"
+                                         role="progressbar"
+                                         style="width: 5%"
+                                         aria-valuenow="5"
+                                         aria-valuemin="0"
+                                         aria-valuemax="100"></div>
+                                </div>
+                            </div>
                 </div>
             </div>
+        </div>
+  
+          
 
-            <div class="col-xl-6 col-md-12 mb-4">
-                <div class="card">
+
+
+     
+        <div class="col-xl-4 col-md-12 mb-4">
+            <div class="card bodysize">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between p-md-1">
+                        <div class="d-flex flex-row">
+                            <div class="align-self-center">
+                                <h2 class="h1 mb-0 me-4 stath2">@Model.amountOfSvendborgFormulars%</h2>
+                            </div>
+                            <div>
+                                <h4>UCL Svendborg</h4>
+                                <p class="mb-0 statp">Antal samtaler i år</p>
+                            </div>
+                        </div>
+                        <div class="align-self-center">
+                            <img src="~/assets/images/UCLLogoSvandborg.png" alt="UCL Svendborg logo">
+                        </div>
+                       
+                    </div>
+                     <div class="px-md-1">
+                                <div class="progress mt-3 mb-1 rounded" style="height: 7px">
+                                    <div class="progress-bar bg-success"
+                                         role="progressbar"
+                                         style="width: 15%"
+                                         aria-valuenow="15"
+                                         aria-valuemin="0"
+                                         aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                </div>
+            </div>
+        </div>
+        </div>
+  
+ </section>
+
+
+
+    <section>
+        <div class="card-header text-center py-3">
+                <h5 class="mb-0 text-center stath5">
+                    <strong>Procentvis fordeling af henvendelser baseret på afdeling</strong>
+                </h5>
+            </div>
+
+        <div class="row">
+        <div class="col-xl-4 col-md-12 mb-4">
+                <div class="card bodysize">
                     <div class="card-body">
                         <div class="d-flex justify-content-between p-md-1">
                             <div class="d-flex flex-row">
                                 <div class="align-self-center">
-                                    <h2 class="h1 mb-0 me-4 stath2">2913</h2>
+                                    <h2 class="h1 mb-0 me-4 stath2">@Model.amountOfVejleFormulars%</h2>
                                 </div>
                                 <div>
-                                    <h4>Antal Samtaler i år</h4>
-                                    <p class="mb-0 statp">UCL Vejle </p>
+                                    <h4>UCL Vejle </h4>
+                                    <p class="mb-0 statp">Antal Samtaler i år</p>
                                 </div>
                             </div>
                             <div class="align-self-center">
                                 <img src="~/assets/images/UCLLogoVejle.png" alt="UCL Vejle logo">
                             </div>
+
                         </div>
+                        <div class="px-md-1">
+                                <div class="progress mt-3 mb-1 rounded" style="height: 7px">
+                                    <div class="progress-bar bg-success"
+                                         role="progressbar"
+                                         style="width: 10%"
+                                         aria-valuenow="10"
+                                         aria-valuemin="0"
+                                         aria-valuemax="100"></div>
+                                </div>
+                            </div>
                     </div>
                 </div>
             </div>
+            
 
-            <div class="col-xl-6 col-md-12 mb-4">
-                <div class="card">
+        
+
+            <div class="col-xl-4 col-md-12 mb-4">
+                <div class="card bodysize">
                     <div class="card-body">
                         <div class="d-flex justify-content-between p-md-1">
                             <div class="d-flex flex-row">
                                 <div class="align-self-center">
-                                    <h2 class="h1 mb-0 me-4">20913</h2>
+                                    <h2 class="h1 mb-0 me-4">@Model.amountOfOdenseFormulars%</h2>
                                 </div>
                                 <div>
-                                    <h4 class="stath4">Antal Samtaler i år</h4>
-                                    <p class="mb-0">UCL Odense</p>
+                                    <h4 class="stath4">UCL Odense</h4>
+                                    <p class="mb-0">Antal Samtaler i år</p>
                                 </div>
                             </div>
                             <div class="align-self-center">
                                 <img src="~/assets/images/UCLLogoOdense.png" alt="UCL Odense logo">
                             </div>
                         </div>
+                        <div class="px-md-1">
+                                <div class="progress mt-3 mb-1 rounded" style="height: 7px">
+                                    <div class="progress-bar bg-success"
+                                         role="progressbar"
+                                         style="width: 50%"
+                                         aria-valuenow="50"
+                                         aria-valuemin="0"
+                                         aria-valuemax="100"></div>
+                                </div>
+                            </div>
                     </div>
                 </div>
             </div>
 
-            <div class="col-xl-6 col-md-12 mb-4">
-                <div class="card">
+            <div class="col-xl-4 col-md-12 mb-4">
+                <div class="card bodysize">
                     <div class="card-body">
                         <div class="d-flex justify-content-between p-md-1">
                             <div class="d-flex flex-row">
@@ -827,27 +1175,33 @@
                                     <h2 class="h1 mb-0 me-4 stath2">@Model.AllFormulars</h2>
                                 </div>
                                 <div>
-                                    <h4>Total Antal Samtaler i år</h4>
-                                    <p class="mb-0 statp">UCL</p>
+                                    <h4>Hele UCL</h4>
+                                    <p class="mb-0 statp">Total Antal Samtaler i år</p>
                                 </div>
                             </div>
                             <div class="align-self-center">
-                                <img src="~/assets/images/UCLLogoAlleAfdelinger.png" alt="UCL Odense logo">
+                                <img src="~/assets/images/UCLLogoAlleAfdelinger.png" alt="UCL logo">
                             </div>
                         </div>
+                     
                     </div>
                 </div>
             </div>
         </div>
+
     </section>
-
 </div>
+    
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.1/mdb.min.js"></script>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.1/mdb.min.css"
-      rel="stylesheet" />
 
-<script>// Graph
+
+
+
+
+
+
+<script>
+    // Graph
     var ctx = document.getElementById("myChart");
 
     var myChart = new Chart(ctx, {
@@ -893,3 +1247,183 @@
             },
         },
     });</script>
+
+<script>
+    // Graph
+    var ctx = document.getElementById("myChart2");
+
+    var myChart = new Chart(ctx, {
+        type: "line",
+        data: {
+            labels: [
+                "Januar",
+                "feburar",
+                "Marts",
+                "April",
+                "Maj",
+                "Juni",
+                "Juli",
+                "August",
+                "September",
+                "Oktober",
+                "November",
+                "December",
+            ],
+         datasets: [{
+          label: "Øvre grænse",
+          data: [5, 15, 25, 35, 45, 55, 65, 75, 85, 95, 105, 115],
+          backgroundColor: [
+            'transparent',
+          ],
+          fill: true,
+          borderColor: [
+            'rgba(255, 0, 0, 0.07)',
+          ],
+          borderWidth: 2,
+          tension: 1
+        },
+        {
+          label: "Median på acceptgrænse",
+          data: [20, 30, 40, 50, 60, 70, 80,  90, 100, 110, 120, 130],
+          backgroundColor: [
+            'transparent',
+          ],
+          fill: true,
+          borderColor: [
+            'rgba(0, 255, 0, 0.8)',
+          ],
+          borderWidth: 3,
+          tension: 1
+        },
+        {
+          label: "Tendenslinje",
+          data: [23, 33, 43, 53, 63, 73, 83,  93, 103, 113, 123, 133],
+          backgroundColor: [
+            'transparent',
+          ],
+          fill: true,
+          borderColor: [
+            'rgba(23, 152, 227, 0.41)',
+          ],
+          borderWidth: 2,
+          tension: 1
+        },
+           {
+          label: "Nedre grænse",
+          data: [35, 45, 55, 65, 75, 85, 95, 105, 115, 125, 135, 145],
+          backgroundColor: [
+            'transparent',
+          ],
+          fill: true,
+          borderColor: [
+            'rgba(255, 0, 0, 0.07)',
+          ],
+          borderWidth: 2,
+          tension: 1
+        },
+        {
+          label: "Reel timeforbrug",
+          data: [27, 36, 40, 59, 80, 59, 75, 105, 102, 100, 135, 155],
+          backgroundColor: [
+            'transparent',
+          ],
+          fill: true,
+          borderColor: [
+            'rgba(0, 0, 0, 1)',
+          ],
+          borderWidth: 2,
+          tension: 0.4
+        }
+      ]
+    },
+    options: {
+      responsive: true
+    }
+    });</script>
+
+
+<script>
+    $(document).ready(function () {
+        $(".minSlide").slick({
+            speed: 1000,
+            prevArrow: '<button class="slide-arrow prev-arrow"></button>',
+            nextArrow: '<button class="slide-arrow next-arrow"></button>'
+            
+        });
+    });
+
+
+</script>
+<script>
+    $(document).ready(function () {
+        $(".minSlideGraf").slick({
+            speed: 1000,
+            prevArrow: '<button class="slide-arrowGraf prev-arrowGraf"></button>',
+            nextArrow: '<button class="slide-arrowGraf next-arrowGraf"></button>'
+
+        });
+    });
+
+
+</script>
+
+<script>
+    $(document).ready(function () {
+        $(".minSlideHenv").slick({
+            speed: 1000,
+            prevArrow: '<button class="slide-arrowGraf prev-arrowHenv"></button>',
+            nextArrow: '<button class="slide-arrowGraf next-arrowHenv"></button>'
+
+        });
+    });
+
+</script>
+
+<script>
+    $(document).ready(function () {
+        $(".minSlideTabel").slick({
+            speed: 1000,
+            prevArrow: '<button class="slide-arrowTabel prev-arrowTabel"></button>',
+            nextArrow: '<button class="slide-arrowTabel next-arrowTabel"></button>'
+
+        });
+    });
+
+</script>
+
+<Script>
+    $(document).ready(function () {
+        $('#example').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                'copyHtml5',
+                'excelHtml5',
+                'csvHtml5',
+                'pdfHtml5'
+            ]
+        });
+    });
+
+
+</script>
+
+<Script>
+    $(document).ready(function () {
+        $('#example2').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                'copyHtml5',
+                'excelHtml5',
+                'csvHtml5',
+                'pdfHtml5'
+            ]
+        });
+    });
+
+
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.1/mdb.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>

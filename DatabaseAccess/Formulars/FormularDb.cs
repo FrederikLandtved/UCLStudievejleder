@@ -5,6 +5,7 @@ using Microsoft.Extensions.Options;
 using static DatabaseAccess.Generic.GenericSql;
 using static DatabaseAccess.Question.AnswerOptionDb;
 
+//undsky
 namespace DatabaseAccess.Formulars
 {
     public class FormularDb
@@ -18,7 +19,7 @@ namespace DatabaseAccess.Formulars
 
         public List<Formulars> GetAllFormulars()
         {
-            List<Formulars> formulars = new List<Formulars>();
+            List<Formulars> formulars = new();
             
 
             SqlDataReader reader = _genericSql.Select("SELECT * FROM [dbo].[Formular]");
@@ -31,7 +32,7 @@ namespace DatabaseAccess.Formulars
 
                 });
             }
-
+            reader.Close();
             return formulars;
         }
 
@@ -56,7 +57,7 @@ namespace DatabaseAccess.Formulars
 
             while (reader.Read())
                 amountOfRows++;
-
+            reader.Close();
             return amountOfRows;
         }
 

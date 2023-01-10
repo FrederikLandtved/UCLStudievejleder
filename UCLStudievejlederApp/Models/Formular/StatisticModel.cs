@@ -8,5 +8,7 @@
 
         public int contactMail { get; set; }
 
+        public int contactTime { get; set; }    
+
     }
 }
