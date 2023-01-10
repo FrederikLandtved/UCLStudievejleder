@@ -49,7 +49,7 @@
 
 
 
-
+<div class="minSlideTabel">
 
 
     <section class="mb-4">
@@ -386,7 +386,342 @@
             </div>
         </div>
     </section>
+    <section class="mb-4">
+        <div class="card">
+            <div class="card-header text-center py-3">
+                <h5 class="mb-0 text-center stath5">
+                    <strong>Antal henvendelser per emne</strong>
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover text-nowrap" id="example2">
+                        <thead>
+                            <tr>
+                                <th scope="col"></th>
+                                <th scope="col">Procent</th>
+                                <th scope="col">Antal</th>
 
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr>
+                                <th scope="row">Administrative forhold</th>
+                                <td>
+                                    <span class="text-info">
+                                        <span>-@Model.AdminSubFormulars%</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success ">
+                                        <span>@Model.AdminSubFormularsNr</span>
+                                    </span>
+                                </td>
+
+                            </tr>
+
+
+                            <tr>
+                                <th scope="row">Barsel</th>
+                                <td>
+                                    <span class="text-info">
+                                        <span>-@Model.BarselSubFormulars%</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success ">
+                                        <span>@Model.BarselSubFormularsNr</span>
+                                    </span>
+                                </td>
+
+                            </tr>
+
+                            <tr>
+                                <th scope="row">Eksamen</th>
+                                <td>
+                                    <span class="text-info">
+                                        <span>@Model.EksamenSubFormulars%</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success ">
+                                        <span>@Model.EksamenSubFormularsNr</span>
+                                    </span>
+                                </td>
+
+                            </tr>
+
+                            <tr>
+                                <th scope="row">Fastholde trivsel</th>
+                                <td>
+                                    <span class="text-info">
+                                        <span>@Model.TrivselSubFormulars%</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success ">
+                                        <span>@Model.TrivselSubFormularsNr</span>
+                                    </span>
+                                </td>
+
+                            </tr>
+
+                            <tr>
+                                <th scope="row">Internationale muligheder</th>
+                                <td>
+                                    <span class="text-info">
+                                        <span>@Model.InternationalSubFormulars%</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success ">
+                                        <span>@Model.InternationalSubFormularsNr</span>
+                                    </span>
+                                </td>
+
+                            </tr>
+
+                            <tr>
+                                <th scope="row">Mistrivsel</th>
+                                <td>
+                                    <span class="text-info">
+                                        <span>@Model.MistrivselSubFormulars%</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success ">
+                                        <span>@Model.MistrivselSubFormularsNr</span>
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th scope="row">Optagelsesvejledning </th>
+                                <td>
+                                    <span class="text-info">
+                                        <span>@Model.OptVejSubFormulars%</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success ">
+                                        <span>@Model.OptVejSubFormularsNr</span>
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th scope="row">Ordensreglement </th>
+                                <td>
+                                    <span class="text-info">
+                                        <span>@Model.OrdensrelSubFormulars%</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success ">
+                                        <span>@Model.OrdensrelSubFormularsNr</span>
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th scope="row">Orlov </th>
+                                <td>
+                                    <span class="text-info">
+                                        <span>@Model.OrlovSubFormulars%</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success ">
+                                        <span>@Model.OrlovSubFormularsNr</span>
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th scope="row">Overflytning/genindskrivning </th>
+                                <td>
+                                    <span class="text-info">
+                                        <span>@Model.OverflytGenindSubFormulars%</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success ">
+                                        <span>@Model.OverflytGenindSubFormularsNr</span>
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th scope="row">Personlige forhold</th>
+                                <td>
+                                    <span class="text-info">
+                                        <span>@Model.PersonForhSubFormulars%</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success ">
+                                        <span>@Model.PersonForhSubFormularsNr</span>
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th scope="row">Praktik i DK</th>
+                                <td>
+                                    <span class="text-info">
+                                        <span>@Model.PraktikSubFormulars%</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success ">
+                                        <span>@Model.PraktikSubFormularsNr</span>
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th scope="row">Ikke relevant henvendelse </th>
+                                <td>
+                                    <span class="text-info">
+                                        <span>@Model.IkRelSubFormulars%</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success ">
+                                        <span>@Model.IkRelSubFormularsNr</span>
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th scope="row">SPS </th>
+                                <td>
+                                    <span class="text-info">
+                                        <span>@Model.SPSSubFormulars%</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success ">
+                                        <span>@Model.SPSSubFormularsNr</span>
+                                    </span>
+                                </td>
+                            </tr>
+
+
+
+
+
+
+                            <tr>
+                                <th scope="row">Studieophør </th>
+                                <td>
+                                    <span class="text-info">
+                                        <span>@Model.StudOphSubFormulars%</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success ">
+                                        <span>@Model.StudOphSubFormularsNr</span>
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th scope="row">Studieplanlægning </th>
+                                <td>
+                                    <span class="text-info">
+                                        <span>@Model.StdPlanSubFormulars%</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success ">
+                                        <span>@Model.StdPlanSubFormularsNr</span>
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th scope="row">Studietvivl/studievalg</th>
+                                <td>
+                                    <span class="text-info">
+                                        <span>@Model.StdTvivlSubFormulars%</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success ">
+                                        <span>@Model.StdTvivlSubFormularsNr</span>
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th scope="row">Studieudfordringer </th>
+                                <td>
+                                    <span class="text-info">
+                                        <span>@Model.StdUdfSubFormulars%</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success ">
+                                        <span>@Model.StdUdfSubFormularsNr</span>
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th scope="row">Sygdom(egne) </th>
+                                <td>
+                                    <span class="text-info">
+                                        <span>@Model.SygEgneSubFormulars%</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success ">
+                                        <span>@Model.SygEgneSubFormularsNr</span>
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th scope="row">Undervisningen (Samarbejdsvanskeligheder)</th>
+                                <td>
+                                    <span class="text-info">
+                                        <span>@Model.UnvSamaVanSubFormulars%</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success ">
+                                        <span>@Model.UnvSamaVanSubFormularsNr</span>
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th scope="row">Økonomi</th>
+                                <td>
+                                    <span class="text-info">
+                                        <span>@Model.OkonomiSubFormulars%</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-success ">
+                                        <span>@Model.OkonomiSubFormularsNr</span>
+                                    </span>
+                                </td>
+                            </tr>
+
+
+
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    </div>
 
     @*Cards over henvendelsestype*@
     <div class="minSlide">
@@ -858,9 +1193,37 @@
 
 </script>
 
+<script>
+    $(document).ready(function () {
+        $(".minSlideTabel").slick({
+            speed: 1000,
+            prevArrow: '<button class="slide-arrowTabel prev-arrowTabel"></button>',
+            nextArrow: '<button class="slide-arrowTabel next-arrowTabel"></button>'
+
+        });
+    });
+
+</script>
+
 <Script>
     $(document).ready(function () {
         $('#example').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                'copyHtml5',
+                'excelHtml5',
+                'csvHtml5',
+                'pdfHtml5'
+            ]
+        });
+    });
+
+
+</script>
+
+<Script>
+    $(document).ready(function () {
+        $('#example2').DataTable({
             dom: 'Bfrtip',
             buttons: [
                 'copyHtml5',

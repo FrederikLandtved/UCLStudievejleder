@@ -54,7 +54,7 @@ button {
     width: 0;
     height: 0;
     border-left: 0 solid transparent;
-    border-right: 30px solid #113463;
+    border-right: 30px solid #11346310;
     border-top: 30px solid transparent;
     border-bottom: 30px solid transparent;
     padding-left: 0;
@@ -62,13 +62,18 @@ button {
     padding-bottom: 0;
     border-radius: 7px;
 }
-.next-arrow {
+
+    .prev-arrow:hover {
+        border-right: 30px solid #113463;
+    }
+
+    .next-arrow {
     right: -45px;
     top: 30%;
     width: 0;
     height: 0;
     border-right: 0 solid transparent;
-    border-left: 30px solid #113463;
+    border-left: 30px solid #11346310;
     border-top: 30px solid transparent;
     border-bottom: 30px solid transparent;
     padding-left: 0;
@@ -76,6 +81,9 @@ button {
     padding-bottom: 0px;
     border-radius: 7px;
 }
+        .next-arrow:hover {
+            border-left: 30px solid #113463;
+        }
 
 .slide-arrowGraf {
     position: absolute;
@@ -89,7 +97,7 @@ button {
     width: 0;
     height: 0;
     border-left: 0 solid transparent;
-    border-right: 30px solid #113463;
+    border-right: 30px solid #11346310;
     border-top: 30px solid transparent;
     border-bottom: 30px solid transparent;
     padding-left: 0;
@@ -98,13 +106,16 @@ button {
     border-radius: 7px;
 }
 
-.next-arrowGraf {
+    .prev-arrowGraf:hover {
+        border-right: 30px solid #113463;
+    }
+    .next-arrowGraf {
     right: -45px;
     top: 45%;
     width: 0;
     height: 0;
     border-right: 0 solid transparent;
-    border-left: 30px solid #113463;
+    border-left: 30px solid #11346310;
     border-top: 30px solid transparent;
     border-bottom: 30px solid transparent;
     padding-left: 0;
@@ -113,7 +124,10 @@ button {
     border-radius: 7px;
 }
 
-.slide-arrowHenv {
+.next-arrowGraf:hover {
+    border-left: 30px solid #113463;
+}
+    .slide-arrowHenv {
     position: absolute;
     margin-top: 15px;
     z-index: 9999;
@@ -125,7 +139,7 @@ button {
     width: 0;
     height: 0;
     border-left: 0 solid transparent;
-    border-right: 30px solid #113463;
+    border-right: 30px solid #11346310;
     border-top: 30px solid transparent;
     border-bottom: 30px solid transparent;
     padding-left: 0;
@@ -133,14 +147,16 @@ button {
     padding-bottom: 0;
     border-radius: 7px;
 }
-
-.next-arrowHenv {
+.prev-arrowHenv:hover {
+    border-right: 30px solid #113463;
+}
+    .next-arrowHenv {
     right: -45px;
     top: 0;
     width: 0;
     height: 0;
     border-right: 0 solid transparent;
-    border-left: 30px solid #113463;
+    border-left: 30px solid #11346310;
     border-top: 30px solid transparent;
     border-bottom: 30px solid transparent;
     padding-left: 0;
@@ -148,6 +164,52 @@ button {
     padding-bottom: 0px;
     border-radius: 7px;
 }
+
+    .next-arrowHenv:hover {
+        border-left: 30px solid #113463;
+    }
+    .slide-arrowTabel {
+    position: absolute;
+    margin-top: 15px;
+    z-index: 9999;
+}
+
+.prev-arrowTabel {
+    left: -45px;
+    top: 50%;
+    width: 0;
+    height: 0;
+    border-left: 0 solid transparent;
+    border-right: 30px solid #11346310;
+    border-top: 30px solid transparent;
+    border-bottom: 30px solid transparent;
+    padding-left: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    border-radius: 7px;
+}
+    .prev-arrowTabel:hover {
+        border-right: 30px solid #113463;
+    }
+
+.next-arrowTabel {
+    right: -45px;
+    top: 50%;
+    width: 0;
+    height: 0;
+    border-right: 0 solid transparent;
+    border-left: 30px solid #11346310;
+    border-top: 30px solid transparent;
+    border-bottom: 30px solid transparent;
+    padding-left: 0;
+    padding-top: 0;
+    padding-bottom: 0px;
+    border-radius: 7px;
+}
+
+    .next-arrowTabel:hover {
+        border-left: 30px solid #113463;
+    }
 
 button.dt-button {
     padding: 0;
@@ -170,5 +232,11 @@ button.dt-button {
     font-weight:bold;
 }
 
+.minSlideTabel{
+    height:70vh;
+}
 
+.draggable{
+    height:100%;
+}
 
