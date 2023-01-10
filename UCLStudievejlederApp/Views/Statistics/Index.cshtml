@@ -1,15 +1,15 @@
 ﻿@model StatisticViewModel;
 
 <link rel="stylesheet" href="~/css/statistics.css" asp-append-version="true" />
-<div class="container pt-4">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.1/mdb.min.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
 
+  
+    <div class="minSlideGraf">
 
+<section class="wrapGraf">
 
-    <div class="containerWrap">
-
-        <div class="pages">
+   
             <div class="page one">
                 <section class="mb-4 w-100">
                     <div class="card">
@@ -22,18 +22,18 @@
                             <canvas class="my-4 w-100" id="myChart" height="500"></canvas>
                         </div>
                     </div>
-                    <button onClick="slide('next')">Tidsforbrug</button>
                 </section>
 
             </div>
 
+    </section>
+    <section class="wrapGraf">
             <div class="page two">
                 <section class="mb-4 w-100">
                     <div class="card">
                         <div class="card-header py-3">
                             <h1 class="mb-0 text-center stath1 h1Tidsforbrug"><strong>Tidsforbrug</strong></h1>
                             <div>
-                                <button onClick="slide('prev')">Henvendelser</button>
                             </div>
                         </div>
                         <div class="card-body">
@@ -43,7 +43,7 @@
                 </section>
 
             </div>
-        </div>
+        </section>
     </div>
 
 
@@ -61,7 +61,7 @@
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-hover text-nowrap">
+                    <table class="table table-hover text-nowrap" id="example">
                         <thead>
                             <tr>
                                 <th scope="col"></th>
@@ -567,13 +567,13 @@
 
 
 
-
+<div class="minSlideHenv">
 
     <section>
 
-        <div class="row">
+     <div class="row">
 
-            <div class="col-xl-6 col-md-12 mb-4">
+            <div class="col-xl-4 col-md-12 mb-4">
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex justify-content-between p-md-1">
@@ -594,49 +594,59 @@
                 </div>
             </div>
 
-            <div class="col-xl-6 col-md-12 mb-4">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between p-md-1">
-                            <div class="d-flex flex-row">
-                                <div class="align-self-center">
-                                    <h2 class="h1 mb-0 me-4 stath2">@Model.amountOfSvendborgFormulars%</h2>
-                                </div>
-                                <div>
-                                    <h4>UCL Svendborg</h4>
-                                    <p class="mb-0 statp">Antal samtaler i år</p>
-                                </div>
-                            </div>
+        <div class="col-xl-4 col-md-12 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between p-md-1">
+                        <div class="d-flex flex-row">
                             <div class="align-self-center">
-                                <img src="~/assets/images/UCLLogoSvandborg.png" alt="UCL Svendborg logo">
+                                <h2 class="h1 mb-0 me-4">@Model.amountOfJellingFormulars%</h2>
                             </div>
+                            <div>
+                                <h4 class="stath4">UCL Jelling</h4>
+                                <p class="mb-0">Antal samtaler i år</p>
+                            </div>
+                        </div>
+                        <div class="align-self-center">
+                            <img src="~/assets/images/UCLLogoJelling.png" alt="UCL Jelling logo">
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+  
+          
 
-            <div class="col-xl-6 col-md-12 mb-4">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between p-md-1">
-                            <div class="d-flex flex-row">
-                                <div class="align-self-center">
-                                    <h2 class="h1 mb-0 me-4">@Model.amountOfJellingFormulars%</h2>
-                                </div>
-                                <div>
-                                    <h4 class="stath4">UCL Jelling</h4>
-                                    <p class="mb-0">Antal samtaler i år</p>
-                                </div>
-                            </div>
+
+
+     
+        <div class="col-xl-4 col-md-12 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between p-md-1">
+                        <div class="d-flex flex-row">
                             <div class="align-self-center">
-                                <img src="~/assets/images/UCLLogoJelling.png" alt="UCL Jelling logo">
+                                <h2 class="h1 mb-0 me-4 stath2">@Model.amountOfSvendborgFormulars%</h2>
                             </div>
+                            <div>
+                                <h4>UCL Svendborg</h4>
+                                <p class="mb-0 statp">Antal samtaler i år</p>
+                            </div>
+                        </div>
+                        <div class="align-self-center">
+                            <img src="~/assets/images/UCLLogoSvandborg.png" alt="UCL Svendborg logo">
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+        </div>
+  
+ </section>
 
-            <div class="col-xl-6 col-md-12 mb-4">
+    <section>
+        <div class="row">
+        <div class="col-xl-4 col-md-12 mb-4">
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex justify-content-between p-md-1">
@@ -656,8 +666,11 @@
                     </div>
                 </div>
             </div>
+            
 
-            <div class="col-xl-6 col-md-12 mb-4">
+        
+
+            <div class="col-xl-4 col-md-12 mb-4">
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex justify-content-between p-md-1">
@@ -678,7 +691,7 @@
                 </div>
             </div>
 
-            <div class="col-xl-6 col-md-12 mb-4">
+            <div class="col-xl-4 col-md-12 mb-4">
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex justify-content-between p-md-1">
@@ -699,26 +712,16 @@
                 </div>
             </div>
         </div>
+
     </section>
-
 </div>
+    
 
 
 
-<script>
-    const pages = document.querySelectorAll(".page");
-    const translateAmount = 100;
-    let translate = 0;
 
-    slide = (direction) => {
 
-        direction === "next" ? translate -= translateAmount : translate += translateAmount;
 
-        pages.forEach(
-            pages => (pages.style.transform = `translateX(${translate}%)`)
-        );
-    }
-</script>
 
 
 <script>
@@ -827,8 +830,49 @@
             
         });
     });
+
+
+</script>
+<script>
+    $(document).ready(function () {
+        $(".minSlideGraf").slick({
+            speed: 1000,
+            prevArrow: '<button class="slide-arrowGraf prev-arrowGraf"></button>',
+            nextArrow: '<button class="slide-arrowGraf next-arrowGraf"></button>'
+
+        });
+    });
+
+
 </script>
 
+<script>
+    $(document).ready(function () {
+        $(".minSlideHenv").slick({
+            speed: 1000,
+            prevArrow: '<button class="slide-arrowGraf prev-arrowHenv"></button>',
+            nextArrow: '<button class="slide-arrowGraf next-arrowHenv"></button>'
+
+        });
+    });
+
+</script>
+
+<Script>
+    $(document).ready(function () {
+        $('#example').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                'copyHtml5',
+                'excelHtml5',
+                'csvHtml5',
+                'pdfHtml5'
+            ]
+        });
+    });
+
+
+</script>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.1/mdb.min.js"></script>
 

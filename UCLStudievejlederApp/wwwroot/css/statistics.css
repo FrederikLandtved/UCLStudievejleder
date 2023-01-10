@@ -9,6 +9,9 @@
 .bodysize {
     height: 170px!important;
 }
+.containerWrap{
+    overflow:visible!important;
+}
 
 
 button {
@@ -34,46 +37,7 @@ button {
 
 
 
-.pages {
-    display: flex;
-    box-sizing: border-box;
-    width: 135vw;
-    height: 50vw; 
-}
 
-.pages2 {
-    display: flex;
-    box-sizing: border-box;
-    width: 135vw;
-}
-
-.page {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    transition: all 0.7s;
-    color: white;
-    height: 100vh;
-}
-
-.page2 {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    transition: all 0.7s;
-    color: white;
-}
-
-.card-header{
-    margin-top:50px;
-}
-.h1Henvendelser, .h1Tidsforbrug {
-    color: black;
-}
 
 
 
@@ -85,7 +49,7 @@ button {
   z-index:9999;
 }
 .prev-arrow {
-    left: -60px;
+    left: -45px;
     top: 30%;
     width: 0;
     height: 0;
@@ -99,8 +63,8 @@ button {
     border-radius: 7px;
 }
 .next-arrow {
-    right: -60px;
-    top:30%;
+    right: -45px;
+    top: 30%;
     width: 0;
     height: 0;
     border-right: 0 solid transparent;
@@ -112,3 +76,99 @@ button {
     padding-bottom: 0px;
     border-radius: 7px;
 }
+
+.slide-arrowGraf {
+    position: absolute;
+    margin-top: 15px;
+    z-index: 9999;
+}
+
+.prev-arrowGraf {
+    left: -45px;
+    top: 45%;
+    width: 0;
+    height: 0;
+    border-left: 0 solid transparent;
+    border-right: 30px solid #113463;
+    border-top: 30px solid transparent;
+    border-bottom: 30px solid transparent;
+    padding-left: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    border-radius: 7px;
+}
+
+.next-arrowGraf {
+    right: -45px;
+    top: 45%;
+    width: 0;
+    height: 0;
+    border-right: 0 solid transparent;
+    border-left: 30px solid #113463;
+    border-top: 30px solid transparent;
+    border-bottom: 30px solid transparent;
+    padding-left: 0;
+    padding-top: 0;
+    padding-bottom: 0px;
+    border-radius: 7px;
+}
+
+.slide-arrowHenv {
+    position: absolute;
+    margin-top: 15px;
+    z-index: 9999;
+}
+
+.prev-arrowHenv {
+    left: -45px;
+    top: 0;
+    width: 0;
+    height: 0;
+    border-left: 0 solid transparent;
+    border-right: 30px solid #113463;
+    border-top: 30px solid transparent;
+    border-bottom: 30px solid transparent;
+    padding-left: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    border-radius: 7px;
+}
+
+.next-arrowHenv {
+    right: -45px;
+    top: 0;
+    width: 0;
+    height: 0;
+    border-right: 0 solid transparent;
+    border-left: 30px solid #113463;
+    border-top: 30px solid transparent;
+    border-bottom: 30px solid transparent;
+    padding-left: 0;
+    padding-top: 0;
+    padding-bottom: 0px;
+    border-radius: 7px;
+}
+
+button.dt-button {
+    padding: 0;
+    width: 4vw !important;
+    border: 1px solid #fae76a;
+    color: #113463;
+    background-color: #fae76a !important;
+}
+  
+
+    button.dt-button:hover {
+        background-color: #113463!important;
+        color:white;
+    }
+
+.paginate_button.current {
+    background-color: #fae76a!important;
+    border: none !important;
+    color: #113463;
+    font-weight:bold;
+}
+
+
+
