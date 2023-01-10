@@ -7,12 +7,16 @@ namespace UCLStudievejlederApp.Controllers
 {
     public class StatisticsController : Controller
     {
+        private readonly FormularDb formularDb;
+        public StatisticsController(FormularDb _formularDb)
+        {
+            formularDb = _formularDb;
+        }
         public IActionResult Index()
         {
             //hvor mange procent hevendelser er der totalt
 
             StatisticViewModel statisticViewModel = new();
-            FormularDb formularDb = new();
 
             //-----Hvor mangehenvendelser i procent per afdeling------
             statisticViewModel.AllFormulars = formularDb.GetAllFormulars().Count;
