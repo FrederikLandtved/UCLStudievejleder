@@ -50,7 +50,7 @@ button {
 }
 .prev-arrow {
     left: -45px;
-    top: 30%;
+    top: 50%;
     width: 0;
     height: 0;
     border-left: 0 solid transparent;
@@ -69,7 +69,7 @@ button {
 
     .next-arrow {
     right: -45px;
-    top: 30%;
+    top: 50%;
     width: 0;
     height: 0;
     border-right: 0 solid transparent;
@@ -135,7 +135,7 @@ button {
 
 .prev-arrowHenv {
     left: -45px;
-    top: 0;
+    top: 35%;
     width: 0;
     height: 0;
     border-left: 0 solid transparent;
@@ -150,9 +150,9 @@ button {
 .prev-arrowHenv:hover {
     border-right: 30px solid #113463;
 }
-    .next-arrowHenv {
+.next-arrowHenv {
     right: -45px;
-    top: 0;
+    top: 35%;
     width: 0;
     height: 0;
     border-right: 0 solid transparent;
@@ -240,3 +240,9 @@ button.dt-button {
     height:100%;
 }
 
+.sidebar-icon.img:hover {
+    background-color: red!important;
+}
+
+.sidebar:hover {
+}
