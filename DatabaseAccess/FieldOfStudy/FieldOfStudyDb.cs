@@ -44,13 +44,18 @@ namespace DatabaseAccess.FieldOfStudy
 
         public List<FieldOfStudyModel> GetFieldsOfStudyByUserId(int userId)
         {
+            // We create a new list to store all the FieldsOfStudies connected to a user
             List<FieldOfStudyModel> fieldOfStudies = new List<FieldOfStudyModel>();
 
+            // We execute the Stored Procedure "sp_GetFieldsOfStudyFromUserId"
+            // And pass the userId as a parameter
             SqlDataReader reader = _genericSql.ExecuteSproc("sp_GetFieldsOfStudyFromUserId", new List<ParameterModel> { new ParameterModel { Parameter = "@UserId", Value = userId.ToString() } });
 
+            // Foreach field of study that we get back from the stored procedure, we add it to the list that we created first.
             while (reader.Read())
                 fieldOfStudies.Add(new FieldOfStudyModel { FieldOfStudyId = reader.GetInt32(0), Name = reader.GetString(1), IsSelected = true });
             
+            // We return the list that we created first.
             return fieldOfStudies;
         }
 

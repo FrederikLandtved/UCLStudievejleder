@@ -42,13 +42,18 @@ namespace DatabaseAccess.Institution
 
         public List<InstitutionModel> GetInstitutionsByUserId(int userId)
         {
+            // We create a new list to store all the Institutions that are connected to a user
             List<InstitutionModel> institutions = new List<InstitutionModel>();
 
+            // We execute the stored procedure "GetInstitutionsFromUserId"
+            // and pass the userId as parameter
             SqlDataReader reader = _genericSql.ExecuteSproc("GetInstitutionsFromUserId", new List<ParameterModel> { new ParameterModel { Parameter = "@UserId", Value = userId.ToString()} });
 
+            // For each Institution we get back from the Stored Procedure, we add it to the list that we created first
             while (reader.Read())
                 institutions.Add(new InstitutionModel { InstitutionId = reader.GetInt32(0), Name = reader.GetString(1), IsSelected = true });
 
+            // We return the list that we created first.
             return institutions;
         }
 

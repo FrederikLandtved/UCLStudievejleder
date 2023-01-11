@@ -68,14 +68,24 @@ namespace UCLStudievejlederApp.Controllers
 
         private void SetInstitutionsAndFieldsOfStudy(int userId, FormularViewModel model)
         {
+            // To know which Fields of studies that are connected to a user, we retrieve them from the DB
             List<FieldOfStudyModel> usersFieldsOfStudy = _fieldOfStudyDb.GetFieldsOfStudyByUserId(userId);
+
+            // For each AnswerOption in Question 7 (Question about Field Of Study) we check if 
+            // any of the user's Fields of Studies is the same as the AnswerOption's AnswerOptionString
+            // If found a match, then IsFavorite is set to true.
             foreach (AnswerOption option in model.Questions[6].AnswerOptions)
                 if (usersFieldsOfStudy.Any(x => x.Name == option.AnswerOptionString))
                     option.IsFavorite = true;
 
+            // Same procedure as finding connected FieldsOfStudies, we retrieve a list of Institutions connected to a user from DB
             List<InstitutionModel> usersInstitutions = _institutionDb.GetInstitutionsByUserId(userId);
+
+            // Here we check if the List of Institutions that we just retrieved contains 1 element (And only 1!)
             if (usersInstitutions.Count == 1)
             {
+                // Here we check if any of the AnswerOptions on Question 5 (Institution) is the same of any of
+                // the Institutions that are connected to a user. If a match is found, then the option is selected.
                 foreach (AnswerOption option in model.Questions[5].AnswerOptions)
                     if (usersInstitutions.Any(x => x.Name == option.AnswerOptionString))
                         model.Questions[5].SingleChosenOption = option.AnswerOptionId;
